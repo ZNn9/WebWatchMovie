@@ -474,6 +474,101 @@ ol {
     color: #ffffff;
 }
 
+/* mini-details.css */
+/* Mini details widget */
+.mini-details {
+    position: fixed;
+    top: -100px; /* Điều chỉnh vị trí ban đầu thấp hơn */
+    left: 50px;
+    z-index: 1000;
+    transition: all 0.3s ease-in-out; /* Thêm hiệu ứng chuyển đổi */
+}
+
+.mini-details button {
+    background-color: #000000; /* Màu nền đen */
+    border: 2px solid #e53637; /* Thêm viền sáng */
+    border-radius: 50%;
+    width: 70px; /* Tăng kích thước */
+    height: 70px; /* Tăng kích thước */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Hiệu ứng bóng đổ */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Thêm hiệu ứng chuyển đổi */
+}
+
+.mini-details button:hover {
+    transform: scale(1.2); /* Phóng to khi hover */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4); /* Hiệu ứng bóng đổ mạnh hơn khi hover */
+}
+
+.mini-details button:active {
+    transform: scale(1.1); /* Giảm nhẹ kích thước khi click */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Hiệu ứng bóng đổ nhẹ hơn khi click */
+}
+
+.mini-details button::before {
+    content: '';
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: rgba(229, 54, 55, 0.3); /* Thêm hiệu ứng phát sáng */
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.mini-details button:hover::before {
+    opacity: 1; /* Hiển thị hiệu ứng phát sáng khi hover */
+}
+
+.mini-details .mini-logo {
+    width: 50px; /* Tăng kích thước logo */
+    height: 50px;
+}
+
+.mini-details-menu {
+    display: none;
+    position: absolute;
+    top: 80px; /* Điều chỉnh vị trí của menu */
+    left: 0;
+    background-color: #ffffff;
+    border: 2px solid #e53637; /* Thêm viền sáng */
+    border-radius: 15px; /* Tăng độ bo tròn */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Hiệu ứng bóng đổ */
+    padding: 10px;
+    width: 220px; /* Tăng độ rộng */
+    text-align: left;
+    z-index: 1000;
+    transition: all 0.3s ease; /* Thêm hiệu ứng chuyển đổi */
+}
+
+.mini-details-menu.active {
+    display: block;
+}
+
+.mini-details-menu.hidden {
+    display: none;
+}
+
+.mini-details-menu a {
+    display: block;
+    padding: 12px 15px;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    font-size: 18px; /* Tăng kích thước chữ */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Thêm hiệu ứng chuyển đổi */
+}
+
+.mini-details-menu a:hover {
+    background-color: #e53637; /* Thay đổi màu nền khi hover */
+    color: #ffffff; /* Thay đổi màu chữ khi hover */
+    border-radius: 10px; /* Thêm bo tròn khi hover */
+}
+
 /*---------------------
   Hero
 -----------------------*/
@@ -978,6 +1073,40 @@ ol {
 	font-size: 15px;
 }
 
+.random-movie-section {
+    text-align: center;
+    background-color: #212529; /* Màu nền */
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.random-movie-section h3 {
+    font-size: 20px;
+    color: #fff; /* Màu chữ tiêu đề */
+}
+
+.random-movie-section p {
+    color: #b7b7b7; /* Màu chữ mô tả */
+    margin: 10px 0 20px 0;
+}
+
+.random-movie-button {
+    background-color: #e53637; /* Màu nền nút */
+    color: #fff; /* Màu chữ nút */
+    font-weight: bold; /* Chữ in đậm */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.random-movie-button:hover {
+    background-color: #bf2e2f; /* Màu nền nút khi hover */
+}
+
 /*---------------------
   Anime Details
 -----------------------*/
@@ -1401,11 +1530,39 @@ ol {
 }
 
 .blog__item {
-	height: 580px;
-	position: relative;
-	margin-left: -10px;
-	margin-right: -10px;
-	margin-bottom: 10px;
+    height: 580px;
+    position: relative;
+    margin-left: -10px;
+    margin-right: -10px;
+    margin-bottom: 10px;
+    overflow: hidden; /* Đảm bảo các phần tử con không tràn ra ngoài */
+    cursor: pointer; /* Thay đổi con trỏ chuột khi hover */
+    transition: all 0.5s ease-in-out;
+}
+
+.blog__item::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Màu phủ đen với độ mờ 50% */
+    opacity: 0; /* Ẩn lớp phủ ban đầu */
+    transition: opacity 0.5s ease; /* Hiệu ứng mờ dần cho lớp phủ */
+}
+
+.blog__item:hover::before {
+    opacity: 1; /* Hiển thị lớp phủ khi hover */
+}
+
+.blog__item .set-bg {
+    display: block;
+    transition: filter 0.5s ease; /* Hiệu ứng làm đục ảnh */
+}
+
+.blog__item:hover .set-bg {
+    filter: brightness(0.5); /* Giảm độ sáng của ảnh khi hover */
 }
 
 .blog__item.small__item {
@@ -1439,6 +1596,31 @@ ol {
 	margin-bottom: 12px;
 }
 
+
+.blog__item .blog__item__text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Canh giữa theo cả chiều dọc và ngang */
+    text-align: center;
+    color: #fff; /* Màu chữ trắng */
+    opacity: 0;
+    transition: opacity 0.5s ease; /* Hiệu ứng mờ dần cho văn bản */
+    font-weight: bold; /* Làm chữ in đậm */
+}
+
+.blog__item:hover .blog__item__text {
+    opacity: 1; /* Hiển thị văn bản khi hover */
+}
+
+.blog__item .set-bg {
+    transition: opacity 0.5s ease; /* Hiệu ứng mờ dần cho ảnh */
+}
+
+.blog__item:hover .set-bg {
+    opacity: 0.6; /* Giảm độ rõ của ảnh khi hover */
+}
+
 .blog__item__text p span {
 	color: #e53637;
 	margin-right: 5px;
@@ -1447,6 +1629,15 @@ ol {
 .blog__item__text h4 a {
 	color: #ffffff;
 	line-height: 34px;
+}
+.blog__item__text p, .blog__item__text h4 a {
+    color: #ffffff; /* Chuyển màu chữ thành màu đen */
+    font-weight: bold; /* Làm cho chữ in đậm */
+}
+
+/* Đảm bảo rằng các liên kết không thay đổi màu khi hover */
+.blog__item__text h4 a:hover {
+    color: #d32f2f; /* Giữ màu đen khi hover */
 }
 
 /*---------------------
@@ -1973,6 +2164,7 @@ ol {
 	padding-top: 60px;
 	padding-bottom: 40px;
 	position: relative;
+
 }
 
 .page-up {
@@ -2004,6 +2196,15 @@ ol {
 	text-align: center;
 }
 
+.footer__logo img {
+    height: 100px; /* Điều chỉnh chiều cao của logo */
+    width: auto; /* Đảm bảo giữ nguyên tỷ lệ khung hình */
+    margin-top: -40px; /* Nhích logo lên trên */
+    margin-left: 5px; /* Di chuyển logo sang phải */
+
+}
+
+
 .footer__nav ul li {
 	list-style: none;
 	display: inline-block;
@@ -2016,7 +2217,7 @@ ol {
 }
 
 .footer__nav ul li a {
-	font-size: 15px;
+	font-size: 20px;
 	color: #b7b7b7;
 	display: block;
 	font-weight: 700;
@@ -2027,6 +2228,7 @@ ol {
 	margin-bottom: 0;
 	text-align: right;
 }
+
 
 .footer__copyright__text a {
 	color: #e53637;
