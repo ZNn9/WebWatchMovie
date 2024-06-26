@@ -10,7 +10,4 @@ import java.util.List;
 @Repository
 public interface EpisodeRepository extends JpaRepository<Episode, Integer> {
 
-
-    List<Episode> findByMovie(Movie movie);
-    List<Episode> findByIsWatchFalse(Movie movie); // Find unwatched episodes for a specific movie
 }
