@@ -3,7 +3,6 @@ package com.BLUEGREEN.WebWatchMovie.model;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.List;
 
 @RequiredArgsConstructor
 @AllArgsConstructor
