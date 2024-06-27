@@ -2,8 +2,6 @@ package com.BLUEGREEN.WebWatchMovie.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-
-
 @RequiredArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -11,8 +9,6 @@ import lombok.*;
 @Getter
 @Setter
 @Table(name = "Actor")
-
-
 public class Actor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

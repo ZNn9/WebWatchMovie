@@ -17,7 +17,7 @@ public class Season {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idSeason;
 
-    private String name = ("Xuân, Hạ, Thu, Đông");
+    private String name;
 
     private String description;
 

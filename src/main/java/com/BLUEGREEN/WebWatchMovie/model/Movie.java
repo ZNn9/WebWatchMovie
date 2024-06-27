@@ -30,23 +30,23 @@ public class Movie {
     private int quantityEpisodesNow = 0;
     private int quantityFollowers = 0;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idStatus")
+    @ManyToOne
+    @JoinColumn(name = "idStatus", referencedColumnName = "idStatus")
     private Status status;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idSeason")
+    @ManyToOne
+    @JoinColumn(name = "idSeason", referencedColumnName = "idSeason")
     private Season season;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idDirector")
+    @ManyToOne
+    @JoinColumn(name = "idDirector", referencedColumnName = "idDirector")
     private Director director;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idStudio")
+    @ManyToOne
+    @JoinColumn(name = "idStudio", referencedColumnName = "idStudio")
     private Studio studio;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idOriginMovie")
+    @ManyToOne
+    @JoinColumn(name = "idOriginMovie", referencedColumnName = "idOriginMovie")
     private OriginMovie originMovie;
 }
