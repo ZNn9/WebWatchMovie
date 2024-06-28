@@ -1,4 +1,4 @@
-package com.BLUEGREEN.WebWatchMovie;
+package com.BLUEGREEN.WebWatchMovie.config;
 
 import lombok.AllArgsConstructor;
 

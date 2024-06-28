@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/users")
 public class UserController {
 
-    /*@Autowired
+    @Autowired
     private UserService userService;
 
     @PostMapping("/register")
@@ -26,5 +26,5 @@ public class UserController {
             return ResponseEntity.ok(user);
         }
         return ResponseEntity.status(401).build();
-    }*/
+    }
 }

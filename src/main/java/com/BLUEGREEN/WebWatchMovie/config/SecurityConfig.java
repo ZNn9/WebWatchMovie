@@ -44,13 +44,13 @@ public class SecurityConfig {
                 .inMemoryAuthentication()
                 .withUser("ADMIN").password("{noop}admin123").roles("ADMIN");
 
-        /*auth
+/*        auth
                 .userDetailsService(userService)
                 .passwordEncoder(passwordEncoder());*/
     }
 
-    /*@Bean
+    @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
-    }*/
+    }
 }
