@@ -30,10 +30,18 @@ public class SecurityConfig {
                         .loginPage("/login")
                         .permitAll() // Allow login page to be accessed without authentication
                 )
+
                 .logout(logout -> logout
                         .permitAll() // Allow logout to be accessed without authentication
                 )
-                .csrf().disable(); // Disable CSRF for simplicity; enable in production
+                // ĐĂNG NHẬP BẰNG GOOGLE
+                .oauth2Login(oauth2Login -> oauth2Login
+                        .loginPage("/login") // Trang đăng nhập cho OAuth2.
+                        .defaultSuccessUrl("/movies") // Trang sau khi đăng nhập thành công.
+                        .failureUrl("/login?error") // Trang đăng nhập thất bại.
+                )
+                .csrf().disable();
+        // Disable CSRF for simplicity; enable in production
 
         return http.build();
     }

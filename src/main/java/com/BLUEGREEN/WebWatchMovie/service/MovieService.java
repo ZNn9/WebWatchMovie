@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class MovieService {
@@ -42,4 +43,10 @@ public class MovieService {
         }
         return null;
     }
+
+    public List<String> searchMovies(String query) {
+        List<Movie> movies = movieRepository.findByNameContainingIgnoreCase(query);
+        return movies.stream().map(Movie::getName).collect(Collectors.toList());
+    }
+
 }

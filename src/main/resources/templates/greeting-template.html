@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Greeting Page</title>
+</head>
+<body>
+<h1 th:text="${message}"></h1>
+
+<form action="#" th:action="@{/change-language}" method="get">
+    <select name="lang" onchange="this.form.submit()">
+        <option value="en" th:text="#{lang.en}">English</option>
+        <option value="fr" th:text="#{lang.fr}">French</option>
+    </select>
+</form>
+</body>
+</html>

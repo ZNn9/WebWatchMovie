@@ -52,4 +52,5 @@ public class MovieController {
         movieService.deleteMovie(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
 }

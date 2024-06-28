@@ -30,8 +30,9 @@ public class UserService implements UserDetailsService {
         if (user != null && new BCryptPasswordEncoder().matches(password, user.getPassword())) {
             return user;
         }
-        return null;
+        return userRepository.findByNameLoginAndPassword(nameLogin, password);
     }
+
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
