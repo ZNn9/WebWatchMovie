@@ -4,6 +4,7 @@
 
 # Maven
 target/
+!target/classes/static/
 pom.xml.tag
 pom.xml.releaseBackup
 pom.xml.versionsBackup
@@ -19,4 +20,5 @@ Thumbs.db
 
 # Database credentials or local configuration files
 *.properties
+!application.properties
 *.config
