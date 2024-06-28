@@ -1940,6 +1940,98 @@ ol {
 	color: #a6a6a6;
 }
 
+/*
+profile
+*/
+
+.profile__sidebar {
+    background: #0b0c2a;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+.profile__sidebar .profile__img img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+.profile__sidebar h4 {
+    color: #ffffff;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.profile__sidebar p {
+    color: #b7b7b7;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.profile__sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.profile__sidebar ul li {
+    margin-bottom: 10px;
+}
+
+.profile__sidebar ul li a {
+    color: #e53637;
+    font-size: 16px;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.profile__sidebar ul li a:hover {
+    color: #ffffff;
+}
+
+.profile__details {
+    background: #0b0c2a;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.profile__details h3 {
+    color: #ffffff;
+    margin-bottom: 30px;
+    font-size: 24px;
+}
+
+.profile__details form input {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    border: 1px solid #3d3d3d;
+    border-radius: 5px;
+    background: #1b1c3a;
+    color: #ffffff;
+}
+
+.profile__details form button {
+    background: #e53637;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.profile__details form button:hover {
+    background: #b02d30;
+}
+
 /*---------------------
   Login
 -----------------------*/

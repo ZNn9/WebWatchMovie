@@ -1,25 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security5"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}" lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="Anime Template">
     <meta name="keywords" content="Anime, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>AnimeNet | Nhom4</title>
+    <title>AnimeNet | Profile</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap"
           rel="stylesheet">
 
-    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="css/font.min.css" type="text/css">
-    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="css/plyr.css" type="text/css">
-    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="css/owl.min.css" type="text/css">
-    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/font.min.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/elegant-icons.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/plyr.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/nice-select.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/owl.min.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/slicknav.min.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
 
 </head>
 <body>
@@ -35,7 +38,7 @@
                 <div class="col-lg-2">
                     <div class="header__logo">
                         <a href="./index.html">
-                            <img src="img/logo.png" alt="">
+                            <img src="../static/img/logo.png" alt="">
                         </a>
                     </div>
                 </div>
@@ -70,7 +73,7 @@
 
     <div class="mini-details">
         <button id="mini-details-btn">
-            <img src="img/logo.png" alt="Logo" class="mini-logo">
+            <img src="../static/img/logo.png" alt="Logo" class="mini-logo">
         </button>
         <div id="mini-details-menu" class="mini-details-menu">
             <a href="#">Trang của bạn</a>
@@ -79,7 +82,7 @@
             <a href="#" id="toggle-mini-details">Tắt mở show mini details</a>
         </div>
     </div>
-
+    <section layout:fragment="content">
     <section class="hero">
         <div class="container">
             <div class="hero__slider owl-carousel">
@@ -523,7 +526,7 @@
                             </div>
                             <div class="product__sidebar__comment__item">
                                 <div class="product__sidebar__comment__item__pic">
-                                    <img src="img/sidebar/comment1.jpg" alt="">
+                                    <img src="../static/img/sidebar/comment1.jpg" alt="">
                                 </div>
                                 <div class="product__sidebar__comment__item__text">
                                     <ul>
@@ -536,7 +539,7 @@
                             </div>
                             <div class="product__sidebar__comment__item">
                                 <div class="product__sidebar__comment__item__pic">
-                                    <img src="img/sidebar/comment2.jpg" alt="">
+                                    <img src="../static/img/sidebar/comment2.jpg" alt="">
                                 </div>
                                 <div class="product__sidebar__comment__item__text">
                                     <ul>
@@ -549,7 +552,7 @@
                             </div>
                             <div class="product__sidebar__comment__item">
                                 <div class="product__sidebar__comment__item__pic">
-                                    <img src="img/sidebar/comment3.jpg" alt="">
+                                    <img src="../static/img/sidebar/comment3.jpg" alt="">
                                 </div>
                                 <div class="product__sidebar__comment__item__text">
                                     <ul>
@@ -562,7 +565,7 @@
                             </div>
                             <div class="product__sidebar__comment__item">
                                 <div class="product__sidebar__comment__item__pic">
-                                    <img src="img/sidebar/comment4.jpg" alt="">
+                                    <img src="../static/img/sidebar/comment4.jpg" alt="">
                                 </div>
                                 <div class="product__sidebar__comment__item__text">
                                     <ul>
@@ -579,39 +582,40 @@
             </div>
         </div>
     </section>
+    </section>
     <!-- Product Section End -->
 
     <!-- Footer Section Begin -->
-    <footer class="footer">
-        <div class="page-up">
-            <a href="#" id="scrollToTopButton"><span class="arrow_carrot-up"></span></a>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3">
-                    <div class="footer__logo">
-                        <a href="./index.html"><img src="img/logo.png" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="footer__nav">
-                        <ul>
-                            <li class="active"><a href="./index.html">Homepage</a></li>
-                            <li><a href="./categories.html">Categories</a></li>
-                            <li><a href="./blog.html">Our Blog</a></li>
-                            <li><a href="./blog-details.html">Contacts</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <p>
-                        Sản xuất năm 2024 &copy;<script>document.write(new Date().getFullYear());</script> Cái template này được thực hiện bởi bạn Bảo, xin cảm ơn <i class="fa fa-heart" aria-hidden="true"></i>
-                    </p>
+<!--    <footer class="footer">-->
+<!--        <div class="page-up">-->
+<!--            <a href="#" id="scrollToTopButton"><span class="arrow_carrot-up"></span></a>-->
+<!--        </div>-->
+<!--        <div class="container">-->
+<!--            <div class="row">-->
+<!--                <div class="col-lg-3">-->
+<!--                    <div class="footer__logo">-->
+<!--                        <a href="./index.html"><img src="../static/img/logo.png" alt=""></a>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="col-lg-6">-->
+<!--                    <div class="footer__nav">-->
+<!--                        <ul>-->
+<!--                            <li class="active"><a href="./index.html">Homepage</a></li>-->
+<!--                            <li><a href="./categories.html">Categories</a></li>-->
+<!--                            <li><a href="./blog.html">Our Blog</a></li>-->
+<!--                            <li><a href="./blog-details.html">Contacts</a></li>-->
+<!--                        </ul>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="col-lg-3">-->
+<!--                    <p>-->
+<!--                        Sản xuất năm 2024 &copy;<script>document.write(new Date().getFullYear());</script> Cái template này được thực hiện bởi bạn Bảo, xin cảm ơn <i class="fa fa-heart" aria-hidden="true"></i>-->
+<!--                    </p>-->
 
-                </div>
-            </div>
-        </div>
-    </footer>
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </footer>-->
     <!-- Footer Section End -->
 
     <!-- Search model Begin -->
@@ -626,14 +630,14 @@
     <!-- Search model end -->
 
     <!-- Js Plugins -->
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/player.js"></script>
-    <script src="js/jquery.nice-select.min.js"></script>
-    <script src="js/mixitup.min.js"></script>
-    <script src="js/jquery.slicknav.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/mini-detail.js"></script>
+    <script th:src="@{/js/jquery-3.3.1.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <script th:src="@{/js/player.js}"></script>
+    <script th:src="@{/js/jquery.nice-select.min.js}"></script>
+    <script th:src="@{/js/mixitup.min.js}"></script>
+    <script th:src="@{/js/jquery.slicknav.js}"></script>
+    <script th:src="@{/js/owl.carousel.min.js}"></script>
+    <script th:src="@{/js/main.js}"></script>
+    <script th:src="@{/js/mini-detail.js}"></script>
 </body>
 </html>
