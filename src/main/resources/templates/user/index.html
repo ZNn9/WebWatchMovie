@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security5"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security6"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout}" lang="en">
 <head>
@@ -15,7 +15,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap"
           rel="stylesheet">
 
-    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" type="text/css">
+<!--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css">-->
+
+<!--    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" type="text/css">-->
     <link rel="stylesheet" th:href="@{/css/font.min.css}" type="text/css">
     <link rel="stylesheet" th:href="@{/css/elegant-icons.css}" type="text/css">
     <link rel="stylesheet" th:href="@{/css/plyr.css}" type="text/css">
@@ -23,6 +25,7 @@
     <link rel="stylesheet" th:href="@{/css/owl.min.css}" type="text/css">
     <link rel="stylesheet" th:href="@{/css/slicknav.min.css}" type="text/css">
     <link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
 </head>
 <body>
@@ -32,56 +35,7 @@
     </div>
 
     <!-- Header Section Begin -->
-    <header class="header">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-2">
-                    <div class="header__logo">
-                        <a href="./index.html">
-                            <img src="../static/img/logo.png" alt="">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-8">
-                    <div class="header__nav">
-                        <nav class="header__menu mobile-menu">
-                            <ul>
-                                <li class="active"><a href="./index.html">Homepage</a></li>
-                                <li><a href="./categories.html">Categories <span class="arrow_carrot-down"></span></a>
-                                    <ul class="dropdown">
-                                        <li><a href="./categories.html">Categories</a></li>
-                                        <li><a href="./anime-details.html">Anime Details</a></li>
-                                        <li><a href="./anime-watching.html">Anime Watching</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="./blog.html">Our Blog</a></li>
-                                <li><a href="./blog-details.html">Blog Details</a></li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-                <div class="col-lg-2">
-                    <div class="header__right">
-                        <a href="#" class="search-switch"><span class="icon_search"></span></a>
-                        <a href="./login.html"><span class="icon_profile"></span></a>
-                    </div>
-                </div>
-            </div>
-            <div id="mobile-menu-wrap"></div>
-        </div>
-    </header>
 
-    <div class="mini-details">
-        <button id="mini-details-btn">
-            <img src="../static/img/logo.png" alt="Logo" class="mini-logo">
-        </button>
-        <div id="mini-details-menu" class="mini-details-menu">
-            <a href="#">Trang của bạn</a>
-            <a href="#">Hôm nay xem gì?</a>
-            <a href="#">Hôm nay xem gì dành cho bạn?</a>
-            <a href="#" id="toggle-mini-details">Tắt mở show mini details</a>
-        </div>
-    </div>
     <section layout:fragment="content">
     <section class="hero">
         <div class="container">
@@ -141,7 +95,7 @@
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-4">
                                 <div class="btn__all">
-                                    <a href="#" class="primary-btn">View All <span class="arrow_right"></span></a>
+                                    <a href="#" class="primary-btn">View All <span class="fas fa-arrow-right"></span></a>
                                 </div>
                             </div>
                         </div>
@@ -253,7 +207,7 @@
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-4">
                                 <div class="btn__all">
-                                    <a href="#" class="primary-btn">View All <span class="arrow_right"></span></a>
+                                    <a href="#" class="primary-btn">View All <span class="fas fa-arrow-right"></span></a>
                                 </div>
                             </div>
                         </div>
@@ -365,7 +319,7 @@
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-4">
                                 <div class="btn__all">
-                                    <a href="#" class="primary-btn">View All <span class="arrow_right"></span></a>
+                                    <a href="#" class="primary-btn">View All <span class="fas fa-arrow-right"></span></a>
                                 </div>
                             </div>
                         </div>
@@ -526,7 +480,7 @@
                             </div>
                             <div class="product__sidebar__comment__item">
                                 <div class="product__sidebar__comment__item__pic">
-                                    <img src="../static/img/sidebar/comment1.jpg" alt="">
+                                    <img src="img/sidebar/comment1.jpg" alt="">
                                 </div>
                                 <div class="product__sidebar__comment__item__text">
                                     <ul>
@@ -539,7 +493,7 @@
                             </div>
                             <div class="product__sidebar__comment__item">
                                 <div class="product__sidebar__comment__item__pic">
-                                    <img src="../static/img/sidebar/comment2.jpg" alt="">
+                                    <img src="img/sidebar/comment2.jpg" alt="">
                                 </div>
                                 <div class="product__sidebar__comment__item__text">
                                     <ul>
@@ -552,7 +506,7 @@
                             </div>
                             <div class="product__sidebar__comment__item">
                                 <div class="product__sidebar__comment__item__pic">
-                                    <img src="../static/img/sidebar/comment3.jpg" alt="">
+                                    <img src="img/sidebar/comment3.jpg" alt="">
                                 </div>
                                 <div class="product__sidebar__comment__item__text">
                                     <ul>
@@ -565,7 +519,7 @@
                             </div>
                             <div class="product__sidebar__comment__item">
                                 <div class="product__sidebar__comment__item__pic">
-                                    <img src="../static/img/sidebar/comment4.jpg" alt="">
+                                    <img src="img/sidebar/comment4.jpg" alt="">
                                 </div>
                                 <div class="product__sidebar__comment__item__text">
                                     <ul>
@@ -583,40 +537,6 @@
         </div>
     </section>
     </section>
-    <!-- Product Section End -->
-
-    <!-- Footer Section Begin -->
-<!--    <footer class="footer">-->
-<!--        <div class="page-up">-->
-<!--            <a href="#" id="scrollToTopButton"><span class="arrow_carrot-up"></span></a>-->
-<!--        </div>-->
-<!--        <div class="container">-->
-<!--            <div class="row">-->
-<!--                <div class="col-lg-3">-->
-<!--                    <div class="footer__logo">-->
-<!--                        <a href="./index.html"><img src="../static/img/logo.png" alt=""></a>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <div class="col-lg-6">-->
-<!--                    <div class="footer__nav">-->
-<!--                        <ul>-->
-<!--                            <li class="active"><a href="./index.html">Homepage</a></li>-->
-<!--                            <li><a href="./categories.html">Categories</a></li>-->
-<!--                            <li><a href="./blog.html">Our Blog</a></li>-->
-<!--                            <li><a href="./blog-details.html">Contacts</a></li>-->
-<!--                        </ul>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <div class="col-lg-3">-->
-<!--                    <p>-->
-<!--                        Sản xuất năm 2024 &copy;<script>document.write(new Date().getFullYear());</script> Cái template này được thực hiện bởi bạn Bảo, xin cảm ơn <i class="fa fa-heart" aria-hidden="true"></i>-->
-<!--                    </p>-->
-
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </footer>-->
-    <!-- Footer Section End -->
 
     <!-- Search model Begin -->
     <div class="search-model">

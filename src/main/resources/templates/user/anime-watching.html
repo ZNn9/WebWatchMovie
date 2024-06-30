@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html lang="zxx">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security6"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}" lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -23,6 +26,7 @@
     <link rel="stylesheet" href="css/owl.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 
 <body>
@@ -32,49 +36,11 @@
     </div>
 
     <!-- Header Section Begin -->
-    <header class="header">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-2">
-                    <div class="header__logo">
-                        <a href="./index.html">
-                            <img src="../static/img/logo.png" alt="">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-8">
-                    <div class="header__nav">
-                        <nav class="header__menu mobile-menu">
-                            <ul>
-                                <li class="active"><a href="./index.html">Homepage</a></li>
-                                <li><a href="./categories.html">Categories <span class="arrow_carrot-down"></span></a>
-                                    <ul class="dropdown">
-                                        <li><a href="./categories.html">Categories</a></li>
-                                        <li><a href="./anime-details.html">Anime Details</a></li>
-                                        <li><a href="./anime-watching.html">Anime Watching</a></li>
-
-                                    </ul>
-                                </li>
-                                <li><a href="./blog.html">Our Blog</a></li>
-                                <li><a href="./blog-details.html">Blog Details</a></li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-                <div class="col-lg-2">
-                    <div class="header__right">
-                        <a href="#" class="search-switch"><span class="icon_search"></span></a>
-                        <a href="./login.html"><span class="icon_profile"></span></a>
-                    </div>
-                </div>
-            </div>
-            <div id="mobile-menu-wrap"></div>
-        </div>
-    </header>
+    <section layout:fragment="content">
 
     <div class="mini-details">
         <button id="mini-details-btn">
-            <img src="../static/img/logo.png" alt="Logo" class="mini-logo">
+            <img src="../../static/img/logo.png" alt="Logo" class="mini-logo">
         </button>
         <div id="mini-details-menu" class="mini-details-menu">
             <a href="#">Trang của bạn</a>
@@ -91,8 +57,8 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb__links">
-                        <a href="./index.html"><i class="fa fa-home"></i> Home</a>
-                        <a href="./categories.html">Categories</a>
+                        <a href="index.html"><i class="fa fa-home"></i> Home</a>
+                        <a href="categories.html">Categories</a>
                         <a href="#">Romance</a>
                         <span>Fate Stay Night: Unlimited Blade</span>
                     </div>
@@ -125,7 +91,7 @@
                         </div>
                         <div class="anime__review__item">
                             <div class="anime__review__item__pic">
-                                <img src="../static/img/anime/review-5.jpg" alt="">
+                                <img th:src="@{/img/anime/review-6.jpg}" alt="">
                             </div>
                             <div class="anime__review__item__text">
                                 <h6>Bao - <span>5 Hour ago</span></h6>
@@ -134,7 +100,7 @@
                         </div>
                         <div class="anime__review__item">
                             <div class="anime__review__item__pic">
-                                <img src="../static/img/anime/review-6.jpg" alt="">
+                                <img th:src="@{/img/anime/review-6.jpg}" alt="">
                             </div>
                             <div class="anime__review__item__text">
                                 <h6>Hiep - <span>20 Hour ago</span></h6>
@@ -156,61 +122,18 @@
         </div>
     </section>
     <!-- Anime Section End -->
-
-    <!-- Footer Section Begin -->
-    <footer class="footer">
-        <div class="page-up">
-            <a href="#" id="scrollToTopButton"><span class="arrow_carrot-up"></span></a>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3">
-                    <div class="footer__logo">
-                        <a href="./index.html"><img src="../static/img/logo.png" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="footer__nav">
-                        <ul>
-                            <li class="active"><a href="./index.html">Homepage</a></li>
-                            <li><a href="./categories.html">Categories</a></li>
-                            <li><a href="./blog.html">Our Blog</a></li>
-                            <li><a href="./blog-details.html">Contacts</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <p>
-                        Sản xuất năm 2024 &copy;<script>document.write(new Date().getFullYear());</script> Cái template này được thực hiện bởi bạn Bảo, xin cảm ơn <i class="fa fa-heart" aria-hidden="true"></i>
-                    </p>
-
-                  </div>
-              </div>
-          </div>
-      </footer>
-      <!-- Footer Section End -->
-
-      <!-- Search model Begin -->
-      <div class="search-model">
-        <div class="h-100 d-flex align-items-center justify-content-center">
-            <div class="search-close-switch"><i class="icon_close"></i></div>
-            <form class="search-model-form">
-                <input type="text" id="search-input" placeholder="Search here.....">
-            </form>
-        </div>
-    </div>
-    <!-- Search model end -->
+    </section>
 
     <!-- Js Plugins -->
-    <script src="../static/js/jquery-3.3.1.min.js"></script>
-    <script src="../static/js/bootstrap.min.js"></script>
-    <script src="../static/js/player.js"></script>
-    <script src="../static/js/jquery.nice-select.min.js"></script>
-    <script src="../static/js/mixitup.min.js"></script>
-    <script src="../static/js/jquery.slicknav.js"></script>
-    <script src="../static/js/owl.carousel.min.js"></script>
-    <script src="../static/js/main.js"></script>
-    <script src="../static/js/mini-detail.js"></script>
+    <script th:src="@{/js/jquery-3.3.1.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <script th:src="@{/js/player.js}"></script>
+    <script th:src="@{/js/jquery.nice-select.min.js}"></script>
+    <script th:src="@{/js/mixitup.min.js}"></script>
+    <script th:src="@{/js/jquery.slicknav.js}"></script>
+    <script th:src="@{/js/owl.carousel.min.js}"></script>
+    <script th:src="@{/js/main.js}"></script>
+    <script th:src="@{/js/mini-detail.js}"></script>
 </body>
 
 </html>

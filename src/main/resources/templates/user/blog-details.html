@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security6"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns="http://www.w3.org/1999/html"
+      layout:decorate="~{layout}" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Anime Template">
+    <meta name="keywords" content="Anime, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Anime | Template</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap"
+          rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/font.min.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/elegant-icons.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/plyr.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/nice-select.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/owl.min.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/slicknav.min.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<body>
+<!-- Page Preloder -->
+<div id="preloder">
+    <div class="loader"></div>
+</div>
+
+<!-- Header Section Begin -->
+<section layout:fragment="content">
+    <!-- Header End -->
+
+    <!-- Blog Details Section Begin -->
+    <section class="blog-details spad">
+        <div class="container">
+            <div class="row d-flex justify-content-center">
+                <div class="col-lg-8">
+                    <div class="blog__details__title">
+                        <h6>Action, Magic <span>- January 1, 2024</span></h6>
+                        <h2>Các bộ Anime sẽ ra mắt vào năm 2024</h2>
+                        <div class="blog__details__social">
+                            <a href="#" class="facebook"><i class="fa fa-facebook-square"></i> Facebook</a>
+                            <a href="#" class="pinterest"><i class="fa fa-pinterest"></i> Pinterest</a>
+                            <a href="#" class="linkedin"><i class="fa fa-linkedin-square"></i> Linkedin</a>
+                            <a href="#" class="twitter"><i class="fa fa-twitter-square"></i> Twitter</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="blog__details__pic">
+                        <img th:src="@{/img/blog/details/blog-details-pic.jpg}" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="blog__details__content">
+                        <div class="blog__details__text">
+                            <p>Năm 2023 là một năm thành công đối với ngành công nghiệp anime, và năm 2024 được dự kiến sẽ còn bùng nổ hơn nữa. Nhiều series mới hứa hẹn mang đến cho khán giả những pha hành động căng thẳng, yếu tố hài hước và các tình tiết chính kịch đầy lôi cuốn.
+
+                                Dưới đây là 10 bộ anime được mong đợi nhất trong năm 2024:</p>
+                        </div>
+                        <div class="blog__details__item__text">
+                            <h4>Suicide Squad Isekai</h4>
+                            <img th:src="@{/img/blog/details/bd-item1.jpg}" alt="">
+                            <p>Ngày phát sóng: năm 2024
+                                'Suicide Squad Isekai' đưa các nhân vật đặc biệt của DC như Harley Quinn và Joker vào một thế giới hư cấu hoàn toàn mới. Dự án sáng tạo này hứa hẹn kết hợp thể loại isekai với các nhân vật nổi tiếng từ vũ trụ DC, mang lại trải nghiệm độc đáo và hấp dẫn cho người hâm mộ của cả hai thế giới.</p>
+                        </div>
+                        <div class="blog__details__item__text">
+                            <h4>Devil May Cry</h4>
+                            <img th:src="@{/img/blog/details/bd-item2.jpg}" alt="">
+                            <p>Ngày công chiếu: năm 2024
+                                Bộ phim hoạt hình dựa trên Devil May Cry của Netflix do Adi Shankar sản xuất hứa hẹn sẽ là một cơn sốt về hành động và phong cách. Bộ phim tập trung vào hai anh em nửa quỷ Dante và Vergil, mang những trận chiến thú vị từ trò chơi đến với thế giới anime.</p>
+                        </div>
+                        <div class="blog__details__item__text">
+                            <h4>One Piece arc Egghead</h4>
+                            <img th:src="@{/img/blog/details/bd-item3.jpg}" alt="">
+                            <p>Công chiếu vào ngày 7 tháng 1 năm 2024
+                                Arc Egghead của One Piece đang được kỳ vọng sẽ vượt qua thành công của anime trong năm 2023, hứa hẹn mang đến những bất ngờ lớn và những trận chiến đỉnh điểm. Sau phần Wano đầy kịch tính, arc Egghead hứa hẹn sẽ khiến người hâm mộ không thể ngồi yên khi những kẻ phản diện cuối cùng sẽ tiết lộ ý định thực sự của họ.</p>
+                        </div>
+                        <div class="blog__details__item__text">
+                            <h4>Dandadan</h4>
+                            <img th:src="@{/img/blog/details/bd-item4.jpg}" alt="">
+                            <p>Ngày phát sóng: năm 2024
+                                Dandadan theo chân hai học sinh trung học trong một hành trình phi thường để chứng minh sự tồn tại của người ngoài hành tinh. Với cách tiếp cận độc đáo và táo bạo về mặt hình ảnh, bộ phim chuyển thể từ manga hứa hẹn mang lại trải nghiệm mới mẻ cho người hâm mộ.</p>
+                        </div>
+                        <div class="blog__details__item__text">
+                            <h4>Bleach: Thousand Year Blood War Phần 3</h4>
+                            <img th:src="@{/img/blog/details/bd-item5.jpg}" alt="">
+                            <p>
+                                Ngày phát sóng: năm 2024
+
+                                Phần 3 của loạt phim Bleach: Thousand Year Blood War hứa hẹn sẽ đưa thương hiệu này lên tầm cao mới. Với nhiều cải tiến so với nguyên tác manga, phần này tập trung vào những trận chiến hoành tráng và cuộc đấu cuối cùng với Vua Quincy Yhwach, hứa hẹn một kết thúc đầy kịch tính và mạnh mẽ.
+                            </p>
+                        </div>
+                        <div class="blog__details__item__text">
+                            <h4>Kaiju số 8</h4>
+                            <img th:src="@{/img/blog/details/bd-item6.jpg}" alt="">
+                            <p>Ra mắt vào tháng 4 năm 2024
+
+                                Kaiju số 8 diễn ra trong một thế giới bị tàn phá bởi các cuộc tấn công của những con quái vật khổng lồ, với trọng tâm là Kafka Hibino, một người đàn ông có được khả năng của kaiju. Hành trình của anh trở thành một phần của lực lượng phòng thủ chống lại những con quái vật này hứa hẹn sẽ đầy hấp dẫn và độc đáo.
+                            </p>
+                        </div>
+                        <div class="blog__details__item__text">
+                            <h4>My Hero Academia mùa 7</h4>
+                            <img th:src="@{/img/blog/details/bd-item7.jpg}" alt="">
+                            <p>
+                                Sẽ ra mắt trong mùa Xuân năm 2024
+                                Mùa thứ bảy của anime My Hero Academia sẽ đánh dấu bước khởi đầu cho những trận chiến cuối cùng, khi All For One trở nên mạnh mẽ hơn bao giờ hết. Deku, Bakugo và Lớp 1A sẽ đối mặt với những thách thức chưa từng có, kéo dài câu chuyện gây cấn của họ.</p>                        </div>
+                        <div class="blog__details__item__text">
+                            <h4> Solo Leveling</h4>
+                            <img th:src="@{/img/blog/details/bd-item8.jpg}" alt="">
+                            <p>Sẽ công chiếu vào ngày 6 tháng 1 năm 2024
+
+                                Solo Leveling có thể được so sánh với One-Punch Man trong sự thành công của mình. Tác phẩm này sẽ được chuyển thể bởi A-1 Pictures, kể về hành trình của một thợ săn yếu nhất thế giới trở thành người mạnh nhất, sau khi trải qua gần như cái chết và thu được một sức mạnh độc đáo.</p>                        </div>
+                        <div class="blog__details__item__text">
+                            <h4>Kimetsu no Yaiba mùa 4</h4>
+                            <img th:src="@{/img/blog/details/bd-item9.jpg}" alt="">
+                            <p>
+                                Sẽ ra mắt vào mùa Xuân năm 2024
+
+                                Mùa 4 của Kimetsu no Yaiba tiếp tục cuộc phiêu lưu của Tanjiro và Nezuko, với những bất ngờ đến từ phần cuối của mùa thứ ba và chuẩn bị cho những trận chiến căng thẳng mới chống lại đám quỷ.</p>                        </div>
+                        <div class="blog__details__item__text">
+                            <h4>Dragon Ball Daima</h4>
+                            <img th:src="@{/img/blog/details/bd-item10.jpg}" alt="">
+                            <p>
+                                Sẽ ra mắt vào mùa Thu năm 2024
+
+                                Dragon Ball Daima là một anime mới trong loạt phim Dragon Ball, với sự tham gia tích cực của tác giả Akira Toriyama. Mặc dù thông tin vẫn còn ít ỏi, nhưng anime này hứa hẹn sẽ mang Goku và các nhân vật quen thuộc trở lại, với những cảnh quay hoành tráng và những trận đấu đầy kịch tính.</p>                        </div>
+                        <div class="blog__details__btns">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="blog__details__btns__item">
+                                        <h5><a href="#"><span class="fas fa-arrow-left"></span> Building a Better LiA...</a>
+                                        </h5>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="blog__details__btns__item next__btn">
+                                        <h5><a href="#">Mugen no Juunin: Immortal – 21 <span
+                                                class="fas fa-arrow-right"></span></a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="blog__details__comment">
+                            <h4>3 Comments</h4>
+                            <div class="blog__details__comment__item">
+                                <div class="blog__details__comment__item__pic">
+                                    <img th:src="@{/img/blog/details/comment-1.png}" alt="">
+                                </div>
+                                <div class="blog__details__comment__item__text">
+                                    <span>May 08, 2023</span>
+                                    <h5>Bao</h5>
+                                    <p>Cũng không có ai theo đuổi nỗi đau vì nó là nỗi đau,
+                                        Anh ấy muốn có được nó, nhưng vì nó không bao giờ thuộc loại của anh ấy</p>
+                                    <a href="#">Like</a>
+                                    <a href="#">Reply</a>
+                                </div>
+                            </div>
+                            <div class="blog__details__comment__item blog__details__comment__item--reply">
+                                <div class="blog__details__comment__item__pic">
+                                    <img th:src="@{/img/blog/details/comment-2.png}" alt="">
+                                </div>
+                                <div class="blog__details__comment__item__text">
+                                    <span>Sep 21, 2022</span>
+                                    <h5>HongAnh</h5>
+                                    <p>Rất đáng để mong chờ đấy à nha/p>
+                                        <a href="#">Like</a>
+                                        <a href="#">Reply</a>
+                                </div>
+                            </div>
+                            <div class="blog__details__comment__item">
+                                <div class="blog__details__comment__item__pic">
+                                    <img th:src="@{/img/blog/details/comment-3.png}" alt="">
+                                </div>
+                                <div class="blog__details__comment__item__text">
+                                    <span>January, 2023</span>
+                                    <h5>Hiep</h5>
+                                    <p>Không biết nói gì hơn ngoại trừ siêu phẩm</p>
+                                    <a href="#">Like</a>
+                                    <a href="#">Reply</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="blog__details__form">
+                            <h4>Leave A Commnet</h4>
+                            <form action="#">
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-6">
+                                        <input type="text" placeholder="Name">
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6">
+                                        <input type="text" placeholder="Email">
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <textarea placeholder="Message"></textarea>
+                                        <button type="submit" class="site-btn">Send Message</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Blog Details Section End -->
+
+    <!-- Footer Section Begin -->
+</section>
+<!-- Search model end -->
+
+<!-- Js Plugins -->
+<script th:src="@{/js/jquery-3.3.1.min.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/player.js}"></script>
+<script th:src="@{/js/jquery.nice-select.min.js}"></script>
+<script th:src="@{/js/mixitup.min.js}"></script>
+<script th:src="@{/js/jquery.slicknav.js}"></script>
+<script th:src="@{/js/owl.carousel.min.js}"></script>
+<script th:src="@{/js/main.js}"></script>
+<script th:src="@{/js/mini-detail.js}"></script>
+
+</body>
+
+</html>

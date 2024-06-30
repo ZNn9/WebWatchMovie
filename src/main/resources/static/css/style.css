@@ -714,19 +714,27 @@ ol {
 	color: #ffffff;
 	-webkit-transform: rotate(45deg);
 	-ms-transform: rotate(45deg);
-	transform: rotate(45deg);
+	transform: rotate(120deg);
 	position: relative;
 	z-index: 1;
 	position: absolute;
 	left: -33px;
 	top: 50%;
 	margin-top: -47px;
+	transform: translateY(-50%); /* Điều chỉnh lại để giữa chính xác */
+    z-index: 1;
 }
 
 .hero__slider.owl-carousel .owl-nav button.owl-next {
-	left: auto;
-	right: -33px;
+    left: auto; /* Đảm bảo nút bên phải không sử dụng thuộc tính left */
+    right: -33px; /* Điều chỉnh vị trí của nút bên phải */
 }
+
+.hero__slider.owl-carousel .owl-nav button.owl-prev {
+    right: auto; /* Đảm bảo nút bên trái không sử dụng thuộc tính right */
+    left: -33px; /* Điều chỉnh vị trí của nút bên trái */
+}
+
 
 .hero__slider.owl-carousel .owl-nav button:after {
 	position: absolute;
@@ -742,11 +750,27 @@ ol {
 }
 
 .hero__slider.owl-carousel .owl-nav button span {
-	-webkit-transform: rotate(-45deg);
-	-ms-transform: rotate(-45deg);
-	transform: rotate(-45deg);
+
 	display: block;
 	z-index: 1;
+}
+
+.owl-prev, .owl-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: transparent;
+    color: white;
+    font-size: 24px; /* điều chỉnh kích thước nếu cần */
+    border: none;
+}
+
+.owl-prev {
+    left: 10px;  /* Khoảng cách từ cạnh trái */
+}
+
+.owl-next {
+    right: 10px;  /* Khoảng cách từ cạnh phải */
 }
 
 /*---------------------
@@ -1106,6 +1130,8 @@ ol {
 .random-movie-button:hover {
     background-color: #bf2e2f; /* Màu nền nút khi hover */
 }
+
+
 
 /*---------------------
   Anime Details
