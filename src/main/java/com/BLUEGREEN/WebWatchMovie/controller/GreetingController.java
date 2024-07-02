@@ -2,30 +2,33 @@ package com.BLUEGREEN.WebWatchMovie.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
-@Controller
+@RestController
+@RequestMapping("/api")
 public class GreetingController {
 
     @Autowired
     private MessageSource messageSource;
 
     @GetMapping("/greeting")
-    public String greeting(Model model, Locale locale) {
+    public Map<String, String> greeting(@RequestParam(name = "lang", required = false, defaultValue = "en") String lang, Locale locale) {
         String greetingMessage = messageSource.getMessage("greeting.message", null, locale);
-        model.addAttribute("message", greetingMessage);
-        return "greeting-template"; // Thymeleaf template name
+        Map<String, String> response = new HashMap<>();
+        response.put("message", greetingMessage);
+        return response;
     }
 
     @GetMapping("/change-language")
-    public String changeLanguage(@RequestParam("lang") String lang, RedirectAttributes redirectAttributes) {
-        redirectAttributes.addAttribute("lang", lang);
-        return "redirect:/greeting"; // Chuyển hướng về trang greeting sau khi thay đổi ngôn ngữ
+    public Map<String, String> changeLanguage(@RequestParam("lang") String lang) {
+        // Normally you would handle changing language logic here
+        Map<String, String> response = new HashMap<>();
+        response.put("status", "success");
+        response.put("message", "Language changed to " + lang);
+        return response;
     }
 }
