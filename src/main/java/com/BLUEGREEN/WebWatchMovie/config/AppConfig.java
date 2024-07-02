@@ -9,6 +9,7 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.i18n.CookieLocaleResolver;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
+import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
 import java.util.Locale;
 
@@ -16,27 +17,31 @@ import java.util.Locale;
 public class AppConfig implements WebMvcConfigurer {
 
     @Bean
-    public MessageSource messageSource() {
-        ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
-        messageSource.setBasename("classpath:/messages/messages");
-        messageSource.setDefaultEncoding("UTF-8");
-        return messageSource;
+    public LocaleResolver localeResolver() {
+        SessionLocaleResolver slr = new SessionLocaleResolver();
+        slr.setDefaultLocale(Locale.ENGLISH);
+        return slr;
     }
 
     @Bean
-    public LocaleResolver localeResolver() {
-        CookieLocaleResolver resolver = new CookieLocaleResolver();
-        resolver.setDefaultLocale(Locale.ENGLISH); // Ngôn ngữ mặc định
-        resolver.setCookieName("lang");
-        resolver.setCookieMaxAge(4800); // Thời gian sống của cookie, tính bằng giây
-        return resolver;
+    public LocaleChangeInterceptor localeChangeInterceptor() {
+        LocaleChangeInterceptor lci = new LocaleChangeInterceptor();
+        lci.setParamName("lang");
+        return lci;
     }
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        LocaleChangeInterceptor localeChangeInterceptor = new LocaleChangeInterceptor();
-        localeChangeInterceptor.setParamName("lang");
-        registry.addInterceptor(localeChangeInterceptor);
+        registry.addInterceptor(localeChangeInterceptor());
     }
+
+    @Bean
+    public ReloadableResourceBundleMessageSource messageSource() {
+        ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
+        messageSource.setBasename("classpath:messages");
+        messageSource.setDefaultEncoding("UTF-8");
+        return messageSource;
+    }
+
 }
 

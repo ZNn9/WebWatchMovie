@@ -1,18 +1,52 @@
 package com.BLUEGREEN.WebWatchMovie.controller;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import com.BLUEGREEN.WebWatchMovie.model.Language;
+import com.BLUEGREEN.WebWatchMovie.service.LanguageService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
+import java.util.List;
+import java.util.Optional;
+
+@RestController
+@RequestMapping("/api/languages")
 public class LanguageController {
 
-    @GetMapping("/change-language")
-    public String changeLanguage(@RequestParam("lang") String lang, RedirectAttributes redirectAttributes) {
-        // Lưu ngôn ngữ được chọn vào session (đã được cấu hình bằng LocaleChangeInterceptor)
-        redirectAttributes.addAttribute("lang", lang); // Thêm ngôn ngữ vào redirect attribute
+    @Autowired
+    private LanguageService languageService;
 
-        return "redirect:/greeting"; // Chuyển hướng về trang greeting sau khi thay đổi ngôn ngữ
+    @GetMapping
+    public List<Language> getAllLanguages() {
+        return languageService.getAllLanguages();
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Language> getLanguageById(@PathVariable int id) {
+        Optional<Language> language = languageService.getLanguageById(id);
+        return language.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
+                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
+    @PostMapping
+    public ResponseEntity<Language> createLanguage(@RequestBody Language language) {
+        Language savedLanguage = languageService.saveLanguage(language);
+        return new ResponseEntity<>(savedLanguage, HttpStatus.CREATED);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Language> updateLanguage(@PathVariable int id, @RequestBody Language languageDetails) {
+        Language updatedLanguage = languageService.updateLanguage(id, languageDetails);
+        if (updatedLanguage != null) {
+            return new ResponseEntity<>(updatedLanguage, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteLanguage(@PathVariable int id) {
+        languageService.deleteLanguage(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Greeting Page</title>
+    <title>Greeting</title>
 </head>
 <body>
-<h1 th:text="${message}"></h1>
+<h1 th:text="${message}">Greeting Message</h1>
 
-<form action="#" th:action="@{/change-language}" method="get">
+<form action="/change-language" method="get">
     <select name="lang" onchange="this.form.submit()">
-        <option value="en" th:text="#{lang.en}">English</option>
-        <option value="fr" th:text="#{lang.fr}">French</option>
+        <option value="en" th:selected="${#locale.language == 'en'}">English</option>
+        <option value="fr" th:selected="${#locale.language == 'fr'}">French</option>
     </select>
 </form>
 </body>
+
 </html>
