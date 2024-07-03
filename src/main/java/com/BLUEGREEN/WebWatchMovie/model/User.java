@@ -1,6 +1,7 @@
 package com.BLUEGREEN.WebWatchMovie.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
 
@@ -20,6 +21,7 @@ public class User {
     @Column(nullable = false, length = 50)
     private String nameLogin;
 
+    @NotBlank
     @Column(nullable = false, length = 255)
     private String password;
 

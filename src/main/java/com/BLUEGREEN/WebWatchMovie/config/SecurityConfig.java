@@ -1,5 +1,6 @@
 package com.BLUEGREEN.WebWatchMovie.config;
 
+import com.BLUEGREEN.WebWatchMovie.service.CustomOAuth2UserService;
 import com.BLUEGREEN.WebWatchMovie.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -16,32 +17,35 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
     @Autowired
-    private UserService userService; // Đảm bảo @Autowired ở đây
+    private UserService userService;
+
+    @Autowired
+    private CustomOAuth2UserService customOAuth2UserService;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests(authorizeRequests -> authorizeRequests
                         .requestMatchers("/css/**", "/js/**", "/", "/oauth/**", "/register", "/error", "/api/**")
-                        .permitAll() // Allow these URLs without authentication
-                        .anyRequest().authenticated() // All other URLs require authentication
+                        .permitAll()
+                        .anyRequest().authenticated()
                 )
                 .formLogin(formLogin -> formLogin
                         .loginPage("/login")
-                        .permitAll() // Allow login page to be accessed without authentication
+                        .permitAll()
                 )
-
                 .logout(logout -> logout
-                        .permitAll() // Allow logout to be accessed without authentication
+                        .permitAll()
                 )
-                // ĐĂNG NHẬP BẰNG GOOGLE
                 .oauth2Login(oauth2Login -> oauth2Login
-                        .loginPage("/login") // Trang đăng nhập cho OAuth2.
-                        .defaultSuccessUrl("/movies") // Trang sau khi đăng nhập thành công.
-                        .failureUrl("/login?error") // Trang đăng nhập thất bại.
+                        .loginPage("/login")
+                        .userInfoEndpoint(userInfoEndpoint -> userInfoEndpoint
+                                .userService(customOAuth2UserService)
+                        )
+                        .defaultSuccessUrl("/movies")
+                        .failureUrl("/login?error")
                 )
                 .csrf().disable();
-        // Disable CSRF for simplicity; enable in production
 
         return http.build();
     }
@@ -52,7 +56,7 @@ public class SecurityConfig {
                 .inMemoryAuthentication()
                 .withUser("ADMIN").password("{noop}admin123").roles("ADMIN");
 
-/*        auth
+        /*auth
                 .userDetailsService(userService)
                 .passwordEncoder(passwordEncoder());*/
     }

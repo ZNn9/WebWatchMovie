@@ -1,7 +1,10 @@
 package com.BLUEGREEN.WebWatchMovie.service;
 
 import com.BLUEGREEN.WebWatchMovie.model.Movie;
+import com.BLUEGREEN.WebWatchMovie.model.TagMovieDetails;
 import com.BLUEGREEN.WebWatchMovie.repository.MovieRepository;
+import com.BLUEGREEN.WebWatchMovie.repository.TagMovieDetailsRepository;
+import com.BLUEGREEN.WebWatchMovie.repository.TagRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +16,12 @@ public class MovieService {
 
     @Autowired
     private MovieRepository movieRepository;
+
+    @Autowired
+    private TagRepository tagRepository;
+
+    @Autowired
+    private TagMovieDetailsRepository tagMovieDetailsRepository;
 
     public List<Movie> getAllMovies() {
         return movieRepository.findAll();
