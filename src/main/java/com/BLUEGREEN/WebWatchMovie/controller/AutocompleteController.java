@@ -16,11 +16,6 @@ public class AutocompleteController {
     @Autowired
     private MovieService movieService;
 
-    /*@GetMapping
-    public List<String> autocomplete(@RequestParam("query") String query) {
-        return movieService.searchMovies(query);
-    }*/
-
     @GetMapping
     public List<String> autocomplete(@RequestParam("query") String query) {
         return movieService.searchMovies(query);
