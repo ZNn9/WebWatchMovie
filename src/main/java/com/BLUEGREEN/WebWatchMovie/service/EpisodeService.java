@@ -29,4 +29,17 @@ public class EpisodeService {
     public void deleteById(int id) {
         episodeRepository.deleteById(id);
     }
+
+
+    public List<Episode> getAllEpisodes() {
+        return episodeRepository.findAll();
+    }
+
+    public Episode getEpisodeById(int id) {
+        return episodeRepository.findById(id).orElse(null);
+    }
+
+    public List<Episode> getEpisodesByMovieId(int idMovie) {
+        return episodeRepository.findByMovieId(idMovie);
+    }
 }

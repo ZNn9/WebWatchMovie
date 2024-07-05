@@ -46,7 +46,7 @@ public class MovieService {
         if (movie != null) {
             movie.setName(movieDetails.getName());
             movie.setDescription(movieDetails.getDescription());
-            movie.setMovieAddress(movieDetails.getMovieAddress());
+
             // Update other fields as needed
             return movieRepository.save(movie);
         }
