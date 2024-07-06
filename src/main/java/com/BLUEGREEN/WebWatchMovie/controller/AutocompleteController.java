@@ -1,23 +1,4 @@
 package com.BLUEGREEN.WebWatchMovie.controller;
 
-import com.BLUEGREEN.WebWatchMovie.service.MovieService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
-
-@RestController
-@RequestMapping("/api/autocomplete")
 public class AutocompleteController {
-
-    @Autowired
-    private MovieService movieService;
-
-    @GetMapping
-    public List<String> autocomplete(@RequestParam("query") String query) {
-        return movieService.searchMovies(query);
-    }
 }
