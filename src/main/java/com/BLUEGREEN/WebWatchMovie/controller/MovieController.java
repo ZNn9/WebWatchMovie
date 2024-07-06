@@ -1,6 +1,9 @@
 package com.BLUEGREEN.WebWatchMovie.controller;
 
 import com.BLUEGREEN.WebWatchMovie.model.Movie;
+import com.BLUEGREEN.WebWatchMovie.model.Episode;
+import com.BLUEGREEN.WebWatchMovie.repository.EpisodeRepository;
+import com.BLUEGREEN.WebWatchMovie.service.EpisodeService;
 import com.BLUEGREEN.WebWatchMovie.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,6 +19,9 @@ public class MovieController {
     @Autowired
     private MovieService movieService;
 
+    @Autowired
+    private EpisodeService episodeService;
+
     @GetMapping
     public List<Movie> getAllMovies() {
         return movieService.getAllMovies();
@@ -29,6 +35,13 @@ public class MovieController {
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
+
+    @GetMapping("/{id}/episodes")
+    public ResponseEntity<List<Episode>> getEpisodesByMovieId(@PathVariable int id) {
+        List<Episode> episodes = episodeService.getEpisodesByMovieId(id);
+        return ResponseEntity.ok(episodes);
+    }
+
 
     @PostMapping
     public ResponseEntity<Movie> createMovie(@RequestBody Movie movie) {
@@ -52,4 +65,5 @@ public class MovieController {
         movieService.deleteMovie(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
 }
