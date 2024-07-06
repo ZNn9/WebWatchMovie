@@ -1,7 +1,10 @@
 package com.BLUEGREEN.WebWatchMovie.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.Set;
 
 @RequiredArgsConstructor
 @AllArgsConstructor
@@ -16,7 +19,7 @@ public class Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idMovie;
-    private String movieAddress;
+
 
     @Column(nullable = false)
     private String name;
@@ -49,4 +52,9 @@ public class Movie {
     @ManyToOne
     @JoinColumn(name = "idOriginMovie", referencedColumnName = "idOriginMovie")
     private OriginMovie originMovie;
+
+
+    /*@OneToMany(mappedBy = "movie", fetch = FetchType.LAZY)
+    @JsonManagedReference
+    private Set<Episode> episodes;*/
 }

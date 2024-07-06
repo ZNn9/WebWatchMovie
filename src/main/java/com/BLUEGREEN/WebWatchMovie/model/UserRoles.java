@@ -10,6 +10,7 @@ import lombok.*;
 @Getter
 @Setter
 @Table(name = "UserRoles")
+@IdClass(UserRolesId.class)
 
 public class UserRoles {
     @Id
