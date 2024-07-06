@@ -1,13 +1,7 @@
 package com.BLUEGREEN.WebWatchMovie.service;
 
-import com.BLUEGREEN.WebWatchMovie.model.Movie;
-import com.BLUEGREEN.WebWatchMovie.model.Tag;
-import com.BLUEGREEN.WebWatchMovie.model.TagMovieDetails;
-import com.BLUEGREEN.WebWatchMovie.model.UserDetailsMovieFollow;
-import com.BLUEGREEN.WebWatchMovie.repository.MovieRepository;
-import com.BLUEGREEN.WebWatchMovie.repository.TagMovieDetailsRepository;
-import com.BLUEGREEN.WebWatchMovie.repository.TagRepository;
-import com.BLUEGREEN.WebWatchMovie.repository.UserDetailsMovieFollowRepository;
+import com.BLUEGREEN.WebWatchMovie.model.*;
+import com.BLUEGREEN.WebWatchMovie.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +22,10 @@ public class MovieService {
 
     @Autowired
     private UserDetailsMovieFollowRepository userDetailsMovieFollowRepository;
+
+
+    @Autowired
+    private UserDetailsMovieRatingRepository userDetailsMovieRatingRepository;
 
     @Autowired
     private TagMovieDetailsRepository tagMovieDetailsRepository;
@@ -68,11 +66,22 @@ public class MovieService {
     }
 
     public List<Movie> recommendMovies(int userId) {
+        // Lấy danh sách các phim mà user đã xem
         List<UserDetailsMovieFollow> userMovies = userDetailsMovieFollowRepository.findByUserId(userId);
+
+        // Lấy danh sách các phim mà user đã đánh giá
+        List<UserDetailsMovieRating> userRatings = userDetailsMovieRatingRepository.findByUserId(userId);
 
         Set<Tag> userTags = new HashSet<>();
         for (UserDetailsMovieFollow userMovie : userMovies) {
             List<TagMovieDetails> tagDetails = tagMovieDetailsRepository.findByMovieId(userMovie.getMovie().getIdMovie());
+            for (TagMovieDetails tagDetail : tagDetails) {
+                userTags.add(tagDetail.getTag());
+            }
+        }
+
+        for (UserDetailsMovieRating userRating : userRatings) {
+            List<TagMovieDetails> tagDetails = tagMovieDetailsRepository.findByMovieId(userRating.getMovie().getIdMovie());
             for (TagMovieDetails tagDetail : tagDetails) {
                 userTags.add(tagDetail.getTag());
             }
@@ -85,6 +94,12 @@ public class MovieService {
                 recommendedMovies.add(tagDetail.getMovie());
             }
         }
+
+        // Loại bỏ các phim mà user đã xem hoặc đã đánh giá
+        Set<Movie> watchedMovies = userMovies.stream().map(UserDetailsMovieFollow::getMovie).collect(Collectors.toSet());
+        watchedMovies.addAll(userRatings.stream().map(UserDetailsMovieRating::getMovie).collect(Collectors.toSet()));
+
+        recommendedMovies.removeAll(watchedMovies);
 
         return new ArrayList<>(recommendedMovies);
     }
