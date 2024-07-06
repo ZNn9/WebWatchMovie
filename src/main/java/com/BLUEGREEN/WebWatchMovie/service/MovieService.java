@@ -65,39 +65,45 @@ public class MovieService {
         return movies.stream().map(Movie::getName).collect(Collectors.toList());
     }
 
-    public List<Movie> recommendMovies(int userId) {
-        // Lấy danh sách các phim mà user đã xem
-        List<UserDetailsMovieFollow> userMovies = userDetailsMovieFollowRepository.findByUserId(userId);
-
-        // Lấy danh sách các phim mà user đã đánh giá
-        List<UserDetailsMovieRating> userRatings = userDetailsMovieRatingRepository.findByUserId(userId);
-
+    public List<Movie> recommendMovies(Integer userId) {
         Set<Tag> userTags = new HashSet<>();
-        for (UserDetailsMovieFollow userMovie : userMovies) {
-            List<TagMovieDetails> tagDetails = tagMovieDetailsRepository.findByMovieId(userMovie.getMovie().getIdMovie());
-            for (TagMovieDetails tagDetail : tagDetails) {
-                userTags.add(tagDetail.getTag());
-            }
-        }
-
-        for (UserDetailsMovieRating userRating : userRatings) {
-            List<TagMovieDetails> tagDetails = tagMovieDetailsRepository.findByMovieId(userRating.getMovie().getIdMovie());
-            for (TagMovieDetails tagDetail : tagDetails) {
-                userTags.add(tagDetail.getTag());
-            }
-        }
-
         Set<Movie> recommendedMovies = new HashSet<>();
-        for (Tag tag : userTags) {
-            List<TagMovieDetails> tagDetails = tagMovieDetailsRepository.findByTagId(tag.getIdTag());
-            for (TagMovieDetails tagDetail : tagDetails) {
-                recommendedMovies.add(tagDetail.getMovie());
+        Set<Movie> watchedMovies = new HashSet<>();
+
+        if (userId != null) {
+            List<UserDetailsMovieFollow> userMovies = userDetailsMovieFollowRepository.findByUserId(userId);
+            List<UserDetailsMovieRating> userRatings = userDetailsMovieRatingRepository.findByUserId(userId);
+
+            for (UserDetailsMovieFollow userMovie : userMovies) {
+                List<TagMovieDetails> tagDetails = tagMovieDetailsRepository.findByMovieId(userMovie.getMovie().getIdMovie());
+                for (TagMovieDetails tagDetail : tagDetails) {
+                    userTags.add(tagDetail.getTag());
+                }
             }
+
+            for (UserDetailsMovieRating userRating : userRatings) {
+                List<TagMovieDetails> tagDetails = tagMovieDetailsRepository.findByMovieId(userRating.getMovie().getIdMovie());
+                for (TagMovieDetails tagDetail : tagDetails) {
+                    userTags.add(tagDetail.getTag());
+                }
+            }
+
+            /*watchedMovies.addAll(userMovies.stream().map(UserDetailsMovieFollow::getMovie).collect(Collectors.toSet()));
+            watchedMovies.addAll(userRatings.stream().map(UserDetailsMovieRating::getMovie).collect(Collectors.toSet()));*/
         }
 
-        // Loại bỏ các phim mà user đã xem hoặc đã đánh giá
-        Set<Movie> watchedMovies = userMovies.stream().map(UserDetailsMovieFollow::getMovie).collect(Collectors.toSet());
-        watchedMovies.addAll(userRatings.stream().map(UserDetailsMovieRating::getMovie).collect(Collectors.toSet()));
+        if (userTags.isEmpty()) {
+            // If user has no tags or no account, recommend based on popular movies or ratings
+            List<UserDetailsMovieRating> popularRatings = userDetailsMovieRatingRepository.findTop10ByOrderByRatingPointDesc();
+            recommendedMovies.addAll(popularRatings.stream().map(UserDetailsMovieRating::getMovie).collect(Collectors.toSet()));
+        } else {
+            for (Tag tag : userTags) {
+                List<TagMovieDetails> tagDetails = tagMovieDetailsRepository.findByTagId(tag.getIdTag());
+                for (TagMovieDetails tagDetail : tagDetails) {
+                    recommendedMovies.add(tagDetail.getMovie());
+                }
+            }
+        }
 
         recommendedMovies.removeAll(watchedMovies);
 

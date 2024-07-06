@@ -23,7 +23,7 @@ public class AutocompleteAPIController {
     }
 
     @GetMapping("/recommend")
-    public List<Movie> recommendMovies(@RequestParam("userId") int userId) {
+    public List<Movie> recommendMovies(@RequestParam(value = "userId", required = false) int userId) {
         return movieService.recommendMovies(userId);
     }
 }

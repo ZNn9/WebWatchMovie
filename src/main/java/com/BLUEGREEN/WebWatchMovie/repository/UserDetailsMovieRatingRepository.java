@@ -23,5 +23,6 @@ public interface UserDetailsMovieRatingRepository extends JpaRepository<UserDeta
     List<UserDetailsMovieRating> findByUserId(int userId);
 
 
-    
+    @Query("SELECT r FROM UserDetailsMovieRating r ORDER BY r.ratingPoint DESC")
+    List<UserDetailsMovieRating> findTop10ByOrderByRatingPointDesc();
 }
