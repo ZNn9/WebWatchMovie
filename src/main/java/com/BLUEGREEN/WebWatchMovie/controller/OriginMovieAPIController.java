@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/originmovies")
-public class OriginMovieController {
+public class OriginMovieAPIController {
 
     @Autowired
     private OriginMovieService originMovieService;

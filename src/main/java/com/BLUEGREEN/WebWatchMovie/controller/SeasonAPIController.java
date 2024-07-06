@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/seasons")
-public class SeasonController {
+public class SeasonAPIController {
 
     @Autowired
     private SeasonService seasonService;

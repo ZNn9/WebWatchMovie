@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/studios")
-public class StudioController {
+public class StudioAPIController {
 
     @Autowired
     private StudioService studioService;

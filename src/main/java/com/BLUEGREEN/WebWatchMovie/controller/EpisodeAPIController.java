@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/episodes")
-public class EpisodeController {
+public class EpisodeAPIController {
 
     @Autowired
     private EpisodeService episodeService;

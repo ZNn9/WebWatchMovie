@@ -10,7 +10,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api")
-public class GreetingController {
+public class GreetingAPIController {
 
     @Autowired
     private MessageSource messageSource;

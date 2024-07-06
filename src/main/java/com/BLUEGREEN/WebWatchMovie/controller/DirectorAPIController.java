@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/directors")
-public class DirectorController {
+public class DirectorAPIController {
 
     @Autowired
     private DirectorService directorService;

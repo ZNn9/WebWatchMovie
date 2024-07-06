@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/user-details-watched-episodes")
-public class UserDetailsWatchedEpisodesController {
+public class UserDetailsWatchedEpisodesAPIController {
 
     @Autowired
     private UserDetailsWatchedEpisodesService userDetailsWatchedEpisodesService;

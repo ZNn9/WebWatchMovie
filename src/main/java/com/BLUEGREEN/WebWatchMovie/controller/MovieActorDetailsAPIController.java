@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/movie-actor-details")
-public class MovieActorDetailsController {
+public class MovieActorDetailsAPIController {
 
     @Autowired
     private MovieActorDetailsService movieActorDetailsService;

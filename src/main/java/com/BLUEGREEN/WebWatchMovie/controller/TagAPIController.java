@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/tags")
-public class TagController {
+public class TagAPIController {
 
     @Autowired
     private TagService tagService;

@@ -2,7 +2,6 @@ package com.BLUEGREEN.WebWatchMovie.controller;
 
 import com.BLUEGREEN.WebWatchMovie.model.Movie;
 import com.BLUEGREEN.WebWatchMovie.model.Episode;
-import com.BLUEGREEN.WebWatchMovie.repository.EpisodeRepository;
 import com.BLUEGREEN.WebWatchMovie.service.EpisodeService;
 import com.BLUEGREEN.WebWatchMovie.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/movies")
-public class MovieController {
+public class MovieAPIController {
 
     @Autowired
     private MovieService movieService;

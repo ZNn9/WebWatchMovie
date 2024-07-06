@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/user-details-movie-ratings")
-public class UserDetailsMovieRatingController {
+public class UserDetailsMovieRatingAPIController {
 
     @Autowired
     private UserDetailsMovieRatingService userDetailsMovieRatingService;

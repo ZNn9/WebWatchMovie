@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/images")
-public class ImageController {
+public class ImageAPIController {
 
     @Autowired
     private ImageService imageService;

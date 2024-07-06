@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/tag-movie-details")
-public class TagMovieDetailsController {
+public class TagMovieDetailsAPIController {
 
     @Autowired
     private TagMovieDetailsService tagMovieDetailsService;

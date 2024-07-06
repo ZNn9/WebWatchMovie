@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/movie-details-languages")
-public class MovieDetailsLanguageController {
+public class MovieDetailsLanguageAPIController {
 
     @Autowired
     private MovieDetailsLanguageService service;
