@@ -10,16 +10,20 @@ import lombok.*;
 @Getter
 @Setter
 @Table(name = "UserRoles")
-@IdClass(UserRolesId.class)
 
 public class UserRoles {
-    @Id
-    @ManyToOne(fetch = FetchType.LAZY)
+
+    @EmbeddedId
+    private UserRolesId id;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @MapsId("user")
     @JoinColumn(name = "idUser", nullable = false)
     private User user;
 
-    @Id
-    @ManyToOne(fetch = FetchType.LAZY)
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @MapsId("role")
     @JoinColumn(name = "idRole", nullable = false)
     private Role role;
 }
