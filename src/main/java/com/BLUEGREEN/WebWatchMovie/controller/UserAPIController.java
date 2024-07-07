@@ -26,7 +26,7 @@ public class UserAPIController {
         user.setPassword(registerRequest.getPassword());
         user.setName(registerRequest.getName());
         user.setEmail(registerRequest.getEmail());
-
+        user.setIsHidden(false);
         User registeredUser = userService.registerUser(user, registerRequest.getRoleName());
         return ResponseEntity.ok(registeredUser);
     }

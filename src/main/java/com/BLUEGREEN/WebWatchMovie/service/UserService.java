@@ -6,18 +6,23 @@ import com.BLUEGREEN.WebWatchMovie.model.UserRoles;
 import com.BLUEGREEN.WebWatchMovie.repository.RoleRepository;
 import com.BLUEGREEN.WebWatchMovie.repository.UserRepository;
 import com.BLUEGREEN.WebWatchMovie.repository.UserRolesRepository;
+import jakarta.validation.constraints.NotNull;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
+@Slf4j
+@Transactional
 public class UserService implements UserDetailsService {
 
     @Autowired
@@ -29,8 +34,12 @@ public class UserService implements UserDetailsService {
     @Autowired
     private RoleRepository roleRepository;
 
+    public List<User> findAll() {
+        return userRepository.findAll();
+    }
+
     public User registerUser(User user, String roleName) {
-//        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
         User registeredUser = userRepository.save(user);
 
         Optional<Role> role = roleRepository.findByName(roleName);
@@ -40,7 +49,6 @@ public class UserService implements UserDetailsService {
         } else {
             throw new RuntimeException("Role not found");
         }
-
         return registeredUser;
     }
 
@@ -49,12 +57,23 @@ public class UserService implements UserDetailsService {
 //        return userRepository.save(user);
 //    }
 
+//    public User loginUser(String nameLogin, String password) {
+//        User user = userRepository.findByNameLogin(nameLogin);
+//        if (user != null && new BCryptPasswordEncoder().matches(password, user.getPassword())) {
+//            return user;
+//        }
+//        return null;
+//    }
+
     public User loginUser(String nameLogin, String password) {
-        User user = userRepository.findByNameLogin(nameLogin);
-        if (user != null && new BCryptPasswordEncoder().matches(password, user.getPassword())) {
-            return user;
+        Optional<User> optionalUser = userRepository.findByNameLogin(nameLogin);
+        if (optionalUser.isPresent()) {
+            User user = optionalUser.get();
+            if (new BCryptPasswordEncoder().matches(password, user.getPassword())) {
+                return user;
+            }
         }
-        return userRepository.findByNameLoginAndPassword(nameLogin, password);
+        return null;
     }
 
     public User updateUser(int id, User userDetails) {
@@ -62,7 +81,10 @@ public class UserService implements UserDetailsService {
         if (userOptional.isPresent()) {
             User user = userOptional.get();
             user.setNameLogin(userDetails.getNameLogin());
-//            user.setPassword(passwordEncoder.encode(userDetails.getPassword()));
+
+            if (userDetails.getPassword() != null && !userDetails.getPassword().isEmpty()) {
+                user.setPassword(new BCryptPasswordEncoder().encode(userDetails.getPassword()));
+            }
             user.setName(userDetails.getName());
             user.setEmail(userDetails.getEmail());
             return userRepository.save(user);
@@ -82,7 +104,7 @@ public class UserService implements UserDetailsService {
         Optional<User> userOptional = userRepository.findById(id);
         if (userOptional.isPresent()) {
             User user = userOptional.get();
-//            user.setIsHidden(false); // Assuming you have an 'active' field in your User model
+            user.setIsHidden(true);
             userRepository.save(user);
             return true;
         }
@@ -91,11 +113,8 @@ public class UserService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByNameLogin(username);
-        if (user == null) {
-            throw new UsernameNotFoundException("User not found");
-        }
+        User user = userRepository.findByNameLogin(username)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
         return new org.springframework.security.core.userdetails.User(user.getNameLogin(), user.getPassword(), new ArrayList<>());
     }
-
 }

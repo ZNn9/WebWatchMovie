@@ -31,6 +31,9 @@ public class User {
     @Column(nullable = false, length = 50)
     private String email;
 
+    @Column
+    private Boolean isHidden;
+
     @Transient
     private String roleName;
 }
