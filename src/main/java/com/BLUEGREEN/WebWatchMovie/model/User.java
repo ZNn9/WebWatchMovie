@@ -35,4 +35,7 @@ public class User {
     @Column(nullable = false)
     private Boolean isHidden;
 
+    @Transient
+    private String roleName;
+
 }
