@@ -3,6 +3,7 @@ package com.BLUEGREEN.WebWatchMovie.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
+import org.apache.el.parser.BooleanNode;
 
 
 @RequiredArgsConstructor
@@ -31,9 +32,7 @@ public class User {
     @Column(nullable = false, length = 50)
     private String email;
 
-    @Column
+    @Column(nullable = false)
     private Boolean isHidden;
 
-    @Transient
-    private String roleName;
 }

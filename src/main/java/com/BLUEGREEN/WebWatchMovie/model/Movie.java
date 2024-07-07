@@ -2,6 +2,8 @@ package com.BLUEGREEN.WebWatchMovie.model;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 import java.util.Set;
@@ -19,7 +21,6 @@ public class Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idMovie;
-
 
     @Column(nullable = false)
     private String name;
@@ -53,8 +54,7 @@ public class Movie {
     @JoinColumn(name = "idOriginMovie", referencedColumnName = "idOriginMovie")
     private OriginMovie originMovie;
 
-
-    /*@OneToMany(mappedBy = "movie", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "movie", fetch = FetchType.LAZY)
     @JsonManagedReference
-    private Set<Episode> episodes;*/
+    private Set<Episode> episodes;
 }
