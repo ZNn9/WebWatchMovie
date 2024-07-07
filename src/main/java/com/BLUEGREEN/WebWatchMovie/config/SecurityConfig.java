@@ -91,9 +91,6 @@ public class SecurityConfig {
                 .exceptionHandling(exceptionHandling -> exceptionHandling
                         .accessDeniedPage("/403") // Trang báo lỗi khi truy cập không được phép.
                 )
-                .logout(logout -> logout
-                        .permitAll()
-                )
                 .oauth2Login(oauth2Login -> oauth2Login
                         .loginPage("/login") // (Chưa chốt địa chỉ)
                         .userInfoEndpoint(userInfoEndpoint -> userInfoEndpoint

@@ -15,7 +15,6 @@ public class UserRolesId implements Serializable {
     private int user;
     private int role;
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

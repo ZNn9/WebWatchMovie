@@ -4,6 +4,11 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 import org.apache.el.parser.BooleanNode;
+import org.hibernate.Hibernate;
+
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
 
 
 @RequiredArgsConstructor
@@ -35,7 +40,7 @@ public class User {
     @Column(nullable = false)
     private Boolean isHidden;
 
-    @Transient
-    private String roleName;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private Set<UserRoles> roles = new HashSet<>();
 
 }

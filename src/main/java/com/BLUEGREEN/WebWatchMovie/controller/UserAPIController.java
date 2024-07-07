@@ -1,6 +1,7 @@
 package com.BLUEGREEN.WebWatchMovie.controller;
 
 import com.BLUEGREEN.WebWatchMovie.model.User;
+import com.BLUEGREEN.WebWatchMovie.model.UserRoles;
 import com.BLUEGREEN.WebWatchMovie.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -13,23 +14,24 @@ public class UserAPIController {
     @Autowired
     private UserService userService;
 
-//    @PostMapping("/register")
-//    public ResponseEntity<User> registerUser(@RequestBody User user) {
-//        User registeredUser = userService.registerUser(user);
-//        return ResponseEntity.ok(registeredUser);
-//    }
-
     @PostMapping("/register")
-    public ResponseEntity<User> registerUser(@RequestBody User registerRequest) {
-        User user = new User();
-        user.setNameLogin(registerRequest.getNameLogin());
-        user.setPassword(registerRequest.getPassword());
-        user.setName(registerRequest.getName());
-        user.setEmail(registerRequest.getEmail());
-        user.setIsHidden(false);
-        User registeredUser = userService.registerUser(user, registerRequest.getRoleName());
+    public ResponseEntity<User> registerUser(@RequestBody User user) {
+        User registeredUser = userService.registerUser(user);
         return ResponseEntity.ok(registeredUser);
     }
+
+//    @PostMapping("/register")
+//    public ResponseEntity<User> registerUser(@RequestBody User registerRequest) {
+//        User user = new User();
+//        user.setNameLogin(registerRequest.getNameLogin());
+//        user.setPassword(registerRequest.getPassword());
+//        user.setName(registerRequest.getName());
+//        user.setEmail(registerRequest.getEmail());
+//        user.setIsHidden(false);
+////        User registeredUser = userService.registerUser(user, registerRequest.getRoleId());
+////        return ResponseEntity.ok(registeredUser);
+//        return ResponseEntity.ok(user);
+//    }
 
     @PostMapping("/login")
     public ResponseEntity<User> loginUser(@RequestParam String nameLogin, @RequestParam String password) {

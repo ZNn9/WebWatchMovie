@@ -3,6 +3,9 @@ package com.BLUEGREEN.WebWatchMovie.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.HashSet;
+import java.util.Set;
+
 
 @RequiredArgsConstructor
 @AllArgsConstructor
@@ -22,4 +25,7 @@ public class Role {
 
     @Column(length = 255)
     private String description;
+
+    @OneToMany(mappedBy = "role", cascade = CascadeType.ALL)
+    private Set<UserRoles> roles = new HashSet<>();
 }

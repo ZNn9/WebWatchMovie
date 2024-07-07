@@ -38,24 +38,24 @@ public class UserService implements UserDetailsService {
         return userRepository.findAll();
     }
 
-    public User registerUser(User user, String roleName) {
-        user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
-        User registeredUser = userRepository.save(user);
-
-        Optional<Role> role = roleRepository.findByName(roleName);
-        if (role.isPresent()) {
-            UserRoles userRole = new UserRoles(registeredUser, role.get());
-            userRolesRepository.save(userRole);
-        } else {
-            throw new RuntimeException("Role not found");
-        }
-        return registeredUser;
-    }
-
-//    public User registerUser(User user) {
+//    public User registerUser(User user, int roleId) {
 //        user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
-//        return userRepository.save(user);
+//        User registeredUser = userRepository.save(user);
+//
+//        Optional<Role> role = roleRepository.findById(roleId);
+//        if (role.isPresent()) {
+//            UserRoles userRole = new UserRoles(registeredUser, role.get());
+//            userRolesRepository.save(userRole);
+//        } else {
+//            throw new RuntimeException("Role not found");
+//        }
+//        return registeredUser;
 //    }
+
+    public User registerUser(User user) {
+        user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
+        return userRepository.save(user);
+    }
 
 //    public User loginUser(String nameLogin, String password) {
 //        User user = userRepository.findByNameLogin(nameLogin);
