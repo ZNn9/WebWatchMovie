@@ -38,7 +38,7 @@ public class User {
     private String email;
 
     @Column(nullable = false)
-    private Boolean isHidden;
+    private Boolean isHidden = false;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private Set<UserRoles> roles = new HashSet<>();

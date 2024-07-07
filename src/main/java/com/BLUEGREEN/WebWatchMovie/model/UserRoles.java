@@ -3,9 +3,6 @@ package com.BLUEGREEN.WebWatchMovie.model;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.io.Serializable;
-import java.util.Objects;
-
 @RequiredArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -13,19 +10,20 @@ import java.util.Objects;
 @Getter
 @Setter
 @Table(name = "UserRoles")
-@IdClass(UserRolesId.class)
-public class UserRoles implements Serializable {
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    private int id;
 
-    @Id
+public class UserRoles {
+
+    @EmbeddedId
+    private UserRolesId id;
+
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "idUser")
+    @MapsId("user")
+    @JoinColumn(name = "idUser", nullable = false)
     private User user;
 
-    @Id
+
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "idRole")
+    @MapsId("role")
+    @JoinColumn(name = "idRole", nullable = false)
     private Role role;
 }
