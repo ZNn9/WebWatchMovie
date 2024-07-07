@@ -13,9 +13,21 @@ public class UserAPIController {
     @Autowired
     private UserService userService;
 
+//    @PostMapping("/register")
+//    public ResponseEntity<User> registerUser(@RequestBody User user) {
+//        User registeredUser = userService.registerUser(user);
+//        return ResponseEntity.ok(registeredUser);
+//    }
+
     @PostMapping("/register")
-    public ResponseEntity<User> registerUser(@RequestBody User user) {
-        User registeredUser = userService.registerUser(user);
+    public ResponseEntity<User> registerUser(@RequestBody User registerRequest) {
+        User user = new User();
+        user.setNameLogin(registerRequest.getNameLogin());
+        user.setPassword(registerRequest.getPassword());
+        user.setName(registerRequest.getName());
+        user.setEmail(registerRequest.getEmail());
+
+        User registeredUser = userService.registerUser(user, registerRequest.getRoleName());
         return ResponseEntity.ok(registeredUser);
     }
 
@@ -28,4 +40,28 @@ public class UserAPIController {
         return ResponseEntity.status(401).build();
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<User> updateUser(@PathVariable int id, @RequestBody User userDetails) {
+        User updatedUser = userService.updateUser(id, userDetails);
+        if (updatedUser != null) {
+            return ResponseEntity.ok(updatedUser);
+        }
+        return ResponseEntity.notFound().build();
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteUser(@PathVariable int id) {
+        if (userService.deleteUser(id)) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.notFound().build();
+    }
+
+    @PostMapping("/{id}/hide")
+    public ResponseEntity<Void> hideUser(@PathVariable int id) {
+        if (userService.hideUser(id)) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.notFound().build();
+    }
 }

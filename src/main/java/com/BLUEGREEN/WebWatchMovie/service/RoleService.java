@@ -19,7 +19,7 @@ public class RoleService {
     }
 
     public Optional<Role> findById(int id) {
-        return roleRepository.findById((long) id);
+        return roleRepository.findById(id);
     }
 
     public Role save(Role role) {
@@ -27,6 +27,6 @@ public class RoleService {
     }
 
     public void deleteById(int id) {
-        roleRepository.deleteById((long) id);
+        roleRepository.deleteById(id);
     }
 }
