@@ -16,11 +16,14 @@ import java.util.Objects;
 @Embeddable
 public class UserRolesId implements Serializable {
 
-    @Column(name = "user_id")
+    @Column(name = "idUser")
     private int user;
 
-    @Column(name = "role_id")
+    @Column(name = "idRole")
     private int role;
+
+    public UserRolesId() {
+    }
 
     @Override
     public boolean equals(Object o) {

@@ -39,36 +39,24 @@ public class UserService implements UserDetailsService {
         return userRepository.findAll();
     }
 
-
-//    public User registerUser(User user, int[] roles) {
-//        user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
-//        user.setIsHidden(false);
-//        return userRepository.save(user);
-//    }
-
     public User registerUser(User user, int[] roleIds) {
         user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
+        user.setIsHidden(false);
         User registeredUser = userRepository.save(user);
 
-        for (int roleId : roleIds) {
-            Optional<Role> role = roleRepository.findById(roleId);
-            if (role.isPresent()) {
-                UserRoles userRole = new UserRoles(new UserRolesId(registeredUser.getIdUser(), roleId), registeredUser, role.get());
-                userRolesRepository.save(userRole);
-            } else {
-                throw new RuntimeException("Role not found: " + roleId);
-            }
-        }
+        // Error add roles in register
+//        for (int roleId : roleIds) {
+//            Optional<Role> role = roleRepository.findById(roleId);
+//            if (role.isPresent()) {
+//                UserRolesId  userRolesId = new UserRolesId(registeredUser.getIdUser(), roleId);
+//                UserRoles userRole = new UserRoles(userRolesId, registeredUser, role.get());
+//                userRolesRepository.save(userRole);
+//            } else {
+//                throw new RuntimeException("Role not found: " + roleId);
+//            }
+//        }
         return registeredUser;
     }
-
-//    public User loginUser(String nameLogin, String password) {
-//        User user = userRepository.findByNameLogin(nameLogin);
-//        if (user != null && new BCryptPasswordEncoder().matches(password, user.getPassword())) {
-//            return user;
-//        }
-//        return null;
-//    }
 
     public User loginUser(String nameLogin, String password) {
         Optional<User> optionalUser = userRepository.findByNameLogin(nameLogin);

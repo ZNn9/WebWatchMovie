@@ -1,5 +1,6 @@
 package com.BLUEGREEN.WebWatchMovie.controller;
 
+import com.BLUEGREEN.WebWatchMovie.dto.UserRegistrationRequest;
 import com.BLUEGREEN.WebWatchMovie.model.User;
 import com.BLUEGREEN.WebWatchMovie.model.UserRoles;
 import com.BLUEGREEN.WebWatchMovie.model.UserRolesId;
@@ -30,24 +31,19 @@ public class UserAPIController {
 //        return ResponseEntity.ok(registeredUser);
 //    }
 
+//    @PostMapping("/register")
+//    public ResponseEntity<User> registerUser(@RequestBody User user) {
+//        User registeredUser = userService.registerUser(user, user.getRoleIds());
+//        return ResponseEntity.ok(registeredUser);
+//    }
+
     @PostMapping("/register")
-    public ResponseEntity<User> registerUser(@RequestBody User user, @RequestParam int[] roles) {
-        User registeredUser = userService.registerUser(user, roles);
+    public ResponseEntity<User> registerUser(@RequestBody UserRegistrationRequest registrationRequest) {
+        User user = registrationRequest.getUser();
+        int[] roleIds = registrationRequest.getRoleIds();
+        User registeredUser = userService.registerUser(user, roleIds);
         return ResponseEntity.ok(registeredUser);
     }
-
-//    @PostMapping("/register")
-//    public ResponseEntity<User> registerUser(@RequestBody User registerRequest) {
-//        User user = new User();
-//        user.setNameLogin(registerRequest.getNameLogin());
-//        user.setPassword(registerRequest.getPassword());
-//        user.setName(registerRequest.getName());
-//        user.setEmail(registerRequest.getEmail());
-//        user.setIsHidden(false);
-////        User registeredUser = userService.registerUser(user, registerRequest.getRoleId());
-////        return ResponseEntity.ok(registeredUser);
-//        return ResponseEntity.ok(user);
-//    }
 
     @PostMapping("/login")
     public ResponseEntity<User> loginUser(@RequestParam String nameLogin, @RequestParam String password) {
