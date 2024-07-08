@@ -41,12 +41,12 @@ public class SecurityConfig {
 
         return http.build();
     }
-
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth, @Lazy PasswordEncoder passwordEncoder) throws Exception {
-        auth.userDetailsService(userService)
-                .passwordEncoder(passwordEncoder);
-    }
+//
+//    @Autowired
+//    public void configureGlobal(AuthenticationManagerBuilder auth, @Lazy PasswordEncoder passwordEncoder) throws Exception {
+//        auth.userDetailsService(userService)
+//                .passwordEncoder(passwordEncoder);
+//    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
