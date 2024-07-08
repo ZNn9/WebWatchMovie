@@ -28,16 +28,16 @@ public class SecurityConfig {
     @Autowired
     private CustomOAuth2UserService customOAuth2UserService;
 
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth
-                .inMemoryAuthentication()
-                .withUser("ADMIN").password("{noop}admin123").roles("ADMIN");
-
-        /*auth
-                .userDetailsService(userService)
-                .passwordEncoder(passwordEncoder());*/
-    }
+//    @Autowired
+//    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+//        auth
+//                .inMemoryAuthentication()
+//                .withUser("ADMIN").password("{noop}admin123").roles("ADMIN");
+//
+//        /*auth
+//                .userDetailsService(userService)
+//                .passwordEncoder(passwordEncoder());*/
+//    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {

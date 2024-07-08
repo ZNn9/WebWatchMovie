@@ -3,38 +3,44 @@ package com.BLUEGREEN.WebWatchMovie.model;
 import jakarta.persistence.Column;
 import jakarta.persistence.Convert;
 import jakarta.persistence.Embeddable;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.io.Serializable;
 import java.util.Objects;
 
-@AllArgsConstructor
+//@NoArgsConstructor
+//@AllArgsConstructor
 @Getter
 @Setter
+@Data
 @Embeddable
 public class UserRolesId implements Serializable {
 
-    @Column(name = "idUser")
+    @Column(name = "id_User")
     private int user;
 
-    @Column(name = "idRole")
+    @Column(name = "id_Role")
     private int role;
 
     public UserRolesId() {
+        // Constructor mặc định (có thể để trống)
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        UserRolesId that = (UserRolesId) o;
-        return user == that.user && role == that.role;
+    public UserRolesId(int user, int role) {
+        this.user = user;
+        this.role = role;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(user, role);
-    }
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (o == null || getClass() != o.getClass()) return false;
+//        UserRolesId that = (UserRolesId) o;
+//        return user == that.user && role == that.role;
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(user, role);
+//    }
 }

@@ -14,7 +14,6 @@ import java.util.Set;
 @Getter
 @Setter
 @Table(name = "role")
-
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,6 +25,7 @@ public class Role {
     @Column(length = 255)
     private String description;
 
-    @OneToMany(mappedBy = "role", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "role", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<UserRoles> roles = new HashSet<>();
+
 }
