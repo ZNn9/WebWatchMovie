@@ -58,9 +58,10 @@ public class SecurityConfig {
         return http
 //                .csrf().disable()
                 .csrf(csrf -> csrf.disable())
-                .authorizeRequests(authorizeRequests -> authorizeRequests
-                        .requestMatchers("/css/**", "/js/**", "/", "/oauth/**", "/register", "/login",
-                                "/error", "/api/**", "/test/**")
+//                .authorizeRequests(authorizeRequests -> authorizeRequests
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/img/**", "/admin-css/**", "/admin-js/**", "/admin-lib/**", "/admin-vendor/**", "/css/**", "/js/**",
+                                "/", "/oauth/**", "/register", "/login", "/error", "/api/**", "/test/**")
                         .permitAll()
 //                        .requestMatchers("/products/edit/**", "/products/add", "/products/delete", "categories/**")
 //                        .hasAnyAuthority("ADMIN") // Chỉ cho phép ADMIN truy cập.
@@ -76,9 +77,9 @@ public class SecurityConfig {
                         .permitAll()
                 )
                 .formLogin(formLogin -> formLogin
-                        .loginPage("/login") // Trang đăng nhập. (Chưa chốt địa chỉ)
+                        .loginPage("/user/login") // Trang đăng nhập. (Chưa chốt địa chỉ)
                         .loginProcessingUrl("/login") // URL xử lý đăng nhập. // (Chưa chốt địa chỉ)
-                        .defaultSuccessUrl("/products", true) // Trang sau đăng nhập thành công.
+                        .defaultSuccessUrl("/", true) // Trang sau đăng nhập thành công.
                         .failureUrl("/login?error") // Trang đăng nhập thất bại.
                         .permitAll()
                 )
