@@ -3,6 +3,7 @@ package com.BLUEGREEN.WebWatchMovie.service;
 import com.BLUEGREEN.WebWatchMovie.model.Role;
 import com.BLUEGREEN.WebWatchMovie.model.User;
 import com.BLUEGREEN.WebWatchMovie.model.UserRoles;
+import com.BLUEGREEN.WebWatchMovie.model.UserRolesId;
 import com.BLUEGREEN.WebWatchMovie.repository.RoleRepository;
 import com.BLUEGREEN.WebWatchMovie.repository.UserRepository;
 import com.BLUEGREEN.WebWatchMovie.repository.UserRolesRepository;
@@ -38,23 +39,27 @@ public class UserService implements UserDetailsService {
         return userRepository.findAll();
     }
 
-//    public User registerUser(User user, int roleId) {
+
+//    public User registerUser(User user, int[] roles) {
 //        user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
-//        User registeredUser = userRepository.save(user);
-//
-//        Optional<Role> role = roleRepository.findById(roleId);
-//        if (role.isPresent()) {
-//            UserRoles userRole = new UserRoles(registeredUser, role.get());
-//            userRolesRepository.save(userRole);
-//        } else {
-//            throw new RuntimeException("Role not found");
-//        }
-//        return registeredUser;
+//        user.setIsHidden(false);
+//        return userRepository.save(user);
 //    }
 
-    public User registerUser(User user) {
+    public User registerUser(User user, int[] roleIds) {
         user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
-        return userRepository.save(user);
+        User registeredUser = userRepository.save(user);
+
+        for (int roleId : roleIds) {
+            Optional<Role> role = roleRepository.findById(roleId);
+            if (role.isPresent()) {
+                UserRoles userRole = new UserRoles(new UserRolesId(registeredUser.getIdUser(), roleId), registeredUser, role.get());
+                userRolesRepository.save(userRole);
+            } else {
+                throw new RuntimeException("Role not found: " + roleId);
+            }
+        }
+        return registeredUser;
     }
 
 //    public User loginUser(String nameLogin, String password) {
