@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security6"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Anime Template">
+    <meta name="keywords" content="Anime, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Anime | Nhom6</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap"
+          rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/font.min.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/elegant-icons.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/plyr.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/nice-select.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/owl.min.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/slicknav.min.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<body>
+<!-- Page Preloder -->
+<div id="preloder">
+    <div class="loader"></div>
+</div>
+
+<!-- Header Section Begin -->
+
+<section layout:fragment="content">
+    <!-- Header End -->
+
+    <!-- Breadcrumb Begin -->
+    <div class="breadcrumb-option">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb__links">
+                        <a th:href="@{/}"><i class="fa fa-home"></i> Home</a>
+                        <a th:href="@{/categories}">Categories</a>
+                        <span>Profile</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb End -->
+
+    <!-- Profile Section Begin -->
+    <section class="profile spad">
+        <div class="container">
+            <div class="profile__hero set-bg" th:data-setbg="@{/img/profile/profile-hero.jpg}">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="profile__hero__text">
+                            <h2>Welcome back, <span th:text="${user.username}">User</span>!</h2>
+                            <p>Manage your account settings and preferences here.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="profile__details">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="profile__details__sidebar">
+                            <ul>
+                                <li><a th:href="@{/profile}" class="active">Profile</a></li>
+                                <li><a th:href="@{/profile/settings}">Settings</a></li>
+                                <li><a th:href="@{/profile/watchlist}">Watchlist</a></li>
+                                <li><a th:href="@{/logout}">Logout</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="profile__details__content">
+                            <h3>Profile Information</h3>
+                            <form action="#">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="input__item">
+                                            <p>Username:</p>
+                                            <input type="text" placeholder="Username" th:value="${user.username}">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="input__item">
+                                            <p>Email:</p>
+                                            <input type="email" placeholder="Email" th:value="${user.email}">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="input__item">
+                                            <p>Password:</p>
+                                            <input type="password" placeholder="Password">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="input__item">
+                                            <p>Confirm Password:</p>
+                                            <input type="password" placeholder="Confirm Password">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <button type="submit" class="site-btn">Save Changes</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
+<!-- Profile Section End -->
+
+<!-- Footer Section Begin -->
+<!-- Footer Section End -->
+
+<!-- Js Plugins -->
+<script th:src="@{/js/jquery-3.3.1.min.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/player.js}"></script>
+<script th:src="@{/js/jquery.nice-select.min.js}"></script>
+<script th:src="@{/js/mixitup.min.js}"></script>
+<script th:src="@{/js/jquery.slicknav.js}"></script>
+<script th:src="@{/js/owl.carousel.min.js}"></script>
+<script th:src="@{/js/main.js}"></script>
+<script th:src="@{/js/mini-detail.js}"></script>
+
+</body>
+
+</html>
