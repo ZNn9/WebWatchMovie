@@ -9,6 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class test {
     @GetMapping("/")
     public String listProduct() {
-        return "/user/index";
+        return "/admin/index";
     }
 }

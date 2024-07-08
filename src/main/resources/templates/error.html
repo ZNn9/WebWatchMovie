@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security6"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error</title>
+</head>
+<body>
+<h1>Something went wrong</h1>
+<p>An unexpected error has occurred. Please try again later.</p>
+<p th:text="'Status code: ' + ${status}"></p>
+<p th:text="'Exception: ' + ${exception}"></p>
+</body>
+</html>
