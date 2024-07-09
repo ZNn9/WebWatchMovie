@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security6"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Anime Template">
+    <meta name="keywords" content="Anime, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Anime | Nhom6</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" th:href="@{/static/css/bootstrap.min.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/static/css/style.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/elegant-icons.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/plyr.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/nice-select.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/owl.min.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/slicknav.min.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Header Section Begin -->
+
+    <section layout:fragment="content">
+    <section class="hero">
+        <div class="container">
+            <div class="hero__slider owl-carousel">
+                <div class="hero__items set-bg" data-setbg="img/hero/hero1.jpg">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="hero__text">
+                                <div class="label">Adventure</div>
+                                <h2>DragonBall Super 1 </h2>
+                                <p>Sau những tháng ngày chờ đợi thì cuối cùng...</p>
+                                <a href="#"><span>Xem ngay</span> <i class="fa fa-angle-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero__items set-bg" data-setbg="img/hero/hero2.jpg">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="hero__text">
+                                <div class="label">Adventure</div>
+                                <h2>DragonBall Super 2</h2>
+                                <p>Sau sự thành công của DragonBall Super 1 ...</p>
+                                <a href="#"><span>Xem ngay</span> <i class="fa fa-angle-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero__items set-bg" data-setbg="img/hero/hero3.jpg">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="hero__text">
+                                <div class="label">Adventure</div>
+                                <h2>DragonBall Super: Ngoại truyện</h2>
+                                <p>Phần ngoại truyện của DragonBall Super...</p>
+                                <a href="#"><span>Xem ngay</span> <i class="fa fa-angle-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Hero Section End -->
+
+    <!-- Product Section Begin -->
+    <section class="product spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="trending__product">
+                        <div class="row">
+                            <div class="col-lg-8 col-md-8 col-sm-8">
+                                <div class="section-title">
+                                    <h4>Trending Now</h4>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4">
+                                <div class="btn__all">
+                                    <a href="#" class="primary-btn">View All <span class="fas fa-arrow-right"></span></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="product__item">
+                                    <div class="product__item__pic set-bg" data-setbg="img/trending/trend1.jpg">
+                                        <div class="ep">01 / 01</div>
+                                        <div class="comment"><i class="fa fa-comments"></i> 110</div>
+                                        <div class="view"><i class="fa fa-eye"></i> 914134</div>
+                                    </div>
+                                    <div class="product__item__text">
+                                        <ul>
+                                            <li>Active</li>
+                                            <li>Movie</li>
+                                        </ul>
+                                        <h5><a href="#">Kimetsu No Yaiba: Chuyến tàu vô tận</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="product__item">
+                                    <div class="product__item__pic set-bg" data-setbg="img/trending/trend2.jpg">
+                                        <div class="ep">01 / 01</div>
+                                        <div class="comment"><i class="fa fa-comments"></i> 11</div>
+                                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
+                                    </div>
+                                    <div class="product__item__text">
+                                        <ul>
+                                            <li>Active</li>
+                                            <li>Movie</li>
+                                        </ul>
+                                        <h5><a href="#">Gintama Movie Final: Kanketsu-hen - Yorozuya yo Eien</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="product__item">
+                                    <div class="product__item__pic set-bg" data-setbg="img/trending/trend3.jpg">
+                                        <div class="ep">01 / 01</div>
+                                        <div class="comment"><i class="fa fa-comments"></i> 31</div>
+                                        <div class="view"><i class="fa fa-eye"></i> 9441</div>
+                                    </div>
+                                    <div class="product__item__text">
+                                        <ul>
+                                            <li>Active</li>
+                                            <li>Movie</li>
+                                        </ul>
+                                        <h5><a href="#">Fate Stay Night</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="product__item">
+                                    <div class="product__item__pic set-bg" data-setbg="img/trending/trend4.jpg">
+                                        <div class="ep">01 / 01</div>
+                                        <div class="comment"><i class="fa fa-comments"></i> 611</div>
+                                        <div class="view"><i class="fa fa-eye"></i> 94141</div>
+                                    </div>
+                                    <div class="product__item__text">
+                                        <ul>
+                                            <li>Romance</li>
+                                            <li>Funny</li>
+                                        </ul>
+                                        <h5><a href="#">Your Name</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="product__item">
+                                    <div class="product__item__pic set-bg" data-setbg="img/trending/trend5.jpg">
+                                        <div class="ep">01 / 01</div>
+                                        <div class="comment"><i class="fa fa-comments"></i> 311</div>
+                                        <div class="view"><i class="fa fa-eye"></i> 91141</div>
+                                    </div>
+                                    <div class="product__item__text">
+                                        <ul>
+                                            <li>Active</li>
+                                            <li>Movie</li>
+                                        </ul>
+                                        <h5><a href="#">Jujutsu Kaisen 0: The Movie </a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="product__item">
+                                    <div class="product__item__pic set-bg" data-setbg="img/trending/trend6.jpg">
+                                        <div class="ep">01 / 01</div>
+                                        <div class="comment"><i class="fa fa-comments"></i> 211</div>
+                                        <div class="view"><i class="fa fa-eye"></i> 91241</div>
+                                    </div>
+                                    <div class="product__item__text">
+                                        <ul>
+                                            <li>Active</li>
+                                            <li>Movie</li>
+                                        </ul>
+                                        <h5><a href="#">Thám tử lừng danh Conan: Kẻ hành pháp Zero</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="popular__product">
+                        <div class="row">
+                            <div class="col-lg-8 col-md-8 col-sm-8">
+                                <div class="section-title">
+                                    <h4>Popular Shows</h4>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4">
+                                <div class="btn__all">
+                                    <a href="#" class="primary-btn">View All <span class="fas fa-arrow-right"></span></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="product__item">
+                                    <div class="product__item__pic set-bg" data-setbg="img/popular/popular1.jpg">
+                                        <div class="ep">01 / 01</div>
+                                        <div class="comment"><i class="fa fa-comments"></i> 29</div>
+                                        <div class="view"><i class="fa fa-eye"></i> 5531</div>
+                                    </div>
+                                    <div class="product__item__text">
+                                        <ul>
+                                            <li>Funny</li>
+                                            <li>Movie</li>
+                                        </ul>
+                                        <h5><a href="#">Doraemon: Nobita và bản giao hưởng Địa Cầu</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="product__item">
+                                    <div class="product__item__pic set-bg" data-setbg="img/popular/popular2.jpg">
+                                        <div class="ep">01 / 01</div>
+                                        <div class="comment"><i class="fa fa-comments"></i> 18</div>
+                                        <div class="view"><i class="fa fa-eye"></i> 94121</div>
+                                    </div>
+                                    <div class="product__item__text">
+                                        <ul>
+                                            <li>Active</li>
+                                            <li>Movie</li>
+                                        </ul>
+                                        <h5><a href="#">Naruto the Movie: Shippuden - Lost Tower: Movie 7</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="product__item">
+                                    <div class="product__item__pic set-bg" data-setbg="img/popular/popular3.jpg">
+                                        <div class="ep">01 / 01</div>
+                                        <div class="comment"><i class="fa fa-comments"></i> 10</div>
+                                        <div class="view"><i class="fa fa-eye"></i> 4441</div>
+                                    </div>
+                                    <div class="product__item__text">
+                                        <ul>
+                                            <li>Active</li>
+                                            <li>Movie</li>
+                                        </ul>
+                                        <h5><a href="#">Fairy Tail The Movie: Phoenix Priestess</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="product__item">
+                                    <div class="product__item__pic set-bg" data-setbg="img/popular/popular4.jpg">
+                                        <div class="ep">01 / 01</div>
+                                        <div class="comment"><i class="fa fa-comments"></i> 31</div>
+                                        <div class="view"><i class="fa fa-eye"></i> 42141</div>
+                                    </div>
+                                    <div class="product__item__text">
+                                        <ul>
+                                            <li>Fantasy</li>
+                                            <li>Movie</li>
+                                        </ul>
+                                        <h5><a href="#">Khóa chặt cửa nào Suzume</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="product__item">
+                                    <div class="product__item__pic set-bg" data-setbg="img/popular/popular5.jpg">
+                                        <div class="ep">01 / 01</div>
+                                        <div class="comment"><i class="fa fa-comments"></i> 31</div>
+                                        <div class="view"><i class="fa fa-eye"></i> 22341</div>
+                                    </div>
+                                    <div class="product__item__text">
+                                        <ul>
+                                            <li>Fantasy</li>
+                                            <li>Movie</li>
+                                        </ul>
+                                        <h5><a href="#">Vùng đất linh hồn</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="product__item">
+                                    <div class="product__item__pic set-bg" data-setbg="img/popular/popular6.jpg">
+                                        <div class="ep">01 / 01</div>
+                                        <div class="comment"><i class="fa fa-comments"></i> 21</div>
+                                        <div class="view"><i class="fa fa-eye"></i> 9313</div>
+                                    </div>
+                                    <div class="product__item__text">
+                                        <ul>
+                                            <li>Fantasy</li>
+                                            <li>Movie</li>
+                                        </ul>
+                                        <h5><a href="#">The Boy and the Heron</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="recent__product">
+                        <div class="row">
+                            <div class="col-lg-8 col-md-8 col-sm-8">
+                                <div class="section-title">
+                                    <h4>Recently Added Shows</h4>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4">
+                                <div class="btn__all">
+                                    <a href="#" class="primary-btn">View All <span class="fas fa-arrow-right"></span></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="product__item">
+                                    <div class="product__item__pic set-bg" data-setbg="img/recent/recent-1.jpg">
+                                        <div class="ep">01 / 01</div>
+                                        <div class="comment"><i class="fa fa-comments"></i> 16</div>
+                                        <div class="view"><i class="fa fa-eye"></i> 5761</div>
+                                    </div>
+                                    <div class="product__item__text">
+                                        <ul>
+                                            <li>Active</li>
+                                            <li>Movie</li>
+                                        </ul>
+                                        <h5><a href="#">Attack on Titan: Final Chapter</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="product__item">
+                                    <div class="product__item__pic set-bg" data-setbg="img/recent/recent2.jpg">
+                                        <div class="ep">01 / 01</div>
+                                        <div class="comment"><i class="fa fa-comments"></i> 53</div>
+                                        <div class="view"><i class="fa fa-eye"></i> 34212</div>
+                                    </div>
+                                    <div class="product__item__text">
+                                        <ul>
+                                            <li>Drama</li>
+                                            <li>Movie</li>
+                                        </ul>
+                                        <h5><a href="#">Mộ đom đóm</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="product__item">
+                                    <div class="product__item__pic set-bg" data-setbg="img/recent/recent3.jpg">
+                                        <div class="ep">01 / 01</div>
+                                        <div class="comment"><i class="fa fa-comments"></i> 45</div>
+                                        <div class="view"><i class="fa fa-eye"></i> 9671</div>
+                                    </div>
+                                    <div class="product__item__text">
+                                        <ul>
+                                            <li>Romance</li>
+                                            <li>Movie</li>
+                                        </ul>
+                                        <h5><a href="#">Dáng hình âm thanh</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="product__item">
+                                    <div class="product__item__pic set-bg" data-setbg="img/recent/recent4.jpg">
+                                        <div class="ep">01 / 01</div>
+                                        <div class="comment"><i class="fa fa-comments"></i> 311</div>
+                                        <div class="view"><i class="fa fa-eye"></i> 78641</div>
+                                    </div>
+                                    <div class="product__item__text">
+                                        <ul>
+                                            <li>Drama</li>
+                                            <li>Movie</li>
+                                        </ul>
+                                        <h5><a href="#">Công chúa Momonosuke</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="product__item">
+                                    <div class="product__item__pic set-bg" data-setbg="img/recent/recent5.jpg">
+                                        <div class="ep">01 / 01</div>
+                                        <div class="comment"><i class="fa fa-comments"></i> 131</div>
+                                        <div class="view"><i class="fa fa-eye"></i> 923141</div>
+                                    </div>
+                                    <div class="product__item__text">
+                                        <ul>
+                                            <li>Romance</li>
+                                            <li>Movie</li>
+                                        </ul>
+                                        <h5><a href="#">Lâu đài di động của Howl</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="product__item">
+                                    <div class="product__item__pic set-bg" data-setbg="img/recent/recent6.jpg">
+                                        <div class="ep">01 / 01</div>
+                                        <div class="comment"><i class="fa fa-comments"></i> 13</div>
+                                        <div class="view"><i class="fa fa-eye"></i> 4341</div>
+                                    </div>
+                                    <div class="product__item__text">
+                                        <ul>
+                                            <li>Active</li>
+                                            <li>Movie</li>
+                                        </ul>
+                                        <h5><a href="#">Full Metal: The Sacred Star Of Milos</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-8">
+                    <div class="product__sidebar">
+                        <div class="random-movie-section">
+                            <h3>Hôm nay xem gì?</h3>
+                            <p>Nếu bạn buồn phiền không biết xem gì hôm nay. Hãy để chúng tôi chọn cho bạn</p>
+                            <button id="randomMovieButton" class="random-movie-button">Xem Anime Ngẫu Nhiên</button>
+                        </div>
+                        <div class="product__sidebar__view">
+                            <div class="section-title">
+                                <h5>Top Views</h5>
+                            </div>
+                            <ul class="filter__controls">
+                                <li class="active" data-filter="*">Day</li>
+                                <li data-filter=".week">Week</li>
+                                <li data-filter=".month">Month</li>
+                                <li data-filter=".years">Years</li>
+                            </ul>
+                            <div class="filter__gallery">
+                                <div class="product__sidebar__view__item set-bg mix day years"
+                                     data-setbg="img/sidebar/tv-1.jpg">
+                                    <div class="ep">01 / ?</div>
+                                    <div class="view"><i class="fa fa-eye"></i> 4141</div>
+                                    <h5><a href="#">Boruto: Naruto next generations</a></h5>
+                                </div>
+                                <div class="product__sidebar__view__item set-bg mix month week"
+                                     data-setbg="img/sidebar/tv-2.jpg">
+                                    <div class="ep">01 / ?</div>
+                                    <div class="view"><i class="fa fa-eye"></i> 1341</div>
+                                    <h5><a href="#">The Seven Deadly Sins: Wrath of the Gods</a></h5>
+                                </div>
+                                <div class="product__sidebar__view__item set-bg mix week years"
+                                     data-setbg="img/sidebar/tv-3.jpg">
+                                    <div class="ep">01 / ?</div>
+                                    <div class="view"><i class="fa fa-eye"></i> 5341</div>
+                                    <h5><a href="#">Sword art online alicization war of underworld</a></h5>
+                                </div>
+                                <div class="product__sidebar__view__item set-bg mix years month"
+                                     data-setbg="img/sidebar/tv-4.jpg">
+                                    <div class="ep">01 / ?</div>
+                                    <div class="view"><i class="fa fa-eye"></i> 19131</div>
+                                    <h5><a href="#">Fate/stay night: Heaven's Feel I. presage flower</a></h5>
+                                </div>
+                                <div class="product__sidebar__view__item set-bg mix day"
+                                     data-setbg="img/sidebar/tv-5.jpg">
+                                    <div class="ep">01 / ?</div>
+                                    <div class="view"><i class="fa fa-eye"></i> 97141</div>
+                                    <h5><a href="#">Fate stay night unlimited blade works</a></h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product__sidebar__comment">
+                            <div class="section-title">
+                                <h5>New Comment</h5>
+                            </div>
+                            <div class="product__sidebar__comment__item">
+                                <div class="product__sidebar__comment__item__pic">
+                                    <img src="img/sidebar/comment1.jpg" alt="">
+                                </div>
+                                <div class="product__sidebar__comment__item__text">
+                                    <ul>
+                                        <li>Music</li>
+                                        <li>Movie</li>
+                                    </ul>
+                                    <h5><a href="#">Bochi The Rock</a></h5>
+                                    <span><i class="fa fa-eye"></i> 10.141 Viewes</span>
+                                </div>
+                            </div>
+                            <div class="product__sidebar__comment__item">
+                                <div class="product__sidebar__comment__item__pic">
+                                    <img src="img/sidebar/comment2.jpg" alt="">
+                                </div>
+                                <div class="product__sidebar__comment__item__text">
+                                    <ul>
+                                        <li>Active</li>
+                                        <li>Movie</li>
+                                    </ul>
+                                    <h5><a href="#">Overlord</a></h5>
+                                    <span><i class="fa fa-eye"></i> 39.141 Viewes</span>
+                                </div>
+                            </div>
+                            <div class="product__sidebar__comment__item">
+                                <div class="product__sidebar__comment__item__pic">
+                                    <img src="img/sidebar/comment3.jpg" alt="">
+                                </div>
+                                <div class="product__sidebar__comment__item__text">
+                                    <ul>
+                                        <li>Active</li>
+                                        <li>Movie</li>
+                                    </ul>
+                                    <h5><a href="#">Spy X Family</a></h5>
+                                    <span><i class="fa fa-eye"></i> 119.141 Viewes</span>
+                                </div>
+                            </div>
+                            <div class="product__sidebar__comment__item">
+                                <div class="product__sidebar__comment__item__pic">
+                                    <img src="img/sidebar/comment4.jpg" alt="">
+                                </div>
+                                <div class="product__sidebar__comment__item__text">
+                                    <ul>
+                                        <li>Active</li>
+                                        <li>Movie</li>
+                                    </ul>
+                                    <h5><a href="#">Black Clover</a></h5>
+                                    <span><i class="fa fa-eye"></i> 178.141 Viewes</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    </section>
+
+    <!-- Search model Begin -->
+    <div class="search-model">
+        <div class="h-100 d-flex align-items-center justify-content-center">
+            <div class="search-close-switch"><i class="icon_close"></i></div>
+            <form class="search-model-form">
+                <input type="text" id="search-input" placeholder="Search here.....">
+            </form>
+        </div>
+    </div>
+    <!-- Search model end -->
+
+    <!-- Js Plugins -->
+    <script th:src="@{/js/jquery-3.3.1.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <script th:src="@{/js/player.js}"></script>
+    <script th:src="@{/js/jquery.nice-select.min.js}"></script>
+    <script th:src="@{/js/mixitup.min.js}"></script>
+    <script th:src="@{/js/jquery.slicknav.js}"></script>
+
+    <script th:src="@{/js/owl.carousel.min.js}"></script>
+    <script th:src="@{/js/main.js}"></script>
+    <script th:src="@{/js/mini-detail.js}"></script>
+</body>
+</html>

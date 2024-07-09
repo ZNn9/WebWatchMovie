@@ -30,7 +30,6 @@ public class EpisodeService {
         episodeRepository.deleteById(id);
     }
 
-
     public List<Episode> getAllEpisodes() {
         return episodeRepository.findAll();
     }
@@ -42,4 +41,5 @@ public class EpisodeService {
     public List<Episode> getEpisodesByMovieId(int idMovie) {
         return episodeRepository.findByMovieId(idMovie);
     }
+
 }

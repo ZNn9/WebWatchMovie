@@ -7,11 +7,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
 @Controller
+@RequestMapping("/")
 public class HomeController {
 
     @Autowired
@@ -21,7 +23,7 @@ public class HomeController {
     public String home(Model model) {
         List<Movie> movies = movieService.getAllMovies();
         model.addAttribute("movies", movies);
-        return "index"; // Assuming index.html template exists in templates folder
+        return "user/index"; // Assuming index.html template exists in templates folder
     }
 
     @GetMapping("/movie/{id}")

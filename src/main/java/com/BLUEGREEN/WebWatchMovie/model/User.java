@@ -3,6 +3,12 @@ package com.BLUEGREEN.WebWatchMovie.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
+import org.apache.el.parser.BooleanNode;
+import org.hibernate.Hibernate;
+
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
 
 
 @RequiredArgsConstructor
@@ -31,4 +37,11 @@ public class User {
     @Column(nullable = false, length = 50)
     private String email;
 
+    @Column(nullable = false)
+    private Boolean isHidden = false;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private Set<UserRoles> roles = new HashSet<>();
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private PasswordResetToken passwordResetToken;
 }
