@@ -12,7 +12,8 @@ public enum Role {
     isEdit(3),
     isAdd(4),
     isDelete(5),
-    isPartner(6);
+    isPartner(6),
+    isMaster(7);
 
     public final long value; // Biến này lưu giá trị số tương ứng với mỗi vai trò.
 }

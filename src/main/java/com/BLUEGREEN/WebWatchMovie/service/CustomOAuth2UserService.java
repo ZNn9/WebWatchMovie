@@ -30,7 +30,7 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
         if (user == null) {
             user = new User();
             user.setEmail(email);
-            user.setName(oAuth2User.getAttribute("name"));
+            user.setName(oAuth2User.getAttribute("Google login"));
             user.setNameLogin(oAuth2User.getAttribute("sub")); // Sử dụng sub làm nameLogin
             user.setPassword(new BCryptPasswordEncoder().encode(this.generateRandomPassword())); // Set an empty password for OAuth users
             userRepository.save(user);

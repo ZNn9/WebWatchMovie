@@ -60,12 +60,33 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
 //                .authorizeRequests(authorizeRequests -> authorizeRequests
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/img/**", "/admin-css/**", "/admin-js/**", "/admin-lib/**", "/admin-vendor/**", "/css/**", "/js/**",
-                                "/", "/oauth/**", "/register", "/login", "/error", "/api/**", "/test/**")
+                        .requestMatchers(
+                                "/admin-css/**", "/admin-js/**", "/admin-lib/**", "/admin-vendor/**",
+                                "/css/**", "/js/**", "/img/**",
+                                "/oauth/**", "/user/register", "/user/login", "/error",
+                                "/api/**", "/"
+                        )
                         .permitAll()
-//                        .requestMatchers("/products/edit/**", "/products/add", "/products/delete", "categories/**")
-//                        .hasAnyAuthority("ADMIN") // Chỉ cho phép ADMIN truy cập.
-//                        .permitAll()
+                        .requestMatchers("/user/**")
+                        .hasAnyAuthority(
+                                "isPartner", "isView",
+                                "isMaster", "isManager",
+                                "isAdd", "isEdit", "isDelete"
+                        )
+                        .requestMatchers(
+                                "/admin", "/admin/you/**/",
+                                "/admin/users/**", "/admin/roles/**",
+                                "/admin/origin-movies/**", "/admin/movies/**", "/admin/episodes/**", "/admin/tags/**",
+                                "/admin/command/**", "/admin/country/**", "/admin/directors/**", "/admin/studios/**", "/admin/actor/**"
+                        )
+                        .hasAnyAuthority(
+                                "isPartner",
+                                "isMaster", "isManager",
+                                "isAdd", "isEdit", "isDelete"
+                        )
+                        .requestMatchers("/admin/managers/**")
+                        .hasAnyAuthority(
+                                "isMaster")
                         .anyRequest().authenticated()
                 )
                 .logout(logout -> logout
@@ -77,7 +98,7 @@ public class SecurityConfig {
                         .permitAll()
                 )
                 .formLogin(formLogin -> formLogin
-                        .loginPage("/user/login") // Trang đăng nhập. (Chưa chốt địa chỉ)
+                        .loginPage("/login") // Trang đăng nhập. (Chưa chốt địa chỉ)
                         .loginProcessingUrl("/login") // URL xử lý đăng nhập. // (Chưa chốt địa chỉ)
                         .defaultSuccessUrl("/", true) // Trang sau đăng nhập thành công.
                         .failureUrl("/login?error") // Trang đăng nhập thất bại.
