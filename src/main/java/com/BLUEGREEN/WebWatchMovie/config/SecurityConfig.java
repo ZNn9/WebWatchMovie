@@ -51,7 +51,7 @@ public class SecurityConfig {
                         .requestMatchers(
                                 "/static/**", "/css/**", "/img/**", "/js/**", "/sass/**", "/movies/**", "/fonts/**", "/icon/**",
                                 "/admin-css/**", "/admin-js/**", "/admin-lib/**", "/admin-vendor/**",
-                                "/oauth/**", "/user/signup/**", "/user/signup?error", "/user/login/**", "/user/login?error", "/error",
+                                "/oauth/**", "/user/register/**", "/user/register?error", "/user/login/**", "/user/login?error", "/error",
                                 "/", "/api/**"
                         ).permitAll()
                         .requestMatchers("/user/**").hasAnyAuthority(
@@ -81,8 +81,8 @@ public class SecurityConfig {
                         .permitAll()
                 )
                 .formLogin(formLogin -> formLogin
-                        .loginPage("/users/login")
-                        .loginProcessingUrl("/users/login")
+                        .loginPage("/user/login")
+                        .loginProcessingUrl("/user/login")
                         .defaultSuccessUrl("/", true)
                         .failureUrl("/login?error")
                         .permitAll()
@@ -97,7 +97,7 @@ public class SecurityConfig {
                         .accessDeniedPage("/403")
                 )
                 .oauth2Login(oauth2Login -> oauth2Login
-                        .loginPage("/users/login")
+                        .loginPage("/user/login")
                         .userInfoEndpoint(userInfoEndpoint -> userInfoEndpoint
                                 .userService(customOAuth2UserService)
                         )
