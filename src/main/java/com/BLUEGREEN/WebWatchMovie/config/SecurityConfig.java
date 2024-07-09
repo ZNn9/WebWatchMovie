@@ -61,8 +61,8 @@ public class SecurityConfig {
 //                .authorizeRequests(authorizeRequests -> authorizeRequests
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
+                                "/css/**", "/js/**", "/img/**", "/fonts/**", "/sass/**", "/movies/**", "/icon/**",
                                 "/admin-css/**", "/admin-js/**", "/admin-lib/**", "/admin-vendor/**",
-                                "/css/**", "/js/**", "/img/**",
                                 "/oauth/**", "/user/register", "/user/login", "/error",
                                 "/api/**", "/"
                         )
@@ -125,9 +125,5 @@ public class SecurityConfig {
                         .realmName("anime6") // Tên miền cho xác thực cơ bản.
                 )
                 .build();
-
-
     }
-
-
 }

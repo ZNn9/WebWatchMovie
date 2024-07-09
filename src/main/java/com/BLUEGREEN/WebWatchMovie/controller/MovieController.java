@@ -8,6 +8,6 @@ public class MovieController {
 
     @GetMapping("/")
     public String showMovies() {
-        return "user/index";
+        return "/user/index";
     }
 }

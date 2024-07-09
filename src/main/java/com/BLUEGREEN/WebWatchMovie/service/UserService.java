@@ -170,4 +170,11 @@ public class UserService implements UserDetailsService {
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
         return new org.springframework.security.core.userdetails.User(user.getNameLogin(), user.getPassword(), new ArrayList<>());
     }
+
+    // Tìm kiếm người dùng dựa trên tên đăng nhập.
+//    public Optional<User> findByUsername(String username) throws
+//            UsernameNotFoundException {
+//        return userRepository.findByUsername(username);
+//    }
+
 }
