@@ -37,22 +37,11 @@
 
 <!-- Header Section Begin -->
 <section layout:fragment="content">
-    <!-- Header End -->
-
-    <!-- Normal Breadcrumb Begin -->
+    <!-- Breadcrumb Section Begin -->
     <section class="normal-breadcrumb set-bg" th:data-setbg="@{/img/normal.jpg}">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <div class="normal__breadcrumb__text">
-                        <h2>SIGN UP</h2>
-                        <p>Chào mừng đã đến với mục đăng ký.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <!-- Breadcrumb content... -->
     </section>
-    <!-- Normal Breadcrumb End -->
+    <!-- Breadcrumb Section End -->
 
     <!-- Signup Section Begin -->
     <section class="signup spad">
@@ -61,24 +50,24 @@
                 <div class="col-lg-6">
                     <div class="login__form">
                         <h3>Sign Up</h3>
-                        <form action="#">
+                        <form id="registerForm" action="/api/users/register" method="post" onsubmit="registerUser(event)">
                             <div class="input__item">
-                                <input type="text" placeholder="Email address">
+                                <input type="text" id="email" placeholder="Email address" required>
                                 <span class="icon_mail"></span>
                             </div>
                             <div class="input__item">
-                                <input type="text" placeholder="Your Name">
+                                <input type="text" id="nameLogin" placeholder="Your Name" required>
                                 <span class="icon_profile"></span>
                             </div>
                             <div class="input__item">
-                                <input type="text" placeholder="Password">
+                                <input type="password" id="password" placeholder="Password" required>
                                 <span class="icon_lock"></span>
                             </div>
                             <div class="input__item">
-                                <input type="text" placeholder="Confirm Password">
+                                <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
                                 <span class="icon_lock"></span>
                             </div>
-                            <button type="submit" class="site-btn">Login Now</button>
+                            <button type="submit" class="site-btn">Sign Up Now</button>
                         </form>
                         <h5>Already have an account? <a th:href="@{/user/login}">Log In!</a></h5>
                     </div>
@@ -87,10 +76,12 @@
                     <div class="login__social__links">
                         <h3>Login With:</h3>
                         <ul>
-                            <li><a href="#" class="facebook"><i class="fa fa-facebook"></i> Sign in With Facebook</a>
+                            <li>
+                                <a href="#" th:href="@{/oauth2/authorization/google}" class="google"> <i class="fa fa-google"></i>
+                                    Sign in With Google
+                                </a>
                             </li>
-                            <li><a href="#" class="google"><i class="fa fa-google"></i> Sign in With Google</a></li>
-                            <li><a href="#" class="twitter"><i class="fa fa-twitter"></i> Sign in With Twitter</a></li>
+                            <li><a href="#" class="facebook"><i class="fa fa-facebook"></i> Sign in With Facebook</a></li>
                         </ul>
                     </div>
                 </div>
@@ -98,8 +89,6 @@
         </div>
     </section>
     <!-- Signup Section End -->
-
-    <!-- Footer Section Begin -->
 </section>
 <!-- Search model end -->
 
@@ -115,5 +104,4 @@
 <script th:src="@{/js/mini-detail.js}"></script>
 
 </body>
-
 </html>
