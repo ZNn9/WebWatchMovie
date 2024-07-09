@@ -75,7 +75,7 @@
                                 <span class="icon_lock"></span>
                             </div>
                             <div class="input__item">
-                                <input type="text" id="email" placeholder="Email address">
+                                <input type="email" id="email" placeholder="Email address">
                                 <span class="icon_mail"></span>
                             </div>
                             <div class="input__item">
@@ -137,6 +137,11 @@
                 roleIds: [1]
                 // Thêm các trường khác của form tại đây nếu cần
             };
+            // Kiểm tra xác nhận mật khẩu
+            if ($('#password').val() !== $('#confirmPassword').val()) {
+                alert('Passwords do not match!');
+                return;
+            }
             registerUser(formData); // Gọi hàm đăng ký người dùng
         });
     });
