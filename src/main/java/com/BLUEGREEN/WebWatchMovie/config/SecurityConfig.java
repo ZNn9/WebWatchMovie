@@ -46,33 +46,30 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
                 .csrf(csrf -> csrf.disable())
-                .authorizeHttpRequests(auth -> auth
+//                .authorizeHttpRequests(auth -> auth
+                .authorizeRequests(authorizeRequests -> authorizeRequests
                         .requestMatchers(
                                 "/static/**", "/css/**", "/img/**", "/js/**", "/sass/**", "/movies/**", "/fonts/**", "/icon/**",
                                 "/admin-css/**", "/admin-js/**", "/admin-lib/**", "/admin-vendor/**",
-                                "/oauth/**", "/user/signup", "/user/signup?error", "/user/login", "/user/login?error", "/error",
+                                "/oauth/**", "/user/signup/**", "/user/signup?error", "/user/login/**", "/user/login?error", "/error",
                                 "/", "/api/**"
-                        )
-                        .permitAll()
-                        .requestMatchers("/user/**")
-                        .hasAnyAuthority(
+                        ).permitAll()
+                        .requestMatchers("/user/**").hasAnyAuthority(
                                 "isPartner", "isView",
                                 "isMaster", "isManager",
                                 "isAdd", "isEdit", "isDelete"
                         )
                         .requestMatchers(
-                                "/admin", "/admin/you/**/",
+                                "/admin", "/admin/you/**",
                                 "/admin/users/**", "/admin/roles/**",
                                 "/admin/origin-movies/**", "/admin/movies/**", "/admin/episodes/**", "/admin/tags/**",
                                 "/admin/command/**", "/admin/country/**", "/admin/directors/**", "/admin/studios/**", "/admin/actor/**"
-                        )
-                        .hasAnyAuthority(
+                        ).hasAnyAuthority(
                                 "isPartner",
                                 "isMaster", "isManager",
                                 "isAdd", "isEdit", "isDelete"
                         )
-                        .requestMatchers("/admin/managers/**")
-                        .hasAnyAuthority("isMaster")
+                        .requestMatchers("/admin/managers/**").hasAnyAuthority("isMaster")
                         .anyRequest().authenticated()
                 )
                 .logout(logout -> logout
@@ -84,8 +81,8 @@ public class SecurityConfig {
                         .permitAll()
                 )
                 .formLogin(formLogin -> formLogin
-                        .loginPage("/user/login")
-                        .loginProcessingUrl("/user/login")
+                        .loginPage("/users/login")
+                        .loginProcessingUrl("/users/login")
                         .defaultSuccessUrl("/", true)
                         .failureUrl("/login?error")
                         .permitAll()
@@ -100,7 +97,7 @@ public class SecurityConfig {
                         .accessDeniedPage("/403")
                 )
                 .oauth2Login(oauth2Login -> oauth2Login
-                        .loginPage("/user/login")
+                        .loginPage("/users/login")
                         .userInfoEndpoint(userInfoEndpoint -> userInfoEndpoint
                                 .userService(customOAuth2UserService)
                         )
