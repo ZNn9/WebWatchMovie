@@ -61,7 +61,7 @@ public class SecurityConfig {
 //                .authorizeRequests(authorizeRequests -> authorizeRequests
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
-                                "/css/**", "/js/**", "/img/**", "/fonts/**", "/sass/**", "/movies/**", "/icon/**",
+                                "/static/**",
                                 "/admin-css/**", "/admin-js/**", "/admin-lib/**", "/admin-vendor/**",
                                 "/oauth/**", "/user/register", "/user/login", "/error",
                                 "/api/**", "/"
@@ -91,15 +91,15 @@ public class SecurityConfig {
                 )
                 .logout(logout -> logout
                         .logoutUrl("/logout")  // (Chưa chốt địa chỉ)
-                        .logoutSuccessUrl("/login") // Trang chuyển hướng sau khi đăng xuất. (Chưa chốt địa chỉ)
+                        .logoutSuccessUrl("/") // Trang chuyển hướng sau khi đăng xuất. (Chưa chốt địa chỉ)
                         .deleteCookies("JSESSIONID") // Xóa cookie.
                         .invalidateHttpSession(true) // Hủy phiên làm việc.
                         .clearAuthentication(true) // Xóa xác thực.
                         .permitAll()
                 )
                 .formLogin(formLogin -> formLogin
-                        .loginPage("/login") // Trang đăng nhập. (Chưa chốt địa chỉ)
-                        .loginProcessingUrl("/login") // URL xử lý đăng nhập. // (Chưa chốt địa chỉ)
+                        .loginPage("/user/login") // Trang đăng nhập. (Chưa chốt địa chỉ)
+                        .loginProcessingUrl("/user/login") // URL xử lý đăng nhập. // (Chưa chốt địa chỉ)
                         .defaultSuccessUrl("/", true) // Trang sau đăng nhập thành công.
                         .failureUrl("/login?error") // Trang đăng nhập thất bại.
                         .permitAll()
@@ -114,15 +114,12 @@ public class SecurityConfig {
                         .accessDeniedPage("/403") // Trang báo lỗi khi truy cập không được phép.
                 )
                 .oauth2Login(oauth2Login -> oauth2Login
-                        .loginPage("/login") // (Chưa chốt địa chỉ)
+                        .loginPage("/user/login") // (Chưa chốt địa chỉ)
                         .userInfoEndpoint(userInfoEndpoint -> userInfoEndpoint
                                 .userService(customOAuth2UserService)
                         )
                         .defaultSuccessUrl("/movies")
                         .failureUrl("/login?error")
-                )
-                .httpBasic(httpBasic -> httpBasic
-                        .realmName("anime6") // Tên miền cho xác thực cơ bản.
                 )
                 .build();
     }
