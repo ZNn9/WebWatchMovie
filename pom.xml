@@ -17,6 +17,20 @@
 		<java.version>22</java.version>
 	</properties>
 	<dependencies>
+
+		<!--Tích hợp đa ngôn ngữ-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
+		</dependency>
+
+		<!--OAuth 2.0 đăng nhập bằng google-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-oauth2-client</artifactId>
+		</dependency>
+		<!-- -&#45;&#45;-->
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -69,8 +83,6 @@
 			<scope>test</scope>
 		</dependency>
 
-		<!--	Mày để test 	-->
-
 <!--	Dependency không có sẵn (Chắc z)	-->
 		<dependency>
 			<groupId>nz.net.ultraq.thymeleaf</groupId>
@@ -91,6 +103,16 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-autoconfigure</artifactId>
 			<version>3.3.0</version>
+		</dependency>
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>3.5.14</version>
+            <scope>compile</scope>
+        </dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-crypto</artifactId>
 		</dependency>
 
 		<!--	Bootstrap -->
@@ -115,8 +137,14 @@
 			<version>3.1.0</version>
 			<scope>provided</scope>
 		</dependency>
-	</dependencies>
 
+<!--		<dependency>-->
+<!--			<groupId>com.fasterxml.jackson.core</groupId>-->
+<!--			<artifactId>jackson-annotations</artifactId>-->
+<!--			<version>2.x.x</version>-->
+<!--		</dependency>-->
+
+	</dependencies>
 
 	<build>
 		<plugins>

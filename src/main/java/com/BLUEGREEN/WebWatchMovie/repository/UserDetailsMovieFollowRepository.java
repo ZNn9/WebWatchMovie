@@ -3,7 +3,9 @@ package com.BLUEGREEN.WebWatchMovie.repository;
 import com.BLUEGREEN.WebWatchMovie.model.Movie;
 import com.BLUEGREEN.WebWatchMovie.model.User;
 import com.BLUEGREEN.WebWatchMovie.model.UserDetailsMovieFollow;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -18,5 +20,8 @@ public interface UserDetailsMovieFollowRepository extends JpaRepository<UserDeta
     boolean existsByUserAndMovie(User user, Movie movie);
 
     // You can add other custom methods here (optional)
+
+    @Query("SELECT u FROM UserDetailsMovieFollow u WHERE u.user.idUser = :userId")
+    List<UserDetailsMovieFollow> findByUserId(@Param("userId") int userId);
 
 }
