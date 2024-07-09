@@ -122,48 +122,5 @@
 <script th:src="@{/js/main.js}"></script>
 <script th:src="@{/js/mini-detail.js}"></script>
 
-<!-- Ajax script -->
-<script>
-    // Đoạn mã sử dụng các hàm AJAX
-    $(document).ready(function () {
-        // Ví dụ sử dụng hàm registerUser khi form được submit
-        $('#registrationForm').submit(function (event) {
-            event.preventDefault(); // Ngăn chặn form submit mặc định
-            var formData = {
-                nameLogin: $('#nameLogin').val(),
-                password: $('#password').val(),
-                name: $('#name').val(),
-                email: $('#email').val(),
-                roleIds: [1]
-                // Thêm các trường khác của form tại đây nếu cần
-            };
-            // Kiểm tra xác nhận mật khẩu
-            if ($('#password').val() !== $('#confirmPassword').val()) {
-                alert('Passwords do not match!');
-                return;
-            }
-            registerUser(formData); // Gọi hàm đăng ký người dùng
-        });
-    });
-
-    // Hàm đăng ký người dùng
-    function registerUser(formData) {
-        $.ajax({
-            type: 'POST',
-            contentType: 'application/json',
-            url: '/api/user/register',
-            data: JSON.stringify(formData),
-            success: function (data) {
-                alert('Registration successful!');
-                window.location.href = '/';
-                // Xử lý phản hồi thành công
-            },
-            error: function (xhr, status, error) {
-                alert('Registration failed: ' + error);
-                // Xử lý phản hồi lỗi
-            }
-        });
-    }
-</script>
 </body>
 </html>
