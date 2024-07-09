@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -28,23 +29,11 @@ public class SecurityConfig {
     @Autowired
     private CustomOAuth2UserService customOAuth2UserService;
 
-//    @Autowired
-//    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-//        auth
-//                .inMemoryAuthentication()
-//                .withUser("ADMIN").password("{noop}admin123").roles("ADMIN");
-//
-//        /*auth
-//                .userDetailsService(userService)
-//                .passwordEncoder(passwordEncoder());*/
-//    }
-
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
-    // ....
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
         var auth = new DaoAuthenticationProvider(); // Tạo nhà cung cấp xác thực.
@@ -56,15 +45,13 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
-//                .csrf().disable()
                 .csrf(csrf -> csrf.disable())
-//                .authorizeRequests(authorizeRequests -> authorizeRequests
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
-                                "/static/**",
+                                "/static/**", "/css/**", "/img/**", "/js/**", "/sass/**", "/movies/**", "/fonts/**", "/icon/**",
                                 "/admin-css/**", "/admin-js/**", "/admin-lib/**", "/admin-vendor/**",
                                 "/oauth/**", "/user/register", "/user/login", "/error",
-                                "/api/**", "/"
+                                "/", "/api/**"
                         )
                         .permitAll()
                         .requestMatchers("/user/**")
@@ -85,36 +72,35 @@ public class SecurityConfig {
                                 "isAdd", "isEdit", "isDelete"
                         )
                         .requestMatchers("/admin/managers/**")
-                        .hasAnyAuthority(
-                                "isMaster")
+                        .hasAnyAuthority("isMaster")
                         .anyRequest().authenticated()
                 )
                 .logout(logout -> logout
-                        .logoutUrl("/logout")  // (Chưa chốt địa chỉ)
-                        .logoutSuccessUrl("/") // Trang chuyển hướng sau khi đăng xuất. (Chưa chốt địa chỉ)
-                        .deleteCookies("JSESSIONID") // Xóa cookie.
-                        .invalidateHttpSession(true) // Hủy phiên làm việc.
-                        .clearAuthentication(true) // Xóa xác thực.
+                        .logoutUrl("/logout")
+                        .logoutSuccessUrl("/")
+                        .deleteCookies("JSESSIONID")
+                        .invalidateHttpSession(true)
+                        .clearAuthentication(true)
                         .permitAll()
                 )
                 .formLogin(formLogin -> formLogin
-                        .loginPage("/user/login") // Trang đăng nhập. (Chưa chốt địa chỉ)
-                        .loginProcessingUrl("/user/login") // URL xử lý đăng nhập. // (Chưa chốt địa chỉ)
-                        .defaultSuccessUrl("/", true) // Trang sau đăng nhập thành công.
-                        .failureUrl("/login?error") // Trang đăng nhập thất bại.
+                        .loginPage("/user/login")
+                        .loginProcessingUrl("/user/login")
+                        .defaultSuccessUrl("/", true)
+                        .failureUrl("/login?error")
                         .permitAll()
                 )
                 .rememberMe(rememberMe -> rememberMe
                         .key("anime6")
                         .rememberMeCookieName("anime6")
-                        .tokenValiditySeconds(24 * 60 * 60) // Thời gian nhớ đăng nhập.
+                        .tokenValiditySeconds(24 * 60 * 60)
                         .userDetailsService(userDetailsService())
                 )
                 .exceptionHandling(exceptionHandling -> exceptionHandling
-                        .accessDeniedPage("/403") // Trang báo lỗi khi truy cập không được phép.
+                        .accessDeniedPage("/403")
                 )
                 .oauth2Login(oauth2Login -> oauth2Login
-                        .loginPage("/user/login") // (Chưa chốt địa chỉ)
+                        .loginPage("/user/login")
                         .userInfoEndpoint(userInfoEndpoint -> userInfoEndpoint
                                 .userService(customOAuth2UserService)
                         )
@@ -123,4 +109,5 @@ public class SecurityConfig {
                 )
                 .build();
     }
+
 }
