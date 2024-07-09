@@ -1,5 +1,6 @@
 package com.BLUEGREEN.WebWatchMovie.controller;
 
+import com.BLUEGREEN.WebWatchMovie.model.Movie;
 import com.BLUEGREEN.WebWatchMovie.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,5 +20,10 @@ public class AutocompleteAPIController {
     @GetMapping
     public List<String> autocomplete(@RequestParam("query") String query) {
         return movieService.searchMovies(query);
+    }
+
+    @GetMapping("/recommend")
+    public List<Movie> recommendMovies(@RequestParam(value = "userId", required = false) int userId) {
+        return movieService.recommendMovies(userId);
     }
 }

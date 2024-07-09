@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security6" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Anime Template">
+    <meta name="keywords" content="Anime, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Anime6 | Nhom6</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/elegant-icons.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/plyr.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/nice-select.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/owl.min.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/slicknav.min.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
+
+    <!-- Include FontAwesome for Icons luu y cai nay -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+<!-- Page Preloader -->
+<div id="preloader">
+    <div class="loader"></div>
+</div>
+
+<!-- Header Section Begin -->
+<header class="header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-2">
+                <div class="header__logo">
+                    <a th:href="@{/}">
+                        <img th:src="@{/img/logo.png}" alt="Logo">
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="header__nav">
+                    <nav class="header__menu mobile-menu">
+                        <ul>
+                            <li class="active"><a th:href="@{/}">Homepage</a></li>
+                            <li><a th:href="@{/categories}">Categories <span class="fas fa-chevron-down"></span></a>
+                                <ul class="dropdown">
+                                    <li><a th:href="@{/user/categories}">Categories</a></li>
+                                    <li><a th:href="@{/user/anime-details}">Anime Details</a></li>
+                                    <li><a th:href="@{/user/anime-watching}">Anime Watching</a></li>
+                                </ul>
+                            </li>
+                            <li><a th:href="@{/user/blog}">Our Blog</a></li>
+                            <li><a th:href="@{/user/blog-details}">Blog Details</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="header__right">
+                    <a href="#" class="search-switch"><span class="fas fa-search"></span></a>
+                    <a th:href="@{/user/login}"><span class="fas fa-user"></span></a>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu-wrap"></div>
+    </div>
+</header>
+<div class="mini-details">
+    <button id="mini-details-btn">
+        <img th:src="@{/img/logo.png}" alt="Logo" class="mini-logo">
+    </button>
+    <div id="mini-details-menu" class="mini-details-menu">
+        <a href="#">Trang của bạn</a>
+        <a href="#">Hôm nay xem gì?</a>
+        <a href="#">Hôm nay xem gì dành cho bạn?</a>
+        <a href="#" id="toggle-mini-details">Tắt mở show mini details</a>
+    </div>
+</div>
+
+<!-- Main Content -->
+<div class="container mt-5">
+    <section layout:fragment="content">
+        <!-- Nội dung cụ thể của từng trang sẽ được đặt tại đây -->
+    </section>
+</div>
+
+<!-- Footer Section Begin -->
+<footer class="footer">
+    <div class="page-up">
+        <a href="#" id="scrollToTopButton"><span class="fas fa-arrow-up"></span></a>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="footer__logo">
+                    <a th:href="@{/}">
+                        <img th:src="@{/img/logo.png}" alt="Logo">
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="footer__nav">
+                    <ul>
+                        <li class="active"><a th:href="@{/}">Homepage</a></li>
+                        <li><a th:href="@{/user/categories}">Categories</a></li>
+                        <li><a th:href="@{/user/blog}">Our Blog</a></li>
+                        <li><a th:href="@{/user/blog-details}">Contacts</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <p>
+                    Sản xuất năm 2024 &copy;<script>document.write(new Date().getFullYear());</script> Cái template này được thực hiện bởi bạn Bảo, xin cảm ơn <i class="fas fa-heart" aria-hidden="true"></i>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- Footer Section End -->
+
+<!-- Search model Begin -->
+<div class="search-model">
+    <div class="h-100 d-flex align-items-center justify-content-center">
+        <div class="search-close-switch"><i class="fas fa-times"></i></div>
+        <form class="search-model-form">
+            <input type="text" id="search-input" placeholder="Search here.....">
+        </form>
+    </div>
+</div>
+<!-- Search model end -->
+
+<!-- Js Plugins -->
+<script th:src="@{/js/jquery-3.3.1.min.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/player.js}"></script>
+<script th:src="@{/js/jquery.nice-select.min.js}"></script>
+<script th:src="@{/js/mixitup.min.js}"></script>
+<script th:src="@{/js/jquery.slicknav.js}"></script>
+<script th:src="@{/js/owl.carousel.min.js}"></script>
+<script th:src="@{/js/main.js}"></script>
+<script th:src="@{/js/mini-detail.js}"></script>
+</body>
+</html>

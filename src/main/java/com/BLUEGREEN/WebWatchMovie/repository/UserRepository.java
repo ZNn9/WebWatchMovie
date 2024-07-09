@@ -4,11 +4,14 @@ import com.BLUEGREEN.WebWatchMovie.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository
-public interface UserRepository extends JpaRepository<User, Long> {
+import java.util.Optional;
 
+@Repository
+public interface UserRepository extends JpaRepository<User, Integer> {
+//    Optional<User> findByUsername(String username);
     User findByEmail(String email);
-    User findByNameLogin(String nameLogin);
+//    User findByNameLogin(String nameLogin);
+    Optional<User> findByNameLogin(String nameLogin);
     User findByNameLoginAndPassword(String nameLogin, String password); // Đăng nhập bằng google
 
 }

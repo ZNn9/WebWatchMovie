@@ -17,31 +17,20 @@ public class EpisodeAPIController {
     @Autowired
     private EpisodeService episodeService;
 
-    /*@GetMapping
-    public List<Episode> getAllEpisodes() {
-        return episodeService.findAll();
-    }
-
-    @GetMapping("/{id}")
-    public ResponseEntity<Episode> getEpisodeById(@PathVariable int id) {
-        Optional<Episode> episode = episodeService.findById(id);
-        return episode.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
-    }
-*/
     @GetMapping
     public List<Episode> getAllEpisodes() {
         return episodeService.getAllEpisodes();
     }
 
     @GetMapping("/{id}")
-    public Episode getEpisodeById(@PathVariable int id) {
-        return episodeService.getEpisodeById(id);
+    public ResponseEntity<Episode> getEpisodeById(@PathVariable int id) {
+        Episode episode = episodeService.getEpisodeById(id);
+        if (episode != null) {
+            return ResponseEntity.ok(episode);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
-
-    /*@PostMapping
-    public Episode createEpisode(@RequestBody Episode episode) {
-        return episodeService.save(episode);
-    }*/
 
     @GetMapping("/{id}/episodes")
     public ResponseEntity<List<Episode>> getEpisodesByMovieId(@PathVariable int id) {
@@ -49,15 +38,11 @@ public class EpisodeAPIController {
         return new ResponseEntity<>(episodes, HttpStatus.OK);
     }
 
-
     @PostMapping
     public ResponseEntity<Episode> createEpisode(@RequestBody Episode episode) {
         Episode createdEpisode = episodeService.save(episode);
         return new ResponseEntity<>(createdEpisode, HttpStatus.CREATED);
     }
-
-
-
 
     @PutMapping("/{id}")
     public ResponseEntity<Episode> updateEpisode(@PathVariable int id, @RequestBody Episode updatedEpisode) {
