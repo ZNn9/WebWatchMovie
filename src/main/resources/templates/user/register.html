@@ -61,24 +61,24 @@
                 <div class="col-lg-6">
                     <div class="login__form">
                         <h3>Sign Up</h3>
-                        <form id="registerForm">
+                        <form action="#">
                             <div class="input__item">
-                                <input type="text" id="nameLogin" placeholder="Username" required>
+                                <input type="text" placeholder="Email address">
                                 <span class="icon_mail"></span>
                             </div>
                             <div class="input__item">
-                                <input type="password" id="password" placeholder="Password" required>
-                                <span class="icon_lock"></span>
-                            </div>
-                            <div class="input__item">
-                                <input type="text" id="name" placeholder="Full Name" required>
+                                <input type="text" placeholder="Your Name">
                                 <span class="icon_profile"></span>
                             </div>
                             <div class="input__item">
-                                <input type="email" id="email" placeholder="Email Address" required>
-                                <span class="icon_mail"></span>
+                                <input type="text" placeholder="Password">
+                                <span class="icon_lock"></span>
                             </div>
-                            <button type="submit" class="site-btn">Register Now</button>
+                            <div class="input__item">
+                                <input type="text" placeholder="Confirm Password">
+                                <span class="icon_lock"></span>
+                            </div>
+                            <button type="submit" class="site-btn">Login Now</button>
                         </form>
                         <h5>Already have an account? <a th:href="@{/user/login}">Log In!</a></h5>
                     </div>
@@ -88,11 +88,8 @@
                         <h3>Login With:</h3>
                         <ul>
                             <li><a href="#" class="facebook"><i class="fa fa-facebook"></i> Sign in With Facebook</a>
-                            <li>
-                                <a href="#" th:href="@{/oauth2/authorization/google}" class="google"> <i class="fa fa-google"></i>
-                                    Sign in With Google
-                                </a>
                             </li>
+                            <li><a href="#" class="google"><i class="fa fa-google"></i> Sign in With Google</a></li>
                             <li><a href="#" class="twitter"><i class="fa fa-twitter"></i> Sign in With Twitter</a></li>
                         </ul>
                     </div>
@@ -117,46 +114,43 @@
 <script th:src="@{/js/main.js}"></script>
 <script th:src="@{/js/mini-detail.js}"></script>
 
+<!-- Ajax script -->
 <script>
-    document.getElementById('registerForm').addEventListener('submit', function(event) {
-        event.preventDefault();
-
-        const nameLogin = document.getElementById('nameLogin').value;
-        const password = document.getElementById('password').value;
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const roleIds = [1]; // Example role ID, you can modify as needed
-
-        const user = {
-            nameLogin: nameLogin,
-            password: password,
-            name: name,
-            email: email,
-            roleIds: roleIds
-        };
-
-        fetch('/api/users/register', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(user)
-        })
-        .then(response => {
-            if (response.ok) {
-                alert('Registration successful!');
-                window.location.href = '/';
-            } else {
-                return response.json().then(error => {
-                    throw new Error(error.message);
-                });
-            }
-        })
-        .catch(error => {
-            alert('Registration failed: ' + error.message);
+    // Đoạn mã sử dụng các hàm AJAX
+    $(document).ready(function () {
+        // Ví dụ sử dụng hàm registerUser khi form được submit
+        $('#registrationForm').submit(function (event) {
+            event.preventDefault(); // Ngăn chặn form submit mặc định
+            var formData = {
+                nameLogin: $('#nameLogin').val(),
+                password: $('#password').val(),
+                name: $('#name').val(),
+                email: $('#email').val(),
+                roleIds: [1]
+                // Thêm các trường khác của form tại đây nếu cần
+            };
+            registerUser(formData); // Gọi hàm đăng ký người dùng
         });
     });
-</script>
 
+    // Hàm đăng ký người dùng
+    function registerUser(formData) {
+        $.ajax({
+            type: 'POST',
+            contentType: 'application/json',
+            url: '/api/user/register',
+            data: JSON.stringify(formData),
+            success: function (data) {
+                alert('Registration successful!');
+                window.location.href = '/';
+                // Xử lý phản hồi thành công
+            },
+            error: function (xhr, status, error) {
+                alert('Registration failed: ' + error);
+                // Xử lý phản hồi lỗi
+            }
+        });
+    }
+</script>
 </body>
 </html>
