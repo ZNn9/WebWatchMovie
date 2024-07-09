@@ -50,7 +50,7 @@ public class SecurityConfig {
                         .requestMatchers(
                                 "/static/**", "/css/**", "/img/**", "/js/**", "/sass/**", "/movies/**", "/fonts/**", "/icon/**",
                                 "/admin-css/**", "/admin-js/**", "/admin-lib/**", "/admin-vendor/**",
-                                "/oauth/**", "/user/register", "/user/login", "/error",
+                                "/oauth/**", "/user/signup", "/user/signup?error", "/user/login", "/user/login?error", "/error",
                                 "/", "/api/**"
                         )
                         .permitAll()
@@ -104,7 +104,7 @@ public class SecurityConfig {
                         .userInfoEndpoint(userInfoEndpoint -> userInfoEndpoint
                                 .userService(customOAuth2UserService)
                         )
-                        .defaultSuccessUrl("/movies")
+                        .defaultSuccessUrl("/")
                         .failureUrl("/login?error")
                 )
                 .build();

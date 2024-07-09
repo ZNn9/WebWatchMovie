@@ -70,8 +70,8 @@ public class UserService implements UserDetailsService {
             }
         }
         // Đảm bảo rằng các thay đổi trong session được xóa bỏ
-        entityManager.flush();
-        entityManager.clear();
+//        entityManager.flush();
+//        entityManager.clear();
 
         return userRepository.save(user);
     }
@@ -130,8 +130,8 @@ public class UserService implements UserDetailsService {
             }
         }
         // Đảm bảo rằng các thay đổi trong session được xóa bỏ
-        entityManager.flush();
-        entityManager.clear();
+//        entityManager.flush();
+//        entityManager.clear();
 
         // Lưu lại thông tin người dùng sau khi chỉnh sửa
         return userRepository.save(user);

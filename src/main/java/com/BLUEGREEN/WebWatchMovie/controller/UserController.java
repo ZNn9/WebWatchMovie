@@ -14,4 +14,7 @@ public class UserController {
     public String login(){
         return "/user/login";
     }
+
+    @GetMapping("/signup")
+    public String register() { return "/user/signup";}
 }
