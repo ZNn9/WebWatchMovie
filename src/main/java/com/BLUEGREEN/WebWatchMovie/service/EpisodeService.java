@@ -34,9 +34,9 @@ public class EpisodeService {
         return episodeRepository.findAll();
     }
 
-//    public Episode getEpisodeById(int id) {
-//        return episodeRepository.findById(id).orElse(null);
-//    }
+    public Episode getEpisodeById(int idEpisode) {
+        return episodeRepository.findById(idEpisode).orElse(null);
+    }
 
     public List<Episode> findByMovieId(int idMovie) {
         return episodeRepository.findByMovieId(idMovie);
@@ -59,6 +59,8 @@ public class EpisodeService {
     public Episode findByNumberEpisode(int numberEpisode) {
         return episodeRepository.findByNumberEpisode(numberEpisode);
     }
+
+    // Mới
 
 
 }

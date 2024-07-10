@@ -21,5 +21,10 @@ public interface EpisodeRepository extends JpaRepository<Episode, Integer> {
     List<Episode> findByName(String name);
     Episode findByNumberEpisode(int numberEpisode);
 
+
+
+
+
     /*List<Episode> findByMovieId(int movieId);*/
+
 }
