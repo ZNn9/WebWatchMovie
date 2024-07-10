@@ -1,6 +1,5 @@
-package com.BLUEGREEN.WebWatchMovie.controller;
+package com.BLUEGREEN.WebWatchMovie.controllerAPI;
 
-import ch.qos.logback.core.model.Model;
 import com.BLUEGREEN.WebWatchMovie.model.Movie;
 import com.BLUEGREEN.WebWatchMovie.model.Episode;
 import com.BLUEGREEN.WebWatchMovie.repository.EpisodeRepository;

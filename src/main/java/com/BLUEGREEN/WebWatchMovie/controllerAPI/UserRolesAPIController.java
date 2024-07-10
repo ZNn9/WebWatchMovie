@@ -1,4 +1,4 @@
-package com.BLUEGREEN.WebWatchMovie.controller;
+package com.BLUEGREEN.WebWatchMovie.controllerAPI;
 
 import com.BLUEGREEN.WebWatchMovie.model.UserRoles;
 import com.BLUEGREEN.WebWatchMovie.model.UserRolesId;
