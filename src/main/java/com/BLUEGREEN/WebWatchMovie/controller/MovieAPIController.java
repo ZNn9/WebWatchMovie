@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -63,21 +64,33 @@ public class MovieAPIController {
         return new ResponseEntity<>(savedMovie, HttpStatus.CREATED);
     }
 
-    
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Movie> updateMovie(@PathVariable int id, @RequestBody Movie movieDetails) {
-        Movie updatedMovie = movieService.updateMovie(id, movieDetails);
-        if (updatedMovie != null) {
-            return new ResponseEntity<>(updatedMovie, HttpStatus.OK);
+
+    @PutMapping("/{id}/image")
+    public ResponseEntity<?> updateMovieImage(@PathVariable int id, @RequestParam("image") MultipartFile imageFile) {
+        try {
+            movieService.updateImage(id, imageFile);
+            return ResponseEntity.ok().build();
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to upload image: " + e.getMessage());
         }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
+
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteMovie(@PathVariable int id) {
         movieService.deleteMovie(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @DeleteMapping("/{id}/image")
+    public ResponseEntity<?> deleteMovieImage(@PathVariable int id) {
+        try {
+            movieService.deleteImage(id);
+            return ResponseEntity.ok().build();
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to delete image: " + e.getMessage());
+        }
     }
 
 }

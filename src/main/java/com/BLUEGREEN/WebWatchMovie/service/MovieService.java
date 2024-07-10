@@ -4,11 +4,14 @@ import com.BLUEGREEN.WebWatchMovie.model.*;
 import com.BLUEGREEN.WebWatchMovie.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -107,5 +110,39 @@ public class MovieService {
 
         return new ArrayList<>(recommendedMovies);
     }
+
+    public void updateImage(int movieId, MultipartFile imageFile) {
+        Movie movie = movieRepository.findById(movieId).orElse(null);
+        if (movie != null) {
+            try {
+                Path dirImages = Paths.get("static/images"); // Thay đổi đường dẫn tới thư mục lưu trữ hình ảnh của bạn
+                if (!Files.exists(dirImages)) {
+                    Files.createDirectories(dirImages);
+                }
+                String newFileName = UUID.randomUUID() + "_" + imageFile.getOriginalFilename();
+                Path pathFileUpload = dirImages.resolve(newFileName);
+                Files.copy(imageFile.getInputStream(), pathFileUpload, StandardCopyOption.REPLACE_EXISTING);
+                movie.setImage(newFileName);
+                movieRepository.save(movie);
+            } catch (IOException e) {
+                e.printStackTrace(); // Xử lý ngoại lệ một cách thích hợp
+            }
+        }
+    }
+
+    public void deleteImage(int movieId) {
+        Movie movie = movieRepository.findById(movieId).orElse(null);
+        if (movie != null) {
+            // Xóa hình ảnh từ thư mục lưu trữ (optional)
+            // Ví dụ:
+            // Path imagePath = Paths.get("static/images/" + movie.getImage());
+            // Files.deleteIfExists(imagePath);
+
+            movie.setImage(null);
+            movieRepository.save(movie);
+        }
+    }
+
+
 
 }

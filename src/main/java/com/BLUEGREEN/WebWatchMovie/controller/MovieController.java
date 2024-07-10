@@ -25,6 +25,11 @@ public class MovieController {
         return "/user/index";
     }
 
+    @GetMapping("/movies-details/{idMovie}")
+    public String showMovieDetails() {
+        return "/user/anime-details";
+    }
+
     @GetMapping("/movies/{idMovie}/{idEpisode}")
     public String watchEpisode(@PathVariable int idMovie, @PathVariable int idEpisode, Model model) {
         // Kiểm tra xem episode có thuộc về movie có id là idMovie không

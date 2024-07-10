@@ -6,6 +6,8 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
+import org.hibernate.validator.constraints.Length;
+
 import java.util.Set;
 
 @RequiredArgsConstructor
@@ -24,6 +26,9 @@ public class Movie {
 
     @Column(nullable = false)
     private String name;
+
+    @Length(min = 0,max = 200,message = "Tên hình ảnh không được quá 200 kí tự")
+    private String image;
 
     @Column(nullable = false)
     private String description;
