@@ -47,12 +47,11 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
             // Thực hiện các hành động khác, ví dụ như gán quyền cho người dùng
             userService.editUserRole(newUser.getIdUser(), new int[]{1});
         }
-
         return oAuth2User;
     }
 
     private String generateRandomPassword() {
-        // Logic to generate a random password (example)
-        return UUID.randomUUID().toString().substring(0, 8); // Generate a random string
+        // Logic để tạo mật khẩu ngẫu nhiên (ví dụ)
+        return UUID.randomUUID().toString().substring(0, 8); // Tạo một chuỗi ngẫu nhiên
     }
 }

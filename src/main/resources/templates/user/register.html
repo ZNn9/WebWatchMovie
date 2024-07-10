@@ -37,7 +37,9 @@
 
 <!-- Header Section Begin -->
 <section layout:fragment="content">
-    <!-- Breadcrumb Section Begin -->
+    <!-- Header End -->
+
+    <!-- Normal Breadcrumb Begin -->
     <section class="normal-breadcrumb set-bg" th:data-setbg="@{/img/normal.jpg}">
         <div class="container">
             <div class="row">
@@ -72,10 +74,12 @@
                             <div class="input__item">
                                 <input type="text" th:field="*{nameLogin}" placeholder="Your Name Login" required>
                                 <span class="icon_profile"></span>
+
                             </div>
                             <div class="input__item">
                                 <input type="password" th:field="*{password}" placeholder="Password" required>
                                 <span class="icon_lock"></span>
+
                             </div>
                             <div class="input__item">
                                 <input type="password" name="confirmPassword" placeholder="Confirm Password" required>
