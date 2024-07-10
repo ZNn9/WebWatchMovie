@@ -18,6 +18,8 @@
 	</properties>
 	<dependencies>
 
+
+
 		<!--Tích hợp đa ngôn ngữ-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

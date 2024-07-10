@@ -50,7 +50,6 @@ public class UserService implements UserDetailsService {
         if (existingUser.isPresent()) {
             throw new RuntimeException("Name login already exists: " + user.getNameLogin());
         }
-
         user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
         user.setIsHidden(false);
         userRepository.save(user);

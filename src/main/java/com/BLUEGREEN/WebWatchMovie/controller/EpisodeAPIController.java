@@ -22,7 +22,14 @@ public class EpisodeAPIController {
         return episodeService.getAllEpisodes();
     }
 
+
     @GetMapping("/{id}")
+    public ResponseEntity<Episode> getEpisodeById(@PathVariable int id) {
+        Optional<Episode> episode = episodeService.findById(id);
+        return episode.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    /*@GetMapping("/{id}")
     public ResponseEntity<Episode> getEpisodeById(@PathVariable int id) {
         Episode episode = episodeService.getEpisodeById(id);
         if (episode != null) {
@@ -30,12 +37,15 @@ public class EpisodeAPIController {
         } else {
             return ResponseEntity.notFound().build();
         }
-    }
+    }*/
 
-    @GetMapping("/{id}/episodes")
-    public ResponseEntity<List<Episode>> getEpisodesByMovieId(@PathVariable int id) {
-        List<Episode> episodes = episodeService.getEpisodesByMovieId(id);
-        return new ResponseEntity<>(episodes, HttpStatus.OK);
+    @GetMapping("/episodes/{idMovie}")
+    public ResponseEntity<List<Episode>> getEpisodesByMovieId(@PathVariable int idMovie) {
+        List<Episode> episodes = episodeService.findByMovieId(idMovie);
+        if (episodes.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(episodes);
     }
 
     @PostMapping
@@ -74,4 +84,34 @@ public class EpisodeAPIController {
             return ResponseEntity.notFound().build();
         }
     }
+
+
+    /*@GetMapping("/name/{name}")
+    public ResponseEntity<List<Episode>> getEpisodesByName(@PathVariable String name) {
+        List<Episode> episodes = episodeService.findByName(name);
+        return new ResponseEntity<>(episodes, HttpStatus.OK);
+    }
+
+    @GetMapping("/number/{number}")
+    public ResponseEntity<Episode> getEpisodeByNumber(@PathVariable int number) {
+        Episode episode = episodeService.findByNumberEpisode(number);
+        if (episode != null) {
+            return ResponseEntity.ok(episode);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    // Các phương thức API khác của EpisodeAPIController
+
+    @GetMapping("/anime-watching/{id_movie}")
+    public List<Episode> animeWatching(@PathVariable("id_movie") int idMovie) {
+        // Lấy danh sách các episode dựa trên id_movie
+        List<Episode> episodes = episodeService.findByMovieId(idMovie);
+
+        return episodes;
+    }*/
+
+
+
 }

@@ -19,6 +19,9 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private UserService userService;
+
     @Override
     public OAuth2User loadUser(OAuth2UserRequest userRequest) {
         OAuth2User oAuth2User = super.loadUser(userRequest);
@@ -35,7 +38,7 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
             user.setPassword(new BCryptPasswordEncoder().encode(this.generateRandomPassword())); // Set an empty password for OAuth users
             userRepository.save(user);
         }
-
+        /*userService.editUserRole(user.getIdUser(), new int[]{1});*/
         return oAuth2User;
     }
 
