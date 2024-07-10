@@ -118,5 +118,29 @@
 <script th:src="@{/js/main.js}"></script>
 <script th:src="@{/js/mini-detail.js}"></script>
 
+<script>
+    async function registerUser(event) {
+        event.preventDefault();
+
+        const nameLogin = document.getElementById('nameLogin').value;
+        const password = document.getElementById('password').value;
+
+        const response = await fetch('/api/users/register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ nameLogin, password }),
+        });
+
+        if (response.ok) {
+            const user = await response.json();
+            alert('Registration successful!');
+            // Redirect or perform other actions here
+        } else {
+            alert('Registration failed!');
+        }
+    }
+</script>
 </body>
 </html>

@@ -26,7 +26,6 @@ public class UserAPIController {
     @PostMapping("/register")
     public ResponseEntity<User> registerUser(@RequestBody User registrationRequest) {
         User registeredUser = userService.registerUser(registrationRequest, registrationRequest.getRoleIds());
-
         return ResponseEntity.ok(registeredUser);
     }
 
