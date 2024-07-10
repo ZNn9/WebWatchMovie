@@ -49,7 +49,7 @@ public class SecurityConfig {
                                 "/static/**", "/css/**", "/img/**", "/js/**", "/sass/**", "/movies/**", "/fonts/**", "/icon/**",
                                 "/admin-css/**", "/admin-js/**", "/admin-lib/**", "/admin-vendor/**",
                                 "/oauth/**", "/user/register", "/user/login", "/error",
-                                "/", "/api/**", "/user/anime-watching/**", "/movies-details/**"
+                                "/", "/api/**", "/movies/**", "/movie-details/**"
                         )
                         .permitAll()
                         .requestMatchers("/user/**")

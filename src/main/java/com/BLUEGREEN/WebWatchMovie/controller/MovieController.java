@@ -32,7 +32,7 @@ public class MovieController {
         return "user/index";
     }
 
-    @GetMapping("/movies-details/{idMovie}")
+    @GetMapping("/movie-details/{idMovie}")
     public String showMovieDetails() {
         return "/user/anime-details";
     }
