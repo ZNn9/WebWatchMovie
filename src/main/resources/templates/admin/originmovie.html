@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Anime Template">
+    <meta name="keywords" content="Anime, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Origin Movies | Anime6</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/elegant-icons.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/plyr.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/nice-select.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/owl.min.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/slicknav.min.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
+
+    <!-- Include FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+<!-- Page Preloader -->
+<div id="preloader">
+    <div class="loader"></div>
+</div>
+
+<!-- Header Section Begin -->
+<header th:replace="layout :: header"></header>
+
+<!-- Main Content -->
+<div class="container mt-5">
+    <h1>Origin Movies</h1>
+    <div id="origin-movies-list"></div>
+
+    <!-- Create Origin Movie Form -->
+    <div class="mt-4">
+        <h2>Create Origin Movie</h2>
+        <form id="create-movie-form">
+            <div class="form-group">
+                <label for="create-movie-name">Name</label>
+                <input type="text" class="form-control" id="create-movie-name" required>
+            </div>
+            <div class="form-group">
+                <label for="create-movie-description">Description</label>
+                <textarea class="form-control" id="create-movie-description" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Create</button>
+        </form>
+    </div>
+</div>
+
+<!-- Footer Section Begin -->
+<footer th:replace="layout :: footer"></footer>
+
+<!-- Js Plugins -->
+<script th:src="@{/js/jquery-3.3.1.min.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/player.js}"></script>
+<script th:src="@{/js/jquery.nice-select.min.js}"></script>
+<script th:src="@{/js/mixitup.min.js}"></script>
+<script th:src="@{/js/jquery.slicknav.js}"></script>
+<script th:src="@{/js/owl.carousel.min.js}"></script>
+<script th:src="@{/js/main.js}"></script>
+<script th:src="@{/js/mini-detail.js}"></script>
+
+<script>
+    $(document).ready(function() {
+        // Function to fetch and display origin movies
+        function fetchOriginMovies() {
+            $.ajax({
+                url: "/api/originmovies",
+                method: "GET",
+                success: function(data) {
+                    let moviesList = $('#origin-movies-list');
+                    moviesList.empty(); // Clear existing content
+                    if (data.length > 0) {
+                        data.forEach(function(movie) {
+                            let movieHtml = `
+                                <div class="card mb-3" data-id="${movie.idOriginMovie}">
+                                    <div class="card-body">
+                                        <h5 class="card-title">${movie.name}</h5>
+                                        <p class="card-text">${movie.description}</p>
+                                        <button class="btn btn-primary btn-edit">Edit</button>
+                                        <button class="btn btn-danger btn-delete">Delete</button>
+                                    </div>
+                                </div>
+                            `;
+                            moviesList.append(movieHtml);
+                        });
+                    } else {
+                        moviesList.append('<p>No origin movies found.</p>');
+                    }
+                },
+                error: function(error) {
+                    console.error("There was an error fetching the origin movies!", error);
+                }
+            });
+        }
+
+        // Fetch and display origin movies on page load
+        fetchOriginMovies();
+
+        // Handle create movie form submission
+        $('#create-movie-form').on('submit', function(event) {
+            event.preventDefault();
+            const movieName = $('#create-movie-name').val();
+            const movieDescription = $('#create-movie-description').val();
+            $.ajax({
+                url: "/api/originmovies",
+                method: "POST",
+                contentType: "application/json",
+                data: JSON.stringify({ name: movieName, description: movieDescription }),
+                success: function() {
+                    fetchOriginMovies();
+                    $('#create-movie-form')[0].reset();
+                },
+                error: function(error) {
+                    console.error("There was an error creating the origin movie!", error);
+                }
+            });
+        });
+
+        // Handle edit movie button click
+        $(document).on('click', '.btn-edit', function() {
+            const card = $(this).closest('.card');
+            const movieId = card.data('id');
+            const movieName = card.find('.card-title').text();
+            const movieDescription = card.find('.card-text').text();
+            const editFormHtml = `
+                <form class="edit-movie-form">
+                    <div class="form-group">
+                        <label for="edit-movie-name">Name</label>
+                        <input type="text" class="form-control" id="edit-movie-name" value="${movieName}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-movie-description">Description</label>
+                        <textarea class="form-control" id="edit-movie-description" required>${movieDescription}</textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                    <button type="button" class="btn btn-secondary btn-cancel-edit">Cancel</button>
+                </form>
+            `;
+            card.find('.card-body').html(editFormHtml);
+        });
+
+        // Handle cancel edit button click
+        $(document).on('click', '.btn-cancel-edit', function() {
+            fetchOriginMovies();
+        });
+
+        // Handle edit movie form submission
+        $(document).on('submit', '.edit-movie-form', function(event) {
+            event.preventDefault();
+            const card = $(this).closest('.card');
+            const movieId = card.data('id');
+            const movieName = $('#edit-movie-name').val();
+            const movieDescription = $('#edit-movie-description').val();
+            $.ajax({
+                url: `/api/originmovies/${movieId}`,
+                method: "PUT",
+                contentType: "application/json",
+                data: JSON.stringify({ name: movieName, description: movieDescription }),
+                success: function() {
+                    fetchOriginMovies();
+                },
+                error: function(error) {
+                    console.error("There was an error updating the origin movie!", error);
+                }
+            });
+        });
+
+        // Handle delete movie button click
+        $(document).on('click', '.btn-delete', function() {
+            const card = $(this).closest('.card');
+            const movieId = card.data('id');
+            $.ajax({
+                url: `/api/originmovies/${movieId}`,
+                method: "DELETE",
+                success: function() {
+                    fetchOriginMovies();
+                },
+                error: function(error) {
+                    console.error("There was an error deleting the origin movie!", error);
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>
