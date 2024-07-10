@@ -35,22 +35,22 @@ public class UserController {
         return "user/login";
     }
 
-//    @PostMapping("/login")
-//    public String loginUser(@RequestParam("nameLogin") String nameLogin,
-//                            @RequestParam("password") String password,
-//                            Model model,
-//                            RedirectAttributes redirectAttributes) {
-//
-//        User user = userService.loginUser(nameLogin, password);
-//        if (user != null) {
-//            // Đăng nhập thành công, chuyển hướng đến trang chính
-//            return "redirect:/";
-//        } else {
-//            // Đăng nhập không thành công, hiển thị thông báo lỗi
-//            model.addAttribute("error", "Invalid username or password");
-//            return "user/login";
-//        }
-//    }
+    @PostMapping("/login")
+    public String loginUser(@RequestParam("nameLogin") String nameLogin,
+                            @RequestParam("password") String password,
+                            Model model,
+                            RedirectAttributes redirectAttributes) {
+
+        User user = userService.loginUser(nameLogin, password);
+        if (user != null) {
+            // Đăng nhập thành công, chuyển hướng đến trang chính
+            return "redirect:/";
+        } else {
+            // Đăng nhập không thành công, hiển thị thông báo lỗi
+            model.addAttribute("error", "Invalid username or password");
+            return "user/login";
+        }
+    }
 
     @GetMapping("/register")
     public String showRegisterForm(@NotNull Model model) {

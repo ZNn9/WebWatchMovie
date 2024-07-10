@@ -36,7 +36,7 @@ public class SecurityConfig {
     public DaoAuthenticationProvider authenticationProvider() {
         var auth = new DaoAuthenticationProvider(); // Tạo nhà cung cấp xác thực.
         auth.setUserDetailsService(userDetailsService()); // Thiết lập dịch vụ chi tiết người dùng.
-        auth.setPasswordEncoder(passwordEncoder()); // Thiết lập cơ chế mã hóa mật khẩu.
+//        auth.setPasswordEncoder(passwordEncoder()); // Thiết lập cơ chế mã hóa mật khẩu.
         return auth; // Trả về nhà cung cấp xác thực.
     }
 
@@ -78,13 +78,13 @@ public class SecurityConfig {
                         .clearAuthentication(true)
                         .permitAll()
                 )
-                .formLogin(formLogin -> formLogin
-                        .loginPage("/user/login")
-                        .loginProcessingUrl("/user/login")
-                        .defaultSuccessUrl("/", true)
-                        .failureUrl("/user/login?error")
-                        .permitAll()
-                )
+//                .formLogin(formLogin -> formLogin
+//                        .loginPage("/user/login")
+//                        .loginProcessingUrl("/user/login")
+//                        .defaultSuccessUrl("/", true)
+//                        .failureUrl("/user/login?error")
+//                        .permitAll()
+//                )
                 .rememberMe(rememberMe -> rememberMe
                         .key("anime6")
                         .rememberMeCookieName("anime6")
