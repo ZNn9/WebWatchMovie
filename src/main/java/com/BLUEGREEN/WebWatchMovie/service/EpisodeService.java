@@ -61,4 +61,14 @@ public class EpisodeService {
     }
 
 
+
+    // MỚI
+
+    public Episode getEpisodeById(int idEpisode) {
+        return episodeRepository.findById(idEpisode).orElse(null);
+    }
+
+    /*public List<Episode> ORDERgetEpisodesByMovieId(int idMovie) {
+        return episodeRepository.findEpisodesByMovieId(idMovie);
+    }*/
 }

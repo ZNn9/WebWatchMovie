@@ -12,14 +12,15 @@ import java.util.List;
 @Repository
 public interface EpisodeRepository extends JpaRepository<Episode, Integer> {
 
-    @Query("SELECT e FROM Episode e WHERE e.movie.idMovie = :movieId")
+    @Query("SELECT e FROM Episode e WHERE e.movie.idMovie = :movieId ORDER BY e.numberEpisode")
     List<Episode> findByMovieId(@Param("movieId") int movieId);
 
-    @Query("SELECT e FROM Episode e WHERE e.idEpisode = :idEpisode AND e.movie.idMovie = :idMovie")
-    Episode findByIdAndMovieId(int idEpisode, int idMovie);
+    @Query("SELECT e FROM Episode e WHERE e.idEpisode = :idEpisode AND e.movie.idMovie = :movieId")
+    Episode findByIdAndMovieId(@Param("idEpisode") int idEpisode, @Param("movieId") int movieId);
 
     List<Episode> findByName(String name);
     Episode findByNumberEpisode(int numberEpisode);
 
     /*List<Episode> findByMovieId(int movieId);*/
+
 }

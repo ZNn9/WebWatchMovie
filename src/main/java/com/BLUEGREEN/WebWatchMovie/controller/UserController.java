@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.BLUEGREEN.WebWatchMovie.service.EpisodeService;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/user")
 @RequiredArgsConstructor
@@ -38,34 +40,4 @@ public class UserController {
         return "/user/anime-watching";
     }*/
 
-
-    /*@GetMapping("/anime-watching/{id}")
-    public String watchEpisode(@PathVariable int id, Model model) {
-        Episode episode = episodeService.getEpisodeById(id);
-        model.addAttribute("episode", episode);
-        return "user/anime-watching";
-    }*/
-
-
-    /*@GetMapping("/anime-watching")
-    public String watchEpisode(@PathVariable int id, Model model) {
-        Episode episode = episodeService.getEpisodeById(id);
-        model.addAttribute("episode", episode);
-        model.addAttribute("videoPath", "/movies/" + episode.getEpisodeAdress());
-        return "user/anime-watching";
-    }*/
-
-    @GetMapping("/anime-watching/{idMovie}/{idEpisode}")
-    public String watchEpisode(@PathVariable int idMovie, @PathVariable int idEpisode, Model model) {
-        // Kiểm tra xem episode có thuộc về movie có id là idMovie không
-        Episode episode = episodeService.getEpisodeByIdAndMovieId(idEpisode, idMovie);
-
-        if (episode != null) {
-            model.addAttribute("episode", episode);
-            return "/user/anime-watching";
-        } else {
-            // Xử lý trường hợp không tìm thấy episode thuộc về movie đã cho
-            return "error"; // hoặc chuyển hướng đến trang lỗi thích hợp
-        }
-    }
 }

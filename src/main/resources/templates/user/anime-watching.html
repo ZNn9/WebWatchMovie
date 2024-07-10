@@ -27,6 +27,34 @@
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!--Anime list-->
+    <style>
+        .episode-list ul {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0;
+            list-style-type: none;
+        }
+
+        .episode-list li {
+            margin: 0 10px 10px 0;
+        }
+
+        .episode-list a {
+            text-decoration: none;
+            color: #FFFFFF; /* Màu sắc cho text, có thể thay đổi theo ý muốn */
+            padding: 5px 10px;
+            border: 1px solid #ccc; /* Viền cho mỗi tập phim, có thể thay đổi theo ý muốn */
+            border-radius: 5px; /* Bo góc cho viền */
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .episode-list a:hover {
+            background-color: #f0f0f0; /* Màu nền khi hover, có thể thay đổi theo ý muốn */
+            color: #333; /* Màu sắc cho text khi hover, có thể thay đổi theo ý muốn */
+        }
+    </style>
 </head>
 
 <body>
@@ -75,18 +103,27 @@
                             <track kind="captions" label="English captions" src="#" srclang="en" default />
                         </video>
                     </div>
-                    <!--<div class="anime__details__episodes">
+                    <div class="anime__details__episodes">
                         <div class="section-title">
                             <h5>Episode</h5>
                         </div>
-                        <ul>
-                            <li th:each="episode : ${episodes}">
-                                <a th:href="@{'/watch/' + ${episode.idEpisode}}"> &lt;!&ndash; Đường dẫn tới video, thay đổi phù hợp &ndash;&gt;
-                                    <span th:text="${episode.name}"></span> &lt;!&ndash; Tên của episode &ndash;&gt;
-                                </a>
-                            </li>
-                        </ul>
-                    </div>-->
+                        <!--<div class="episode-list">
+                            <ul>
+                                <li th:each="ep : ${episodes}">
+                                    <a th:href="@{'/movies/' + ${ep.movie.idMovie} + '/' + ${ep.idEpisode}}"
+                                       th:text="${ep.name}"></a>
+                                </li>
+                            </ul>
+                        </div>-->
+                        <div class="episode-list">
+                            <ul>
+                                <li th:each="ep : ${episodes}">
+                                    <a th:href="@{'/movies/' + ${ep.movie.idMovie} + '/' + ${ep.idEpisode}}"
+                                       th:text="${ep.name}"></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="row">
