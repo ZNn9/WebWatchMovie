@@ -18,7 +18,8 @@
 	<meta name="keywords" content="">
 	<meta name="author" content="Dmitry Volkov">
 	<title>FlixGo – Online Movies, TV Shows & Cinema HTML Template</title>
-
+	<!-- Include FontAwesome for Icons -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
 	<!-- header -->
@@ -206,479 +207,59 @@
 									<th>ACTIONS</th>
 								</tr>
 							</thead>
-
-							<tbody>
-								<tr>
-									<td>
-										<div class="catalog__text">11</div>
-									</td>
-									<td>
-										<div class="catalog__user">
-											<div class="catalog__avatar">
-												<img th:src="@{/img/user.svg}" alt="">
-											</div>
-											<div class="catalog__meta">
-												<h3>Tess Harper</h3>
-												<span>email@email.com</span>
-											</div>
-										</div>
-									</td>
-									<td>
-										<div class="catalog__text">Username</div>
-									</td>
-									<td>
-										<div class="catalog__text">Premium</div>
-									</td>
-									<td>
-										<div class="catalog__text">13</div>
-									</td>
-									<td>
-										<div class="catalog__text">1</div>
-									</td>
-									<td>
-										<div class="catalog__text catalog__text--green">Approved</div>
-									</td>
-									<td>
-										<div class="catalog__text">05.02.2023</div>
-									</td>
-									<td>
-										<div class="catalog__btns">
-											<button type="button" data-bs-toggle="modal" class="catalog__btn catalog__btn--banned" data-bs-target="#modal-status">
-												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,13a1,1,0,0,0-1,1v3a1,1,0,0,0,2,0V14A1,1,0,0,0,12,13Zm5-4V7A5,5,0,0,0,7,7V9a3,3,0,0,0-3,3v7a3,3,0,0,0,3,3H17a3,3,0,0,0,3-3V12A3,3,0,0,0,17,9ZM9,7a3,3,0,0,1,6,0V9H9Zm9,12a1,1,0,0,1-1,1H7a1,1,0,0,1-1-1V12a1,1,0,0,1,1-1H17a1,1,0,0,1,1,1Z"/></svg>
-											</button>
-											<a href="edit-user.html" class="catalog__btn catalog__btn--edit">
-												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5,18H9.24a1,1,0,0,0,.71-.29l6.92-6.93h0L19.71,8a1,1,0,0,0,0-1.42L15.47,2.29a1,1,0,0,0-1.42,0L11.23,5.12h0L4.29,12.05a1,1,0,0,0-.29.71V17A1,1,0,0,0,5,18ZM14.76,4.41l2.83,2.83L16.17,8.66,13.34,5.83ZM6,13.17l5.93-5.93,2.83,2.83L8.83,16H6ZM21,20H3a1,1,0,0,0,0,2H21a1,1,0,0,0,0-2Z"/></svg>
-											</a>
-											<button type="button" data-bs-toggle="modal" class="catalog__btn catalog__btn--delete" data-bs-target="#modal-delete">
-												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,6H16V5a3,3,0,0,0-3-3H11A3,3,0,0,0,8,5V6H4A1,1,0,0,0,4,8H5V19a3,3,0,0,0,3,3h8a3,3,0,0,0,3-3V8h1a1,1,0,0,0,0-2ZM10,5a1,1,0,0,1,1-1h2a1,1,0,0,1,1,1V6H10Zm7,14a1,1,0,0,1-1,1H8a1,1,0,0,1-1-1V8H17Z"/></svg>
-											</button>
-										</div>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<div class="catalog__text">12</div>
-									</td>
-									<td>
-										<div class="catalog__user">
-											<div class="catalog__avatar">
-												<img th:src="@{/img/user.svg}" alt="">
-											</div>
-											<div class="catalog__meta">
-												<h3>Gene Graham</h3>
-												<span>email@email.com</span>
-											</div>
-										</div>
-									</td>
-									<td>
-										<div class="catalog__text">Username</div>
-									</td>
-									<td>
-										<div class="catalog__text">Free</div>
-									</td>
-									<td>
-										<div class="catalog__text">1</div>
-									</td>
-									<td>
-										<div class="catalog__text">15</div>
-									</td>
-									<td>
-										<div class="catalog__text catalog__text--green">Approved</div>
-									</td>
-									<td>
-										<div class="catalog__text">05.02.2023</div>
-									</td>
-									<td>
-										<div class="catalog__btns">
-											<button type="button" data-bs-toggle="modal" class="catalog__btn catalog__btn--banned" data-bs-target="#modal-status">
-												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,13a1,1,0,0,0-1,1v3a1,1,0,0,0,2,0V14A1,1,0,0,0,12,13Zm5-4V7A5,5,0,0,0,7,7V9a3,3,0,0,0-3,3v7a3,3,0,0,0,3,3H17a3,3,0,0,0,3-3V12A3,3,0,0,0,17,9ZM9,7a3,3,0,0,1,6,0V9H9Zm9,12a1,1,0,0,1-1,1H7a1,1,0,0,1-1-1V12a1,1,0,0,1,1-1H17a1,1,0,0,1,1,1Z"/></svg>
-											</button>
-											<a href="edit-user.html" class="catalog__btn catalog__btn--edit">
-												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5,18H9.24a1,1,0,0,0,.71-.29l6.92-6.93h0L19.71,8a1,1,0,0,0,0-1.42L15.47,2.29a1,1,0,0,0-1.42,0L11.23,5.12h0L4.29,12.05a1,1,0,0,0-.29.71V17A1,1,0,0,0,5,18ZM14.76,4.41l2.83,2.83L16.17,8.66,13.34,5.83ZM6,13.17l5.93-5.93,2.83,2.83L8.83,16H6ZM21,20H3a1,1,0,0,0,0,2H21a1,1,0,0,0,0-2Z"/></svg>
-											</a>
-											<button type="button" data-bs-toggle="modal" class="catalog__btn catalog__btn--delete" data-bs-target="#modal-delete">
-												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,6H16V5a3,3,0,0,0-3-3H11A3,3,0,0,0,8,5V6H4A1,1,0,0,0,4,8H5V19a3,3,0,0,0,3,3h8a3,3,0,0,0,3-3V8h1a1,1,0,0,0,0-2ZM10,5a1,1,0,0,1,1-1h2a1,1,0,0,1,1,1V6H10Zm7,14a1,1,0,0,1-1,1H8a1,1,0,0,1-1-1V8H17Z"/></svg>
-											</button>
-										</div>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<div class="catalog__text">13</div>
-									</td>
-									<td>
-										<div class="catalog__user">
-											<div class="catalog__avatar">
-												<img th:src="@{/img/user.svg}" alt="">
-											</div>
-											<div class="catalog__meta">
-												<h3>Rosa Lee</h3>
-												<span>email@email.com</span>
-											</div>
-										</div>
-									</td>
-									<td>
-										<div class="catalog__text">Username</div>
-									</td>
-									<td>
-										<div class="catalog__text">Premium</div>
-									</td>
-									<td>
-										<div class="catalog__text">6</div>
-									</td>
-									<td>
-										<div class="catalog__text">6</div>
-									</td>
-									<td>
-										<div class="catalog__text catalog__text--green">Approved</div>
-									</td>
-									<td>
-										<div class="catalog__text">04.02.2023</div>
-									</td>
-									<td>
-										<div class="catalog__btns">
-											<button type="button" data-bs-toggle="modal" class="catalog__btn catalog__btn--banned" data-bs-target="#modal-status">
-												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,13a1,1,0,0,0-1,1v3a1,1,0,0,0,2,0V14A1,1,0,0,0,12,13Zm5-4V7A5,5,0,0,0,7,7V9a3,3,0,0,0-3,3v7a3,3,0,0,0,3,3H17a3,3,0,0,0,3-3V12A3,3,0,0,0,17,9ZM9,7a3,3,0,0,1,6,0V9H9Zm9,12a1,1,0,0,1-1,1H7a1,1,0,0,1-1-1V12a1,1,0,0,1,1-1H17a1,1,0,0,1,1,1Z"/></svg>
-											</button>
-											<a href="edit-user.html" class="catalog__btn catalog__btn--edit">
-												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5,18H9.24a1,1,0,0,0,.71-.29l6.92-6.93h0L19.71,8a1,1,0,0,0,0-1.42L15.47,2.29a1,1,0,0,0-1.42,0L11.23,5.12h0L4.29,12.05a1,1,0,0,0-.29.71V17A1,1,0,0,0,5,18ZM14.76,4.41l2.83,2.83L16.17,8.66,13.34,5.83ZM6,13.17l5.93-5.93,2.83,2.83L8.83,16H6ZM21,20H3a1,1,0,0,0,0,2H21a1,1,0,0,0,0-2Z"/></svg>
-											</a>
-											<button type="button" data-bs-toggle="modal" class="catalog__btn catalog__btn--delete" data-bs-target="#modal-delete">
-												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,6H16V5a3,3,0,0,0-3-3H11A3,3,0,0,0,8,5V6H4A1,1,0,0,0,4,8H5V19a3,3,0,0,0,3,3h8a3,3,0,0,0,3-3V8h1a1,1,0,0,0,0-2ZM10,5a1,1,0,0,1,1-1h2a1,1,0,0,1,1,1V6H10Zm7,14a1,1,0,0,1-1,1H8a1,1,0,0,1-1-1V8H17Z"/></svg>
-											</button>
-										</div>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<div class="catalog__text">14</div>
-									</td>
-									<td>
-										<div class="catalog__user">
-											<div class="catalog__avatar">
-												<img th:src="@{/img/user.svg}" alt="">
-											</div>
-											<div class="catalog__meta">
-												<h3>Matt Jones</h3>
-												<span>email@email.com</span>
-											</div>
-										</div>
-									</td>
-									<td>
-										<div class="catalog__text">Username</div>
-									</td>
-									<td>
-										<div class="catalog__text">Free</div>
-									</td>
-									<td>
-										<div class="catalog__text">11</div>
-									</td>
-									<td>
-										<div class="catalog__text">15</div>
-									</td>
-									<td>
-										<div class="catalog__text catalog__text--red">Banned</div>
-									</td>
-									<td>
-										<div class="catalog__text">04.02.2023</div>
-									</td>
-									<td>
-										<div class="catalog__btns">
-											<button type="button" data-bs-toggle="modal" class="catalog__btn catalog__btn--banned" data-bs-target="#modal-status">
-												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,13a1,1,0,0,0-1,1v3a1,1,0,0,0,2,0V14A1,1,0,0,0,12,13Zm5-4V7A5,5,0,0,0,7,7V9a3,3,0,0,0-3,3v7a3,3,0,0,0,3,3H17a3,3,0,0,0,3-3V12A3,3,0,0,0,17,9ZM9,7a3,3,0,0,1,6,0V9H9Zm9,12a1,1,0,0,1-1,1H7a1,1,0,0,1-1-1V12a1,1,0,0,1,1-1H17a1,1,0,0,1,1,1Z"/></svg>
-											</button>
-											<a href="edit-user.html" class="catalog__btn catalog__btn--edit">
-												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5,18H9.24a1,1,0,0,0,.71-.29l6.92-6.93h0L19.71,8a1,1,0,0,0,0-1.42L15.47,2.29a1,1,0,0,0-1.42,0L11.23,5.12h0L4.29,12.05a1,1,0,0,0-.29.71V17A1,1,0,0,0,5,18ZM14.76,4.41l2.83,2.83L16.17,8.66,13.34,5.83ZM6,13.17l5.93-5.93,2.83,2.83L8.83,16H6ZM21,20H3a1,1,0,0,0,0,2H21a1,1,0,0,0,0-2Z"/></svg>
-											</a>
-											<button type="button" data-bs-toggle="modal" class="catalog__btn catalog__btn--delete" data-bs-target="#modal-delete">
-												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,6H16V5a3,3,0,0,0-3-3H11A3,3,0,0,0,8,5V6H4A1,1,0,0,0,4,8H5V19a3,3,0,0,0,3,3h8a3,3,0,0,0,3-3V8h1a1,1,0,0,0,0-2ZM10,5a1,1,0,0,1,1-1h2a1,1,0,0,1,1,1V6H10Zm7,14a1,1,0,0,1-1,1H8a1,1,0,0,1-1-1V8H17Z"/></svg>
-											</button>
-										</div>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<div class="catalog__text">15</div>
-									</td>
-									<td>
-										<div class="catalog__user">
-											<div class="catalog__avatar">
-												<img th:src="@{/img/user.svg}" alt="">
-											</div>
-											<div class="catalog__meta">
-												<h3>Brian Cranston</h3>
-												<span>email@email.com</span>
-											</div>
-										</div>
-									</td>
-									<td>
-										<div class="catalog__text">Username</div>
-									</td>
-									<td>
-										<div class="catalog__text">Basic</div>
-									</td>
-									<td>
-										<div class="catalog__text">0</div>
-									</td>
-									<td>
-										<div class="catalog__text">0</div>
-									</td>
-									<td>
-										<div class="catalog__text catalog__text--green">Approved</div>
-									</td>
-									<td>
-										<div class="catalog__text">04.02.2023</div>
-									</td>
-									<td>
-										<div class="catalog__btns">
-											<button type="button" data-bs-toggle="modal" class="catalog__btn catalog__btn--banned" data-bs-target="#modal-status">
-												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,13a1,1,0,0,0-1,1v3a1,1,0,0,0,2,0V14A1,1,0,0,0,12,13Zm5-4V7A5,5,0,0,0,7,7V9a3,3,0,0,0-3,3v7a3,3,0,0,0,3,3H17a3,3,0,0,0,3-3V12A3,3,0,0,0,17,9ZM9,7a3,3,0,0,1,6,0V9H9Zm9,12a1,1,0,0,1-1,1H7a1,1,0,0,1-1-1V12a1,1,0,0,1,1-1H17a1,1,0,0,1,1,1Z"/></svg>
-											</button>
-											<a href="edit-user.html" class="catalog__btn catalog__btn--edit">
-												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5,18H9.24a1,1,0,0,0,.71-.29l6.92-6.93h0L19.71,8a1,1,0,0,0,0-1.42L15.47,2.29a1,1,0,0,0-1.42,0L11.23,5.12h0L4.29,12.05a1,1,0,0,0-.29.71V17A1,1,0,0,0,5,18ZM14.76,4.41l2.83,2.83L16.17,8.66,13.34,5.83ZM6,13.17l5.93-5.93,2.83,2.83L8.83,16H6ZM21,20H3a1,1,0,0,0,0,2H21a1,1,0,0,0,0-2Z"/></svg>
-											</a>
-											<button type="button" data-bs-toggle="modal" class="catalog__btn catalog__btn--delete" data-bs-target="#modal-delete">
-												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,6H16V5a3,3,0,0,0-3-3H11A3,3,0,0,0,8,5V6H4A1,1,0,0,0,4,8H5V19a3,3,0,0,0,3,3h8a3,3,0,0,0,3-3V8h1a1,1,0,0,0,0-2ZM10,5a1,1,0,0,1,1-1h2a1,1,0,0,1,1,1V6H10Zm7,14a1,1,0,0,1-1,1H8a1,1,0,0,1-1-1V8H17Z"/></svg>
-											</button>
-										</div>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<div class="catalog__text">16</div>
-									</td>
-									<td>
-										<div class="catalog__user">
-											<div class="catalog__avatar">
-												<img th:src="@{/img/user.svg}" alt="">
-											</div>
-											<div class="catalog__meta">
-												<h3>Louis Leterrier</h3>
-												<span>email@email.com</span>
-											</div>
-										</div>
-									</td>
-									<td>
-										<div class="catalog__text">Username</div>
-									</td>
-									<td>
-										<div class="catalog__text">Free</div>
-									</td>
-									<td>
-										<div class="catalog__text">2</div>
-									</td>
-									<td>
-										<div class="catalog__text">1</div>
-									</td>
-									<td>
-										<div class="catalog__text catalog__text--green">Approved</div>
-									</td>
-									<td>
-										<div class="catalog__text">03.02.2023</div>
-									</td>
-									<td>
-										<div class="catalog__btns">
-											<button type="button" data-bs-toggle="modal" class="catalog__btn catalog__btn--banned" data-bs-target="#modal-status">
-												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,13a1,1,0,0,0-1,1v3a1,1,0,0,0,2,0V14A1,1,0,0,0,12,13Zm5-4V7A5,5,0,0,0,7,7V9a3,3,0,0,0-3,3v7a3,3,0,0,0,3,3H17a3,3,0,0,0,3-3V12A3,3,0,0,0,17,9ZM9,7a3,3,0,0,1,6,0V9H9Zm9,12a1,1,0,0,1-1,1H7a1,1,0,0,1-1-1V12a1,1,0,0,1,1-1H17a1,1,0,0,1,1,1Z"/></svg>
-											</button>
-											<a href="edit-user.html" class="catalog__btn catalog__btn--edit">
-												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5,18H9.24a1,1,0,0,0,.71-.29l6.92-6.93h0L19.71,8a1,1,0,0,0,0-1.42L15.47,2.29a1,1,0,0,0-1.42,0L11.23,5.12h0L4.29,12.05a1,1,0,0,0-.29.71V17A1,1,0,0,0,5,18ZM14.76,4.41l2.83,2.83L16.17,8.66,13.34,5.83ZM6,13.17l5.93-5.93,2.83,2.83L8.83,16H6ZM21,20H3a1,1,0,0,0,0,2H21a1,1,0,0,0,0-2Z"/></svg>
-											</a>
-											<button type="button" data-bs-toggle="modal" class="catalog__btn catalog__btn--delete" data-bs-target="#modal-delete">
-												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,6H16V5a3,3,0,0,0-3-3H11A3,3,0,0,0,8,5V6H4A1,1,0,0,0,4,8H5V19a3,3,0,0,0,3,3h8a3,3,0,0,0,3-3V8h1a1,1,0,0,0,0-2ZM10,5a1,1,0,0,1,1-1h2a1,1,0,0,1,1,1V6H10Zm7,14a1,1,0,0,1-1,1H8a1,1,0,0,1-1-1V8H17Z"/></svg>
-											</button>
-										</div>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<div class="catalog__text">17</div>
-									</td>
-									<td>
-										<div class="catalog__user">
-											<div class="catalog__avatar">
-												<img th:src="@{/img/user.svg}" alt="">
-											</div>
-											<div class="catalog__meta">
-												<h3>Son Gun</h3>
-												<span>email@email.com</span>
-											</div>
-										</div>
-									</td>
-									<td>
-										<div class="catalog__text">Username</div>
-									</td>
-									<td>
-										<div class="catalog__text">Cinematic</div>
-									</td>
-									<td>
-										<div class="catalog__text">65</div>
-									</td>
-									<td>
-										<div class="catalog__text">0</div>
-									</td>
-									<td>
-										<div class="catalog__text catalog__text--green">Approved</div>
-									</td>
-									<td>
-										<div class="catalog__text">02.02.2023</div>
-									</td>
-									<td>
-										<div class="catalog__btns">
-											<button type="button" data-bs-toggle="modal" class="catalog__btn catalog__btn--banned" data-bs-target="#modal-status">
-												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,13a1,1,0,0,0-1,1v3a1,1,0,0,0,2,0V14A1,1,0,0,0,12,13Zm5-4V7A5,5,0,0,0,7,7V9a3,3,0,0,0-3,3v7a3,3,0,0,0,3,3H17a3,3,0,0,0,3-3V12A3,3,0,0,0,17,9ZM9,7a3,3,0,0,1,6,0V9H9Zm9,12a1,1,0,0,1-1,1H7a1,1,0,0,1-1-1V12a1,1,0,0,1,1-1H17a1,1,0,0,1,1,1Z"/></svg>
-											</button>
-											<a href="edit-user.html" class="catalog__btn catalog__btn--edit">
-												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5,18H9.24a1,1,0,0,0,.71-.29l6.92-6.93h0L19.71,8a1,1,0,0,0,0-1.42L15.47,2.29a1,1,0,0,0-1.42,0L11.23,5.12h0L4.29,12.05a1,1,0,0,0-.29.71V17A1,1,0,0,0,5,18ZM14.76,4.41l2.83,2.83L16.17,8.66,13.34,5.83ZM6,13.17l5.93-5.93,2.83,2.83L8.83,16H6ZM21,20H3a1,1,0,0,0,0,2H21a1,1,0,0,0,0-2Z"/></svg>
-											</a>
-											<button type="button" data-bs-toggle="modal" class="catalog__btn catalog__btn--delete" data-bs-target="#modal-delete">
-												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,6H16V5a3,3,0,0,0-3-3H11A3,3,0,0,0,8,5V6H4A1,1,0,0,0,4,8H5V19a3,3,0,0,0,3,3h8a3,3,0,0,0,3-3V8h1a1,1,0,0,0,0-2ZM10,5a1,1,0,0,1,1-1h2a1,1,0,0,1,1,1V6H10Zm7,14a1,1,0,0,1-1,1H8a1,1,0,0,1-1-1V8H17Z"/></svg>
-											</button>
-										</div>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<div class="catalog__text">18</div>
-									</td>
-									<td>
-										<div class="catalog__user">
-											<div class="catalog__avatar">
-												<img th:src="@{/img/user.svg}" alt="">
-											</div>
-											<div class="catalog__meta">
-												<h3>Jordana Brewster</h3>
-												<span>email@email.com</span>
-											</div>
-										</div>
-									</td>
-									<td>
-										<div class="catalog__text">Username</div>
-									</td>
-									<td>
-										<div class="catalog__text">Premium</div>
-									</td>
-									<td>
-										<div class="catalog__text">0</div>
-									</td>
-									<td>
-										<div class="catalog__text">0</div>
-									</td>
-									<td>
-										<div class="catalog__text catalog__text--red">Banned</div>
-									</td>
-									<td>
-										<div class="catalog__text">02.02.2023</div>
-									</td>
-									<td>
-										<div class="catalog__btns">
-											<button type="button" data-bs-toggle="modal" class="catalog__btn catalog__btn--banned" data-bs-target="#modal-status">
-												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,13a1,1,0,0,0-1,1v3a1,1,0,0,0,2,0V14A1,1,0,0,0,12,13Zm5-4V7A5,5,0,0,0,7,7V9a3,3,0,0,0-3,3v7a3,3,0,0,0,3,3H17a3,3,0,0,0,3-3V12A3,3,0,0,0,17,9ZM9,7a3,3,0,0,1,6,0V9H9Zm9,12a1,1,0,0,1-1,1H7a1,1,0,0,1-1-1V12a1,1,0,0,1,1-1H17a1,1,0,0,1,1,1Z"/></svg>
-											</button>
-											<a href="edit-user.html" class="catalog__btn catalog__btn--edit">
-												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5,18H9.24a1,1,0,0,0,.71-.29l6.92-6.93h0L19.71,8a1,1,0,0,0,0-1.42L15.47,2.29a1,1,0,0,0-1.42,0L11.23,5.12h0L4.29,12.05a1,1,0,0,0-.29.71V17A1,1,0,0,0,5,18ZM14.76,4.41l2.83,2.83L16.17,8.66,13.34,5.83ZM6,13.17l5.93-5.93,2.83,2.83L8.83,16H6ZM21,20H3a1,1,0,0,0,0,2H21a1,1,0,0,0,0-2Z"/></svg>
-											</a>
-											<button type="button" data-bs-toggle="modal" class="catalog__btn catalog__btn--delete" data-bs-target="#modal-delete">
-												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,6H16V5a3,3,0,0,0-3-3H11A3,3,0,0,0,8,5V6H4A1,1,0,0,0,4,8H5V19a3,3,0,0,0,3,3h8a3,3,0,0,0,3-3V8h1a1,1,0,0,0,0-2ZM10,5a1,1,0,0,1,1-1h2a1,1,0,0,1,1,1V6H10Zm7,14a1,1,0,0,1-1,1H8a1,1,0,0,1-1-1V8H17Z"/></svg>
-											</button>
-										</div>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<div class="catalog__text">19</div>
-									</td>
-									<td>
-										<div class="catalog__user">
-											<div class="catalog__avatar">
-												<img th:src="@{/img/user.svg}" alt="">
-											</div>
-											<div class="catalog__meta">
-												<h3>Tyreese Gibson</h3>
-												<span>email@email.com</span>
-											</div>
-										</div>
-									</td>
-									<td>
-										<div class="catalog__text">Username</div>
-									</td>
-									<td>
-										<div class="catalog__text">Premium</div>
-									</td>
-									<td>
-										<div class="catalog__text">13</div>
-									</td>
-									<td>
-										<div class="catalog__text">1</div>
-									</td>
-									<td>
-										<div class="catalog__text catalog__text--green">Approved</div>
-									</td>
-									<td>
-										<div class="catalog__text">01.02.2023</div>
-									</td>
-									<td>
-										<div class="catalog__btns">
-											<button type="button" data-bs-toggle="modal" class="catalog__btn catalog__btn--banned" data-bs-target="#modal-status">
-												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,13a1,1,0,0,0-1,1v3a1,1,0,0,0,2,0V14A1,1,0,0,0,12,13Zm5-4V7A5,5,0,0,0,7,7V9a3,3,0,0,0-3,3v7a3,3,0,0,0,3,3H17a3,3,0,0,0,3-3V12A3,3,0,0,0,17,9ZM9,7a3,3,0,0,1,6,0V9H9Zm9,12a1,1,0,0,1-1,1H7a1,1,0,0,1-1-1V12a1,1,0,0,1,1-1H17a1,1,0,0,1,1,1Z"/></svg>
-											</button>
-											<a href="edit-user.html" class="catalog__btn catalog__btn--edit">
-												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5,18H9.24a1,1,0,0,0,.71-.29l6.92-6.93h0L19.71,8a1,1,0,0,0,0-1.42L15.47,2.29a1,1,0,0,0-1.42,0L11.23,5.12h0L4.29,12.05a1,1,0,0,0-.29.71V17A1,1,0,0,0,5,18ZM14.76,4.41l2.83,2.83L16.17,8.66,13.34,5.83ZM6,13.17l5.93-5.93,2.83,2.83L8.83,16H6ZM21,20H3a1,1,0,0,0,0,2H21a1,1,0,0,0,0-2Z"/></svg>
-											</a>
-											<button type="button" data-bs-toggle="modal" class="catalog__btn catalog__btn--delete" data-bs-target="#modal-delete">
-												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,6H16V5a3,3,0,0,0-3-3H11A3,3,0,0,0,8,5V6H4A1,1,0,0,0,4,8H5V19a3,3,0,0,0,3,3h8a3,3,0,0,0,3-3V8h1a1,1,0,0,0,0-2ZM10,5a1,1,0,0,1,1-1h2a1,1,0,0,1,1,1V6H10Zm7,14a1,1,0,0,1-1,1H8a1,1,0,0,1-1-1V8H17Z"/></svg>
-											</button>
-										</div>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<div class="catalog__text">20</div>
-									</td>
-									<td>
-										<div class="catalog__user">
-											<div class="catalog__avatar">
-												<img th:src="@{/img/user.svg}" alt="">
-											</div>
-											<div class="catalog__meta">
-												<h3>Charlize Theron</h3>
-												<span>email@email.com</span>
-											</div>
-										</div>
-									</td>
-									<td>
-										<div class="catalog__text">Username</div>
-									</td>
-									<td>
-										<div class="catalog__text">Free</div>
-									</td>
-									<td>
-										<div class="catalog__text">1</div>
-									</td>
-									<td>
-										<div class="catalog__text">15</div>
-									</td>
-									<td>
-										<div class="catalog__text catalog__text--red">Banned</div>
-									</td>
-									<td>
-										<div class="catalog__text">01.02.2023</div>
-									</td>
-									<td>
-										<div class="catalog__btns">
-											<button type="button" data-bs-toggle="modal" class="catalog__btn catalog__btn--banned" data-bs-target="#modal-status">
-												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,13a1,1,0,0,0-1,1v3a1,1,0,0,0,2,0V14A1,1,0,0,0,12,13Zm5-4V7A5,5,0,0,0,7,7V9a3,3,0,0,0-3,3v7a3,3,0,0,0,3,3H17a3,3,0,0,0,3-3V12A3,3,0,0,0,17,9ZM9,7a3,3,0,0,1,6,0V9H9Zm9,12a1,1,0,0,1-1,1H7a1,1,0,0,1-1-1V12a1,1,0,0,1,1-1H17a1,1,0,0,1,1,1Z"/></svg>
-											</button>
-											<a href="edit-user.html" class="catalog__btn catalog__btn--edit">
-												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5,18H9.24a1,1,0,0,0,.71-.29l6.92-6.93h0L19.71,8a1,1,0,0,0,0-1.42L15.47,2.29a1,1,0,0,0-1.42,0L11.23,5.12h0L4.29,12.05a1,1,0,0,0-.29.71V17A1,1,0,0,0,5,18ZM14.76,4.41l2.83,2.83L16.17,8.66,13.34,5.83ZM6,13.17l5.93-5.93,2.83,2.83L8.83,16H6ZM21,20H3a1,1,0,0,0,0,2H21a1,1,0,0,0,0-2Z"/></svg>
-											</a>
-											<button type="button" data-bs-toggle="modal" class="catalog__btn catalog__btn--delete" data-bs-target="#modal-delete">
-												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,6H16V5a3,3,0,0,0-3-3H11A3,3,0,0,0,8,5V6H4A1,1,0,0,0,4,8H5V19a3,3,0,0,0,3,3h8a3,3,0,0,0,3-3V8h1a1,1,0,0,0,0-2ZM10,5a1,1,0,0,1,1-1h2a1,1,0,0,1,1,1V6H10Zm7,14a1,1,0,0,1-1,1H8a1,1,0,0,1-1-1V8H17Z"/></svg>
-											</button>
-										</div>
-									</td>
-								</tr>
+							<tbody id="usersTableBody">
+							<!-- Data will be dynamically inserted here -->
 							</tbody>
+<!--							<tbody>-->
+<!--								<tr>-->
+<!--									<td>-->
+<!--										<div class="catalog__text">11</div>-->
+<!--									</td>-->
+<!--									<td>-->
+<!--										<div class="catalog__user">-->
+<!--											<div class="catalog__avatar">-->
+<!--												<img th:src="@{/img/user.svg}" alt="">-->
+<!--											</div>-->
+<!--											<div class="catalog__meta">-->
+<!--												<h3>Tess Harper</h3>-->
+<!--												<span>email@email.com</span>-->
+<!--											</div>-->
+<!--										</div>-->
+<!--									</td>-->
+<!--									<td>-->
+<!--										<div class="catalog__text">Username</div>-->
+<!--									</td>-->
+<!--									<td>-->
+<!--										<div class="catalog__text">Premium</div>-->
+<!--									</td>-->
+<!--									<td>-->
+<!--										<div class="catalog__text">13</div>-->
+<!--									</td>-->
+<!--									<td>-->
+<!--										<div class="catalog__text">1</div>-->
+<!--									</td>-->
+<!--									<td>-->
+<!--										<div class="catalog__text catalog__text&#45;&#45;green">Approved</div>-->
+<!--									</td>-->
+<!--									<td>-->
+<!--										<div class="catalog__text">05.02.2023</div>-->
+<!--									</td>-->
+<!--									<td>-->
+<!--										<div class="catalog__btns">-->
+<!--											<button type="button" data-bs-toggle="modal" class="catalog__btn catalog__btn&#45;&#45;banned" data-bs-target="#modal-status">-->
+<!--												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,13a1,1,0,0,0-1,1v3a1,1,0,0,0,2,0V14A1,1,0,0,0,12,13Zm5-4V7A5,5,0,0,0,7,7V9a3,3,0,0,0-3,3v7a3,3,0,0,0,3,3H17a3,3,0,0,0,3-3V12A3,3,0,0,0,17,9ZM9,7a3,3,0,0,1,6,0V9H9Zm9,12a1,1,0,0,1-1,1H7a1,1,0,0,1-1-1V12a1,1,0,0,1,1-1H17a1,1,0,0,1,1,1Z"/></svg>-->
+<!--											</button>-->
+<!--											<a href="edit-user.html" class="catalog__btn catalog__btn&#45;&#45;edit">-->
+<!--												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5,18H9.24a1,1,0,0,0,.71-.29l6.92-6.93h0L19.71,8a1,1,0,0,0,0-1.42L15.47,2.29a1,1,0,0,0-1.42,0L11.23,5.12h0L4.29,12.05a1,1,0,0,0-.29.71V17A1,1,0,0,0,5,18ZM14.76,4.41l2.83,2.83L16.17,8.66,13.34,5.83ZM6,13.17l5.93-5.93,2.83,2.83L8.83,16H6ZM21,20H3a1,1,0,0,0,0,2H21a1,1,0,0,0,0-2Z"/></svg>-->
+<!--											</a>-->
+<!--											<button type="button" data-bs-toggle="modal" class="catalog__btn catalog__btn&#45;&#45;delete" data-bs-target="#modal-delete">-->
+<!--												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,6H16V5a3,3,0,0,0-3-3H11A3,3,0,0,0,8,5V6H4A1,1,0,0,0,4,8H5V19a3,3,0,0,0,3,3h8a3,3,0,0,0,3-3V8h1a1,1,0,0,0,0-2ZM10,5a1,1,0,0,1,1-1h2a1,1,0,0,1,1,1V6H10Zm7,14a1,1,0,0,1-1,1H8a1,1,0,0,1-1-1V8H17Z"/></svg>-->
+<!--											</button>-->
+<!--										</div>-->
+<!--									</td>-->
+<!--								</tr>-->
+
+<!--							</tbody>-->
 						</table>
 					</div>
 				</div>
@@ -713,9 +294,7 @@
 							<li class="paginator__item"><a href="#">1</a></li>
 							<li class="paginator__item paginator__item--active"><a href="#">2</a></li>
 							<li class="paginator__item"><a href="#">3</a></li>
-							<li class="paginator__item"><a href="#">4</a></li>
 							<li class="paginator__item"><span>...</span></li>
-							<li class="paginator__item"><a href="#">29</a></li>
 							<li class="paginator__item"><a href="#">30</a></li>
 							<li class="paginator__item paginator__item--next">
 								<a href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.54,11.29,9.88,5.64a1,1,0,0,0-1.42,0,1,1,0,0,0,0,1.41l4.95,5L8.46,17a1,1,0,0,0,0,1.41,1,1,0,0,0,.71.3,1,1,0,0,0,.71-.3l5.66-5.65A1,1,0,0,0,15.54,11.29Z"/></svg></a>
@@ -776,5 +355,67 @@
 	<script th:src="@{/admin-js/smooth-scrollbar.js}"></script>
 	<script th:src="@{/admin-js/slimselect.min.js}"></script>
 	<script th:src="@{/admin-js/admin.js}"></script>
+
+	<!-- JavaScript -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+		$(document).ready(function() {
+            // Function to fetch users data via AJAX
+            function fetchUsers() {
+                $.ajax({
+                    url: '/api/users', // Replace with your API endpoint URL
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function(data) {
+                        var usersHtml = '';
+                        $.each(data, function(index, user) {
+                            usersHtml += `
+                                <tr>
+                                    <td>${user.idUser}</td>
+                                    <td>
+                                        <div class="catalog__user">
+                                            <div class="catalog__avatar">
+                                                <img src="/img/user.svg" alt="">
+                                            </div>
+                                            <div class="catalog__meta">
+                                                <h3>${user.name}</h3>
+                                                <span>${user.email}</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>${user.username}</td>
+                                    <td>${user.pricingPlan}</td>
+                                    <td>${user.comments}</td>
+                                    <td>${user.reviews}</td>
+                                    <td class="catalog__text catalog__text--green">${user.status}</td>
+                                    <td>${user.createdDate}</td>
+                                    <td>
+                                        <div class="catalog__btns">
+                                            <button type="button" data-bs-toggle="modal" class="catalog__btn catalog__btn--banned" data-bs-target="#modal-status">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,13a1,1,0,0,0-1,1v3a1,1,0,0,0,2,0V14A1,1,0,0,0,12,13Zm5-4V7A5,5,0,0,0,7,7V9a3,3,0,0,0-3,3v7a3,3,0,0,0,3,3H17a3,3,0,0,0,3-3V12A3,3,0,0,0,17,9ZM9,7a3,3,0,0,1,6,0V9H9Zm7,14a1,1,0,0,1-1,1H7a1,1,0,0,1-1-1V12a1,1,0,0,1,1-1H17a1,1,0,0,1,1,1Z"/></svg>
+                                            </button>
+                                            <a href="edit-user.html" class="catalog__btn catalog__btn--edit">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5,18H9.24a1,1,0,0,0,.71-.29l6.92-6.93h0L19.71,8a1,1,0,0,0,0-1.42L15.47,2.29a1,1,0,0,0-1.42,0L11.23,5.12h0L4.29,12.05a1,1,0,0,0-.29.71V17A1,1,0,0,0,5,18ZM14.76,4.41l2.83,2.83L16.17,8.66,13.34,5.83ZM6,13.17l5.93-5.93,2.83,2.83L8.83,16H6ZM21,20H3a1,1,0,0,0,0,2H21a1,1,0,0,0,0-2Z"/></svg>
+                                            </a>
+                                            <button type="button" data-bs-toggle="modal" class="catalog__btn catalog__btn--delete" data-bs-target="#modal-delete">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,6H16V5a3,3,0,0,0-3-3H11A3,3,0,0,0,8,5V6H4A1,1,0,0,0,4,8H5V19a3,3,0,0,0,3,3h8a3,3,0,0,0,3-3V8h1a1,1,0,0,0,0-2ZM10,5a1,1,0,0,1,1-1h2a1,1,0,0,1,1,1V6H10Zm7,14a1,1,0,0,1-1,1H8a1,1,0,0,1-1-1V8H17Z"/></svg>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            `;
+                        });
+                        $('#usersTableBody').html(usersHtml); // Update table body with fetched data
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error fetching users:', error);
+                    }
+                });
+            }
+
+            // Initial load
+            fetchUsers();
+        });
+	</script>
 </body>
 </html>

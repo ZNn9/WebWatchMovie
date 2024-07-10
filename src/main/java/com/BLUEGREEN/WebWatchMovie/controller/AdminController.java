@@ -7,6 +7,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
+
+    @GetMapping("/")
+    public String showIndex() {
+        return "admin/index";
+    }
+
     @GetMapping("/catalog")
     public String catalog() {
         return "admin/catalog";
@@ -42,10 +48,4 @@ public class AdminController {
     public String users () {
         return "admin/users";
     }
-
-    @GetMapping("/index")
-    public String index() {
-        return "admin/index";
-    }
-
 }

@@ -33,8 +33,18 @@ public class MovieController {
     }
 
     @GetMapping("/movie-details/{idMovie}")
-    public String showMovieDetails() {
-        return "/user/anime-details";
+    public String showMovieDetails(@PathVariable int idMovie, Model model) {
+        Movie movie = movieService.getMovieById(idMovie);
+        if (movie != null) {
+            List<Episode> episodes = episodeService.getEpisodesByMovieId(idMovie);
+
+            model.addAttribute("movie", movie);
+            model.addAttribute("episode", episodes.getFirst());
+            return "/user/anime-details";
+        } else {
+            // Xử lý trường hợp không tìm thấy episode thuộc về movie đã cho
+            return "user/index"; // hoặc chuyển hướng đến trang lỗi thích hợp
+        }
     }
 
     @GetMapping("/movies/{idMovie}/{idEpisode}")
@@ -49,7 +59,7 @@ public class MovieController {
             return "/user/anime-watching";
         } else {
             // Xử lý trường hợp không tìm thấy episode thuộc về movie đã cho
-            return "error"; // hoặc chuyển hướng đến trang lỗi thích hợp
+            return "user/index"; // hoặc chuyển hướng đến trang lỗi thích hợp
         }
     }
 }
