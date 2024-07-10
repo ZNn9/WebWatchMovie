@@ -7,20 +7,13 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import jakarta.transaction.Transactional;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 import lombok.*;
-import org.hibernate.Hibernate;
-import org.hibernate.validator.constraints.Length;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.List;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
 
 @RequiredArgsConstructor
 @AllArgsConstructor
@@ -40,14 +33,16 @@ public class User {
     @Column(nullable = false, unique = true, length = 50)
     private String nameLogin;
 
-    @NotBlank
+    @NotBlank(message = "Password is mandatory")
+    @Size(min = 7, max = 255, message = "Password must be between 8 and 255 characters")
     @Column(nullable = false, length = 255)
     private String password;
 
     @Column(nullable = false, length = 50)
     private String name;
 
-    @NotBlank(message = "email must not be blank")
+    @NotBlank(message = "Email must not be blank")
+    @Email(message = "Email should be valid")
     @Column(nullable = false, unique = true, length = 50)
     private String email;
 
