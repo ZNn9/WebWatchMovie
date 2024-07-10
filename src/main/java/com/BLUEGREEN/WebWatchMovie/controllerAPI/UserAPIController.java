@@ -1,4 +1,4 @@
-package com.BLUEGREEN.WebWatchMovie.controller;
+package com.BLUEGREEN.WebWatchMovie.controllerAPI;
 
 import com.BLUEGREEN.WebWatchMovie.model.User;
 import com.BLUEGREEN.WebWatchMovie.service.UserService;
@@ -26,7 +26,6 @@ public class UserAPIController {
     @PostMapping("/register")
     public ResponseEntity<User> registerUser(@RequestBody User registrationRequest) {
         User registeredUser = userService.registerUser(registrationRequest, registrationRequest.getRoleIds());
-
         return ResponseEntity.ok(registeredUser);
     }
 

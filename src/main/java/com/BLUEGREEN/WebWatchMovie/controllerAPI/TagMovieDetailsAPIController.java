@@ -1,4 +1,4 @@
-package com.BLUEGREEN.WebWatchMovie.controller;
+package com.BLUEGREEN.WebWatchMovie.controllerAPI;
 
 import com.BLUEGREEN.WebWatchMovie.model.TagMovieDetails;
 import com.BLUEGREEN.WebWatchMovie.service.TagMovieDetailsService;

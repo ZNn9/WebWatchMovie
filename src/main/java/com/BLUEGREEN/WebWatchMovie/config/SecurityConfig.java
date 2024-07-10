@@ -45,30 +45,33 @@ public class SecurityConfig {
         return http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-//                .authorizeRequests(auth -> auth
-                                .requestMatchers(
-                                        "/static/**", "/css/**", "/img/**", "/js/**", "/sass/**", "/movies/**", "/fonts/**", "/icon/**",
-                                        "/admin-css/**", "/admin-js/**", "/admin-lib/**", "/admin-vendor/**",
-                                        "/oauth/**", "/user/register/**", "/user/register?error", "/user/login/**", "/user/login?error", "/error",
-                                        "/", "/api/**"
-                                ).permitAll()
-                                .requestMatchers("/user/**").hasAnyAuthority(
-                                        "isPartner", "isView",
-                                        "isMaster", "isManager",
-                                        "isAdd", "isEdit", "isDelete"
-                                )
-                                .requestMatchers(
-                                        "/admin", "/admin/you/**",
-                                        "/admin/users/**", "/admin/roles/**",
-                                        "/admin/origin-movies/**", "/admin/movies/**", "/admin/episodes/**", "/admin/tags/**",
-                                        "/admin/command/**", "/admin/country/**", "/admin/directors/**", "/admin/studios/**", "/admin/actor/**"
-                                ).hasAnyAuthority(
-                                        "isPartner",
-                                        "isMaster", "isManager",
-                                        "isAdd", "isEdit", "isDelete"
-                                )
-                                .requestMatchers("/admin/managers/**").hasAnyAuthority("isMaster")
-                                .anyRequest().authenticated()
+                        .requestMatchers(
+                                "/static/**", "/css/**", "/img/**", "/js/**", "/sass/**", "/movies/**", "/fonts/**", "/icon/**",
+                                "/admin-css/**", "/admin-js/**", "/admin-lib/**", "/admin-vendor/**",
+                                "/oauth/**", "/user/register", "/user/login", "/error",
+                                "/", "/api/**", "/user/anime-watching/**", "/movies-details/**"
+                        )
+                        .permitAll()
+                        .requestMatchers("/user/**")
+                        .hasAnyAuthority(
+                                "isPartner", "isView",
+                                "isMaster", "isManager",
+                                "isAdd", "isEdit", "isDelete"
+                        )
+                        .requestMatchers(
+                                "/admin", "/admin/you/**/",
+                                "/admin/users/**", "/admin/roles/**",
+                                "/admin/origin-movies/**", "/admin/movies/**", "/admin/episodes/**", "/admin/tags/**",
+                                "/admin/command/**", "/admin/country/**", "/admin/directors/**", "/admin/studios/**", "/admin/actor/**"
+                        )
+                        .hasAnyAuthority(
+                                "isPartner",
+                                "isMaster", "isManager",
+                                "isAdd", "isEdit", "isDelete"
+                        )
+                        .requestMatchers("/admin/managers/**")
+                        .hasAnyAuthority("isMaster")
+                        .anyRequest().authenticated()
                 )
                 .logout(logout -> logout
                         .logoutUrl("/logout")
