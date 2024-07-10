@@ -104,7 +104,7 @@ public class SecurityConfig {
                         .userInfoEndpoint(userInfoEndpoint -> userInfoEndpoint
                                 .userService(customOAuth2UserService)
                         )
-                        .defaultSuccessUrl("/movies")
+                        .defaultSuccessUrl("/")
                         .failureUrl("/login?error")
                 )
                 .build();
