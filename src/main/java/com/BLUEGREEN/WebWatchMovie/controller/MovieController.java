@@ -1,7 +1,9 @@
 package com.BLUEGREEN.WebWatchMovie.controller;
 
 import com.BLUEGREEN.WebWatchMovie.model.Episode;
+import com.BLUEGREEN.WebWatchMovie.model.Movie;
 import com.BLUEGREEN.WebWatchMovie.service.EpisodeService;
+import com.BLUEGREEN.WebWatchMovie.service.MovieService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,9 +22,14 @@ public class MovieController {
     @Autowired
     private EpisodeService episodeService;
 
+    @Autowired
+    private MovieService movieService;
+
     @GetMapping("/")
-    public String showMovies() {
-        return "/user/index";
+    public String showMovies(Model model) {
+        List<Movie> movies = movieService.getAllMovies();
+        model.addAttribute("movies", movies);
+        return "user/index";
     }
 
     @GetMapping("/movies-details/{idMovie}")
