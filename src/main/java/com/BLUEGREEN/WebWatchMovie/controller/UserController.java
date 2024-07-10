@@ -90,4 +90,9 @@ public class UserController {
 
         return "redirect:/"; // Chuyển hướng sau khi đăng ký thành công
     }
+
+    @GetMapping("/register")
+    public String register(){
+        return "/user/register";
+    }
 }
