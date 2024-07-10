@@ -31,9 +31,9 @@
 
 <body>
 <!-- Page Preloder -->
-<div id="preloder">
-    <div class="loader"></div>
-</div>
+<!--<div id="preloder">-->
+<!--    <div class="loader"></div>-->
+<!--</div>-->
 
 <!-- Header Section Begin -->
 <section layout:fragment="content">
@@ -61,30 +61,46 @@
                 <div class="col-lg-6">
                     <div class="login__form">
                         <h3>Sign Up</h3>
-                        <form id="registrationForm">
+                        <form th:action="@{/user/register}" th:object="${user}" method="post">
                             <div class="input__item">
-                                <input type="text" id="nameLogin" placeholder="Your Name Login">
-                                <span class="icon_profile"></span>
-                            </div>
-                            <div class="input__item">
-                                <input type="password" id="password" placeholder="Password">
-                                <span class="icon_lock"></span>
-                            </div>
-                            <div class="input__item">
-                                <input type="password" id="confirmPassword" placeholder="Confirm Password">
-                                <span class="icon_lock"></span>
-                            </div>
-                            <div class="input__item">
-                                <input type="email" id="email" placeholder="Email address">
+                                <input type="email" th:field="*{email}" placeholder="Email address" required>
                                 <span class="icon_mail"></span>
                             </div>
                             <div class="input__item">
-                                <input type="text" id="name" placeholder="Your Name">
+                                <input type="text" th:field="*{name}" placeholder="Your Name" required>
                                 <span class="icon_profile"></span>
+
                             </div>
-                            <button type="submit" class="site-btn">Register Now</button>
+                            <div class="input__item">
+                                <input type="text" th:field="*{nameLogin}" placeholder="Your Name Login" required>
+                                <span class="icon_profile"></span>
+
+                            </div>
+                            <div class="input__item">
+                                <input type="password" th:field="*{password}" placeholder="Password" required>
+                                <span class="icon_lock"></span>
+
+                            </div>
+                            <div class="input__item">
+                                <input type="password" name="confirmPassword" placeholder="Confirm Password" required>
+                                <span class="icon_lock"></span>
+                            </div>
+                            <!-- Thêm field cho roleIds -->
+                            <div style="display: none;">
+                                <label>Role IDs (comma separated):</label>
+                                <input type="text" name="roleIds" placeholder="Role IDs" value="1">
+                            </div>
+                            <!-- Các lỗi tổng thể -->
+                            <div th:if="${error}">
+                                <p th:text="${error}" class="text-danger"></p>
+                            </div>
+                            <button type="submit" class="site-btn">Sign Up</button>
                         </form>
                         <h5>Already have an account? <a th:href="@{/user/login}">Log In!</a></h5>
+                        <!-- Nếu có lỗi từ controller, hiển thị lỗi -->
+                        <div th:if="${errors}">
+                            <div th:each="err : ${errors}" th:text="${err.defaultMessage}" class="text-danger"></div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-6">

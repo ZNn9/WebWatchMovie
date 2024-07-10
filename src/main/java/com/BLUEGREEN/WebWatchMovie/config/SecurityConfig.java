@@ -44,8 +44,8 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
                 .csrf(csrf -> csrf.disable())
-//                .authorizeHttpRequests(auth -> auth
-                .authorizeRequests(authorizeRequests -> authorizeRequests
+                .authorizeHttpRequests(auth -> auth
+//                .authorizeRequests(auth -> auth
                         .requestMatchers(
                                 "/static/**", "/css/**", "/img/**", "/js/**", "/sass/**", "/movies/**", "/fonts/**", "/icon/**",
                                 "/admin-css/**", "/admin-js/**", "/admin-lib/**", "/admin-vendor/**",
@@ -82,7 +82,7 @@ public class SecurityConfig {
                         .loginPage("/user/login")
                         .loginProcessingUrl("/user/login")
                         .defaultSuccessUrl("/", true)
-                        .failureUrl("/login?error")
+                        .failureUrl("/user/login?error")
                         .permitAll()
                 )
                 .rememberMe(rememberMe -> rememberMe
@@ -100,7 +100,7 @@ public class SecurityConfig {
                                 .userService(customOAuth2UserService)
                         )
                         .defaultSuccessUrl("/")
-                        .failureUrl("/login?error")
+                        .failureUrl("/user/login?error")
                 )
                 .build();
     }
