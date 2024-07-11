@@ -33,8 +33,14 @@ public class MovieController {
     }
 
     @GetMapping("/movies-details/{idMovie}")
-    public String showMovieDetails() {
-        return "/user/anime-details";
+    public String showMovieDetails(@PathVariable int idMovie, Model model) {
+        Movie movie = movieService.getMovieById(idMovie);
+        if (movie != null) {
+            model.addAttribute("movie", movie);
+            return "/user/anime-details";
+        } else {
+            return "error"; // or redirect to an appropriate error page
+        }
     }
 
     @GetMapping("/movies/{idMovie}/{idEpisode}")
